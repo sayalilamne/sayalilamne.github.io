@@ -41,12 +41,12 @@ import '../styles/global.css';
 				</nav>
 			</section>
 
-			<!-- Intro -->
-			<section class="bg-white pb-16">
+			<!-- Intro (pulled up so the card overlaps the GIF; no bg so GIF shows around it) -->
+			<section class="relative z-10 -mt-32 pb-16 sm:-mt-52 lg:-mt-72">
 				<div class="mx-auto max-w-4xl px-4 md:px-6">
 					<!-- White card overlapping the GIF: photo left, centered text right -->
 					<div
-						class="relative z-10 -mt-32 grid items-center bg-white shadow-xl sm:-mt-52 md:grid-cols-[2fr_3fr] lg:-mt-72"
+						class="grid items-center bg-white shadow-xl md:grid-cols-[2fr_3fr]"
 					>
 						<!-- Photo -->
 						<div class="flex items-center justify-center bg-neutral-100 p-3 md:p-5">
