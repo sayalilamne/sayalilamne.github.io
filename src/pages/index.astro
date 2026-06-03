@@ -9,6 +9,17 @@ import '../styles/global.css';
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Sayali Lamne</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap"
+			rel="stylesheet"
+		/>
+		<style is:global>
+			body {
+				font-family: 'Raleway', system-ui, -apple-system, sans-serif;
+			}
+		</style>
 	</head>
 	<body class="min-h-screen bg-white text-gray-800">
 		<!-- Thin top accent bar -->
@@ -17,10 +28,12 @@ import '../styles/global.css';
 		<main class="relative">
 			<!-- Hero cover with animated facade GIF background -->
 			<section
-				class="h-[300px] w-full bg-cover bg-center md:h-[470px]"
+				class="h-[220px] w-full bg-cover bg-center sm:h-[340px] lg:h-[450px]"
 				style="background-image: url('/facade-2.gif');"
 			>
-				<nav class="flex justify-end gap-8 px-6 py-6 text-sm md:gap-12 md:px-12 md:text-base">
+				<nav
+					class="flex justify-end gap-8 px-6 py-7 text-sm font-light tracking-wide md:gap-14 md:px-14 md:text-base"
+				>
 					<a href="#" class="text-gray-700 hover:text-[#e35336]">Home</a>
 					<a href="#" class="text-gray-700 hover:text-[#e35336]">Projects</a>
 					<a href="#" class="text-gray-700 hover:text-[#e35336]">Research</a>
@@ -30,13 +43,13 @@ import '../styles/global.css';
 
 			<!-- Intro -->
 			<section class="bg-white pb-16">
-				<div class="mx-auto max-w-6xl px-4 md:px-8">
+				<div class="mx-auto max-w-4xl px-4 md:px-6">
 					<!-- White card overlapping the GIF: photo left, centered text right -->
 					<div
-						class="relative z-10 -mt-36 grid items-center bg-white shadow-xl md:-mt-52 md:grid-cols-[2fr_3fr]"
+						class="relative z-10 -mt-28 grid items-center bg-white shadow-xl sm:-mt-36 md:grid-cols-[2fr_3fr] lg:-mt-40"
 					>
 						<!-- Photo -->
-						<div class="flex items-center justify-center bg-neutral-100 p-4 md:p-6">
+						<div class="flex items-center justify-center bg-neutral-100 p-3 md:p-5">
 							<img
 								src="/sayali.png"
 								alt="Sayali Lamne"
@@ -45,20 +58,24 @@ import '../styles/global.css';
 						</div>
 
 						<!-- Text -->
-						<div class="px-6 py-8 text-center md:px-10 md:py-12">
-							<p class="text-xl text-gray-400">
-								<span class="mr-1 align-top">&ldquo;</span>Hi there
+						<div class="px-6 py-8 text-center md:px-8 md:py-10">
+							<p class="text-xl font-light tracking-wide text-gray-400 md:text-2xl">
+								<span class="mr-1 align-top text-3xl font-bold text-gray-300">&ldquo;</span>Hi there
 							</p>
-							<h1 class="mt-2 text-3xl font-bold text-black md:text-4xl">I'm Sayali Lamne</h1>
-							<p class="mt-4 text-base text-gray-500 md:text-lg">
+							<h1 class="mt-3 text-3xl font-extrabold tracking-tight text-black md:text-4xl">
+								I'm Sayali Lamne
+							</h1>
+							<p class="mt-4 text-base font-light tracking-wide text-gray-500 md:text-lg">
 								LEED AP | CEM | Program Leadership | Climate Technology
 							</p>
-							<p class="mx-auto mt-6 max-w-md text-sm leading-relaxed text-gray-600">
+							<p class="mx-auto mt-6 max-w-md text-sm leading-relaxed text-gray-600 md:text-base">
 								Sustainability &amp; Energy Strategist driving decarbonization, electrification,
 								and resilient infrastructure across data centers, mobility, and the built
-								environment.<span class="ml-1 align-bottom text-xl text-gray-300">&rdquo;</span>
+								environment.<span class="ml-1 align-bottom text-3xl font-bold text-gray-300"
+									>&rdquo;</span
+								>
 							</p>
-							<p class="mt-6 text-base text-gray-500 md:text-lg">
+							<p class="mt-6 text-base font-light tracking-wide text-gray-500 md:text-lg">
 								8+ Years Experience | 4+ Research Publications | 20+ Projects
 							</p>
 						</div>
@@ -70,7 +87,7 @@ import '../styles/global.css';
 							href="https://drive.google.com/file/d/12k26JEVy5VCxMNSsf6hkEf0ICvMYvSAe/view?usp=sharing"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="bg-[#e35336] px-7 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#c8442b]"
+							class="bg-[#e35336] px-7 py-2.5 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#c8442b]"
 						>
 							Resume
 						</a>
@@ -78,7 +95,7 @@ import '../styles/global.css';
 							href="https://heyzine.com/flip-book/a7caad5571.html"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="bg-[#e35336] px-7 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#c8442b]"
+							class="bg-[#e35336] px-7 py-2.5 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#c8442b]"
 						>
 							Portfolio
 						</a>
@@ -86,7 +103,7 @@ import '../styles/global.css';
 							href="https://www.linkedin.com/in/arslamne"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="bg-[#e35336] px-7 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#c8442b]"
+							class="bg-[#e35336] px-7 py-2.5 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#c8442b]"
 						>
 							LinkedIn
 						</a>
@@ -94,7 +111,7 @@ import '../styles/global.css';
 							href="https://sayalilamne.github.io/energy-market-analysis/"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="bg-[#e35336] px-7 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#c8442b]"
+							class="bg-[#e35336] px-7 py-2.5 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#c8442b]"
 						>
 							GitHub
 						</a>
@@ -104,7 +121,7 @@ import '../styles/global.css';
 					<div class="mt-5 text-center">
 						<a
 							href="mailto:sayali03lamne@gmail.com"
-							class="text-sm text-gray-600 hover:text-[#e35336]"
+							class="text-sm font-light tracking-wide text-gray-600 hover:text-[#e35336]"
 						>
 							Contact
 						</a>
@@ -113,10 +130,10 @@ import '../styles/global.css';
 			</section>
 
 			<!-- Blueprint crosshair overlay (decorative) -->
-			<div class="pointer-events-none absolute inset-x-0 top-0 z-20 h-[560px] opacity-40 md:h-[760px]">
+			<div class="pointer-events-none absolute inset-x-0 top-0 z-20 h-[520px] opacity-40 lg:h-[740px]">
 				<div class="absolute inset-y-0 left-1/2 border-l border-dashed border-gray-400"></div>
 				<div
-					class="absolute inset-x-0 top-[280px] border-t border-dashed border-gray-400 md:top-[430px]"
+					class="absolute inset-x-0 top-[230px] border-t border-dashed border-gray-400 lg:top-[420px]"
 				></div>
 			</div>
 		</main>
