@@ -22,22 +22,25 @@ import '../styles/global.css';
 		</style>
 	</head>
 	<body class="min-h-screen bg-white text-gray-800">
-		<!-- Thin top accent bar -->
-		<div class="h-1.5 w-full bg-neutral-900"></div>
-
 		<main class="relative">
 			<!-- Hero cover with animated facade GIF background -->
 			<section
-				class="h-[220px] w-full bg-cover bg-center sm:h-[340px] lg:h-[450px]"
-				style="background-image: url('/facade-2.gif');"
+				class="relative h-[50vh] w-full overflow-hidden"
 			>
+				<img
+					src="/facade-3.gif"
+					alt=""
+					aria-hidden="true"
+					class="absolute inset-0 h-full w-full object-cover object-center opacity-75"
+				/>
 				<nav
-					class="flex justify-end gap-8 px-6 py-7 text-sm font-light tracking-wide md:gap-14 md:px-14 md:text-base"
+					class="relative z-10 flex justify-end gap-8 px-6 py-7 text-sm font-light tracking-wide md:gap-14 md:px-14 md:text-base"
 				>
 					<a href="#" class="text-gray-700 hover:text-[#e35336]">Home</a>
 					<a href="#" class="text-gray-700 hover:text-[#e35336]">Projects</a>
 					<a href="#" class="text-gray-700 hover:text-[#e35336]">Research</a>
 					<a href="#" class="text-gray-700 hover:text-[#e35336]">About me</a>
+					<a href="mailto:sayali03lamne@gmail.com" class="text-gray-700 hover:text-[#e35336]">Contacts</a>
 				</nav>
 			</section>
 
