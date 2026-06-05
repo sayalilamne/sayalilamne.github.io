@@ -20,6 +20,60 @@ import '../styles/global.css';
 				font-family: 'Raleway', system-ui, -apple-system, sans-serif;
 			}
 		</style>
+		<style>
+			/* Intro card typography — sized to match the reference slide */
+			.intro-quote {
+				font-family: Georgia, 'Times New Roman', serif;
+				line-height: 0;
+				color: #cfcfcf;
+			}
+			.intro-greeting {
+				font-family: 'Abadi Extra Light', 'Abadi', 'Segoe UI Light', sans-serif;
+				font-weight: 200;
+				font-size: 30px;
+				color: #808080;
+			}
+			.intro-name {
+				font-family: Impact, 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+				font-weight: normal;
+				font-size: 46px;
+				color: #000000;
+				margin-top: 6px;
+				margin-bottom: 22px;
+			}
+			.intro-credentials {
+				font-family: 'Arial Nova Light', Arial, sans-serif;
+				font-weight: 300;
+				font-size: 19px;
+				letter-spacing: 0.5px;
+				color: #808080;
+				margin-bottom: 28px;
+			}
+			.intro-bio {
+				font-family: 'Aptos Narrow', 'Arial Narrow', Arial, sans-serif;
+				font-size: 17px;
+				line-height: 1.7;
+				color: #5f5f5f;
+				max-width: 660px;
+			}
+			.intro-bio + .intro-bio {
+				margin-top: 22px;
+			}
+			@media (max-width: 768px) {
+				.intro-greeting {
+					font-size: 24px;
+				}
+				.intro-name {
+					font-size: 36px;
+				}
+				.intro-credentials {
+					font-size: 16px;
+				}
+				.intro-bio {
+					font-size: 15px;
+				}
+			}
+		</style>
 	</head>
 	<body class="min-h-screen bg-white text-gray-800">
 		<main class="relative">
@@ -31,7 +85,7 @@ import '../styles/global.css';
 					src="/facade-3.gif"
 					alt=""
 					aria-hidden="true"
-					class="absolute inset-0 h-full w-full object-cover object-center opacity-[0.375]"
+					class="absolute inset-0 h-full w-full object-cover object-top opacity-[0.375]"
 				/>
 				<nav
 					class="relative z-10 flex justify-end gap-8 px-6 py-7 text-sm font-light tracking-wide md:gap-14 md:px-14 md:text-base"
@@ -44,42 +98,55 @@ import '../styles/global.css';
 				</nav>
 			</section>
 
-			<!-- Intro (pulled up so the card overlaps the GIF; no bg so GIF shows around it) -->
-			<section class="relative z-10 -mt-32 pb-16 sm:-mt-52 lg:-mt-72">
-				<div class="mx-auto max-w-4xl px-4 md:px-6">
-					<!-- White card overlapping the GIF: photo left, centered text right -->
-					<div
-						class="grid bg-white shadow-xl md:grid-cols-[2fr_3fr]"
-					>
-						<!-- Photo (fills the column edge-to-edge) -->
-						<div class="h-full">
+			<!-- Intro (pulled up so the card's center sits on the GIF's bottom edge) -->
+			<section class="relative z-10 -mt-32 pb-16 sm:-mt-44 lg:-mt-56">
+				<div class="mx-auto px-4" style="max-width: 920px;">
+					<!-- White card: photo left (40%), centered text right (60%); no border, no shadow -->
+					<div class="grid grid-cols-1 items-stretch bg-white md:grid-cols-[2fr_3fr]">
+						<!-- Photo column: light backing fills to the top edge, portrait bottom-aligned, edge-to-edge -->
+						<div class="flex items-end justify-center" style="background-color: #f2f2f2;">
 							<img
-								src="/sayali.png"
+								src="/portrait.jpg"
 								alt="Sayali Lamne"
-								class="h-full w-full object-cover grayscale"
+								class="block w-full self-end object-cover object-bottom grayscale"
 							/>
 						</div>
 
-						<!-- Text -->
-						<div class="flex flex-col justify-center px-6 py-8 text-center md:px-8 md:py-10">
-							<p class="text-xl font-light tracking-wide text-gray-400 md:text-2xl">
-								<span class="mr-1 align-top text-3xl font-bold text-gray-300">&ldquo;</span>Hi there
+						<!-- Text column: centered block, pulled left so the paragraphs overlap onto the photo -->
+						<div
+							class="relative z-10 flex flex-col items-center justify-center text-center md:-ml-24"
+							style="padding: 44px 52px 44px 16px;"
+						>
+							<p class="intro-greeting">
+								<span
+									class="intro-quote"
+									aria-hidden="true"
+									style="font-size: 34px; vertical-align: -0.35em; margin-right: 4px;"
+									>&ldquo;</span
+								>Hi there
 							</p>
-							<h1 class="mt-3 text-3xl font-extrabold tracking-tight text-black md:text-4xl">
-								I'm Sayali Lamne
-							</h1>
-							<p class="mt-4 text-base font-light tracking-wide text-gray-500 md:text-lg">
+							<h1 class="intro-name">I'm Sayali Lamne</h1>
+							<p class="intro-credentials">
 								LEED AP | CEM | Program Leadership | Climate Technology
 							</p>
-							<p class="mx-auto mt-6 max-w-md text-sm leading-relaxed text-gray-600 md:text-base">
-								Sustainability &amp; Energy Strategist driving decarbonization, electrification,
-								and resilient infrastructure across data centers, mobility, and the built
-								environment.<span class="ml-1 align-bottom text-3xl font-bold text-gray-300"
+							<p class="intro-bio">
+								I'm a Sustainability and Energy Strategist with 8 years of experience leading
+								programs across data centers, autonomous vehicles, electric mobility,
+								grid-interactive buildings, and energy systems. With a background in
+								architecture and certifications as a LEED AP and Certified Energy Manager
+								(CEM), I combine technical rigor, systems thinking, and cross-functional
+								leadership to transform complex challenges into scalable solutions.
+							</p>
+							<p class="intro-bio">
+								My work focuses on decarbonization, electrification, resilience, and
+								operational excellence, helping organizations translate ambitious
+								sustainability goals into measurable outcomes through data-driven
+								decision-making and strategic execution.<span
+									class="intro-quote"
+									aria-hidden="true"
+									style="font-size: 40px; vertical-align: -0.5em; margin-left: 6px;"
 									>&rdquo;</span
 								>
-							</p>
-							<p class="mt-6 text-base font-light tracking-wide text-gray-500 md:text-lg">
-								8+ Years Experience | 4+ Research Publications | 20+ Projects
 							</p>
 						</div>
 					</div>
@@ -131,14 +198,6 @@ import '../styles/global.css';
 					</div>
 				</div>
 			</section>
-
-			<!-- Blueprint crosshair overlay (decorative) -->
-			<div class="pointer-events-none absolute inset-x-0 top-0 z-20 h-[520px] opacity-40 lg:h-[740px]">
-				<div class="absolute inset-y-0 left-1/2 border-l border-dashed border-gray-400"></div>
-				<div
-					class="absolute inset-x-0 top-[230px] border-t border-dashed border-gray-400 lg:top-[420px]"
-				></div>
-			</div>
 		</main>
 	</body>
 </html>
