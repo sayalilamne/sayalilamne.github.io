@@ -23,7 +23,8 @@ import '../styles/global.css';
 		<style>
 			/* Intro card typography — sized to match the reference slide */
 			.intro-quote {
-				font-family: Georgia, 'Times New Roman', serif;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 50px;
 				line-height: 0;
 				color: #cfcfcf;
 			}
@@ -122,7 +123,7 @@ import '../styles/global.css';
 								<span
 									class="intro-quote"
 									aria-hidden="true"
-									style="font-size: 34px; vertical-align: -0.35em; margin-right: 4px;"
+									style="font-size: 50px; vertical-align: -0.35em; margin-right: 4px;"
 									>&ldquo;</span
 								>Hi there
 							</p>
@@ -145,7 +146,7 @@ import '../styles/global.css';
 								decision-making and strategic execution.<span
 									class="intro-quote"
 									aria-hidden="true"
-									style="font-size: 40px; vertical-align: -0.5em; margin-left: 6px;"
+									style="font-size: 50px; vertical-align: -0.5em; margin-left: 6px;"
 									>&rdquo;</span
 								>
 							</p>
@@ -153,12 +154,13 @@ import '../styles/global.css';
 					</div>
 
 					<!-- Action buttons (filled terracotta), right-aligned -->
-					<div class="mt-10 flex flex-wrap justify-end gap-4">
+					<div class="flex flex-wrap justify-end gap-4" style="margin-top: calc(var(--spacing) * 2);">
 						<a
 							href="https://drive.google.com/file/d/12k26JEVy5VCxMNSsf6hkEf0ICvMYvSAe/view?usp=sharing"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="bg-[#e35336] px-7 py-2.5 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#c8442b]"
+							class="inline-flex items-center bg-[#e35336] px-7 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#c8442b]"
+							style="height: 40px;"
 						>
 							Resume
 						</a>
@@ -166,15 +168,24 @@ import '../styles/global.css';
 							href="https://heyzine.com/flip-book/a7caad5571.html"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="bg-[#e35336] px-7 py-2.5 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#c8442b]"
+							class="inline-flex items-center bg-[#e35336] px-7 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#c8442b]"
+							style="height: 40px;"
 						>
 							Portfolio
+						</a>
+						<a
+							href="#"
+							class="inline-flex items-center bg-[#e35336] px-7 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#c8442b]"
+							style="height: 40px;"
+						>
+							Projects
 						</a>
 						<a
 							href="https://www.linkedin.com/in/arslamne"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="bg-[#e35336] px-7 py-2.5 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#c8442b]"
+							class="inline-flex items-center bg-[#e35336] px-7 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#c8442b]"
+							style="height: 40px;"
 						>
 							LinkedIn
 						</a>
@@ -182,19 +193,10 @@ import '../styles/global.css';
 							href="https://sayalilamne.github.io/energy-market-analysis/"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="bg-[#e35336] px-7 py-2.5 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#c8442b]"
+							class="inline-flex items-center bg-[#e35336] px-7 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#c8442b]"
+							style="height: 40px;"
 						>
 							GitHub
-						</a>
-					</div>
-
-					<!-- Contact -->
-					<div class="mt-5 text-center">
-						<a
-							href="mailto:sayali03lamne@gmail.com"
-							class="text-sm font-light tracking-wide text-gray-600 hover:text-[#e35336]"
-						>
-							Contact
 						</a>
 					</div>
 				</div>
