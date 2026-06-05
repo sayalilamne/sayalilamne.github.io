@@ -16,8 +16,16 @@ import '../styles/global.css';
 			rel="stylesheet"
 		/>
 		<style is:global>
+			html {
+				scroll-behavior: smooth;
+			}
 			body {
 				font-family: 'Raleway', system-ui, -apple-system, sans-serif;
+			}
+			@media (prefers-reduced-motion: reduce) {
+				html {
+					scroll-behavior: auto;
+				}
 			}
 		</style>
 		<style>
@@ -74,6 +82,115 @@ import '../styles/global.css';
 					font-size: 15px;
 				}
 			}
+
+			/* ---- Projects showcase section ---- */
+			.projects-section {
+				min-height: 100vh;
+				background-color: #ffffff;
+				width: 100%;
+				padding: 100px 24px 120px;
+			}
+			.projects-inner {
+				max-width: 1100px;
+				margin: 0 auto;
+			}
+			.projects-title {
+				font-family: 'Raleway', sans-serif;
+				font-weight: 600;
+				font-size: 56px;
+				letter-spacing: -0.5px;
+				color: #111111;
+				text-align: center;
+			}
+			.projects-subtitle {
+				font-family: 'Raleway', sans-serif;
+				font-weight: 300;
+				font-size: 19px;
+				line-height: 1.6;
+				color: #808080;
+				text-align: center;
+				max-width: 620px;
+				margin: 18px auto 0;
+			}
+			.projects-grid {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 40px;
+				margin-top: 72px;
+			}
+			.project-card {
+				display: flex;
+				flex-direction: column;
+				background-color: #ffffff;
+				border: 1px solid #e6e6e6;
+				transition:
+					transform 0.35s ease,
+					border-color 0.35s ease;
+			}
+			.project-card:hover {
+				transform: translateY(-3px);
+				border-color: #b8b8b8;
+			}
+			.project-card__media {
+				aspect-ratio: 16 / 10;
+				width: 100%;
+				background-color: #f2f2f2;
+			}
+			.project-card__body {
+				padding: 28px 30px 34px;
+			}
+			.project-card__title {
+				font-family: 'Raleway', sans-serif;
+				font-weight: 600;
+				font-size: 24px;
+				color: #111111;
+				margin: 0;
+			}
+			.project-card__desc {
+				font-family: 'Raleway', sans-serif;
+				font-weight: 300;
+				font-size: 16px;
+				line-height: 1.65;
+				color: #808080;
+				margin: 12px 0 0;
+			}
+
+			/* Scroll-reveal: cards rise into view */
+			.reveal {
+				opacity: 0;
+				transform: translateY(28px);
+				transition:
+					opacity 0.7s ease,
+					transform 0.7s ease;
+			}
+			.reveal.is-visible {
+				opacity: 1;
+				transform: none;
+			}
+
+			@media (max-width: 768px) {
+				.projects-section {
+					padding: 72px 20px 88px;
+				}
+				.projects-title {
+					font-size: 40px;
+				}
+				.projects-grid {
+					grid-template-columns: 1fr;
+					gap: 28px;
+					margin-top: 48px;
+				}
+			}
+			@media (prefers-reduced-motion: reduce) {
+				.reveal {
+					opacity: 1;
+					transform: none;
+					transition: none;
+				}
+				.project-card {
+					transition: none;
+				}
+			}
 		</style>
 	</head>
 	<body class="min-h-screen bg-white text-gray-800">
@@ -92,7 +209,7 @@ import '../styles/global.css';
 					class="relative z-10 flex justify-end gap-8 px-6 py-7 text-sm font-light tracking-wide md:gap-14 md:px-14 md:text-base"
 				>
 					<a href="#" class="text-gray-700 hover:text-[#e35336]">Home</a>
-					<a href="#" class="text-gray-700 hover:text-[#e35336]">Projects</a>
+					<a href="#projects" class="text-gray-700 hover:text-[#e35336]">Projects</a>
 					<a href="#" class="text-gray-700 hover:text-[#e35336]">Research</a>
 					<a href="#" class="text-gray-700 hover:text-[#e35336]">About me</a>
 					<a href="mailto:sayali03lamne@gmail.com" class="text-gray-700 hover:text-[#e35336]">Contacts</a>
@@ -174,7 +291,7 @@ import '../styles/global.css';
 							Portfolio
 						</a>
 						<a
-							href="#"
+							href="#projects"
 							class="inline-flex items-center bg-[#e35336] px-7 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#c8442b]"
 							style="height: 40px;"
 						>
@@ -201,6 +318,95 @@ import '../styles/global.css';
 					</div>
 				</div>
 			</section>
+
+			<!-- Projects showcase: revealed as the hero scrolls away above it -->
+			<section id="projects" class="projects-section">
+				<div class="projects-inner">
+					<h2 class="projects-title reveal">Projects</h2>
+					<p class="projects-subtitle reveal">
+						Selected work across sustainability, energy systems, climate technology, and
+						infrastructure.
+					</p>
+
+					<div class="projects-grid">
+						<a href="#" class="project-card reveal">
+							<div class="project-card__media"></div>
+							<div class="project-card__body">
+								<h3 class="project-card__title">Sustainability Strategy</h3>
+								<p class="project-card__desc">
+									Roadmaps and programs that turn ambitious decarbonization goals into measurable,
+									organization-wide outcomes.
+								</p>
+							</div>
+						</a>
+						<a href="#" class="project-card reveal">
+							<div class="project-card__media"></div>
+							<div class="project-card__body">
+								<h3 class="project-card__title">Energy &amp; Infrastructure</h3>
+								<p class="project-card__desc">
+									Grid-interactive buildings, electrification, and resilient systems engineered for
+									performance at scale.
+								</p>
+							</div>
+						</a>
+						<a href="#" class="project-card reveal">
+							<div class="project-card__media"></div>
+							<div class="project-card__body">
+								<h3 class="project-card__title">Data Centers</h3>
+								<p class="project-card__desc">
+									Efficiency, siting, and operational strategy for high-density compute and critical
+									infrastructure.
+								</p>
+							</div>
+						</a>
+						<a href="#" class="project-card reveal">
+							<div class="project-card__media"></div>
+							<div class="project-card__body">
+								<h3 class="project-card__title">Research &amp; Publications</h3>
+								<p class="project-card__desc">
+									Analysis and writing on energy markets, climate technology, and the systems shaping
+									the transition.
+								</p>
+							</div>
+						</a>
+						<a href="#" class="project-card reveal">
+							<div class="project-card__media"></div>
+							<div class="project-card__body">
+								<h3 class="project-card__title">Design &amp; Visualization</h3>
+								<p class="project-card__desc">
+									Architecture-rooted visual storytelling that makes complex systems clear and
+									compelling.
+								</p>
+							</div>
+						</a>
+					</div>
+				</div>
+			</section>
 		</main>
+
+		<script is:inline>
+			(function () {
+				const items = document.querySelectorAll('.reveal');
+				if (!('IntersectionObserver' in window)) {
+					items.forEach((el) => el.classList.add('is-visible'));
+					return;
+				}
+				const io = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((entry) => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add('is-visible');
+								io.unobserve(entry.target);
+							}
+						});
+					},
+					{ threshold: 0.15, rootMargin: '0px 0px -10% 0px' }
+				);
+				items.forEach((el, i) => {
+					el.style.transitionDelay = Math.min(i * 80, 320) + 'ms';
+					io.observe(el);
+				});
+			})();
+		</script>
 	</body>
 </html>
