@@ -131,26 +131,20 @@ import '../styles/global.css';
 				width: 100%;
 				padding: 110px 5% 120px;
 			}
-			/* Weighted toward the right: extra left margin, trimmed right space.
-			   Heading sits in a left column beside the card grid. */
+			/* Weighted toward the right: extra left margin, trimmed right space */
 			.projects-inner {
 				max-width: 1180px;
 				margin-left: auto;
 				margin-right: 0;
 				padding-left: 6%;
-				display: flex;
-				align-items: flex-start;
-				gap: 56px;
 			}
 			.projects-head {
-				flex: 0 0 280px;
-				max-width: 280px;
-				padding-top: 6px;
+				max-width: 1180px;
 			}
 			.projects-title {
 				font-family: 'Raleway', sans-serif;
 				font-weight: 600;
-				font-size: 50px;
+				font-size: 60px;
 				letter-spacing: -0.5px;
 				color: #111111;
 				text-align: left;
@@ -159,17 +153,18 @@ import '../styles/global.css';
 			.projects-subtitle {
 				font-family: 'Raleway', sans-serif;
 				font-weight: 300;
-				font-size: 17px;
+				font-size: 19px;
 				line-height: 1.6;
-				color: #6b6b6b;
+				color: #808080;
 				text-align: left;
+				max-width: 640px;
 				margin: 20px 0 0;
 			}
 			.projects-grid {
-				flex: 1 1 auto;
 				display: grid;
 				grid-template-columns: repeat(3, 1fr);
-				gap: 40px 32px;
+				gap: 64px 48px;
+				margin-top: 72px;
 			}
 			.cat-card {
 				display: flex;
@@ -179,14 +174,13 @@ import '../styles/global.css';
 				text-align: left;
 				cursor: pointer;
 			}
-			/* Number below the image, bottom-left, outside it; light sans-serif */
 			.cat-card__index {
 				font-family: 'Raleway', sans-serif;
-				font-weight: 300;
-				font-size: 20px;
+				font-weight: 600;
+				font-size: 34px;
 				line-height: 1;
 				color: #db634c;
-				margin: 14px 0 0;
+				margin-bottom: 16px;
 			}
 			/* Image area ≈ 75% of the card; light-gray placeholder, clips the zoom */
 			.cat-card__media {
@@ -209,8 +203,8 @@ import '../styles/global.css';
 			}
 			/* Text area ≈ 25%; fixed height so every card matches regardless of copy */
 			.cat-card__text {
-				min-height: 96px;
-				padding-top: 8px;
+				min-height: 104px;
+				padding-top: 18px;
 			}
 			.cat-card__title {
 				font-family: 'Raleway', sans-serif;
@@ -225,7 +219,7 @@ import '../styles/global.css';
 				font-weight: 300;
 				font-size: 14px;
 				line-height: 1.6;
-				color: #6b6b6b;
+				color: #808080;
 				margin: 8px 0 0;
 			}
 			/* Selected: zoom the image gently, clipped by the media's overflow */
@@ -246,20 +240,10 @@ import '../styles/global.css';
 				transform: none;
 			}
 
-			/* 3-up → 2-up → 1-up as the viewport narrows; heading stacks above the grid */
+			/* 3-up → 2-up → 1-up as the viewport narrows */
 			@media (max-width: 1100px) {
 				.projects-inner {
 					padding-left: 0;
-				}
-			}
-			@media (max-width: 980px) {
-				.projects-inner {
-					flex-direction: column;
-					gap: 40px;
-				}
-				.projects-head {
-					flex: none;
-					max-width: 640px;
 				}
 			}
 			@media (max-width: 880px) {
@@ -278,6 +262,9 @@ import '../styles/global.css';
 				}
 				.projects-title {
 					font-size: 42px;
+				}
+				.projects-grid {
+					margin-top: 48px;
 				}
 			}
 			@media (max-width: 560px) {
@@ -440,20 +427,20 @@ import '../styles/global.css';
 			</section>
 
 			<!-- Projects showcase: revealed as the hero scrolls away above it -->
-			<section id="projects" class="projects-section reveal">
+			<section id="projects" class="projects-section">
 				<div class="projects-inner">
 					<div class="projects-head">
-						<h2 class="projects-title">Projects</h2>
-						<p class="projects-subtitle">
+						<h2 class="projects-title reveal">Projects</h2>
+						<p class="projects-subtitle reveal">
 							A selection of work spanning sustainability strategy, climate technology, energy
 							systems, infrastructure, research, and design innovation.
 						</p>
 					</div>
 
 					<div class="projects-grid">
-						<div class="cat-card" role="button" tabindex="0" aria-pressed="false">
-							<div class="cat-card__media"><span class="cat-card__fill"></span></div>
+						<div class="cat-card reveal" role="button" tabindex="0" aria-pressed="false">
 							<span class="cat-card__index">01</span>
+							<div class="cat-card__media"><span class="cat-card__fill"></span></div>
 							<div class="cat-card__text">
 								<h3 class="cat-card__title">Energy, Infrastructure &amp; Sustainable Systems</h3>
 								<p class="cat-card__desc">
@@ -462,9 +449,9 @@ import '../styles/global.css';
 								</p>
 							</div>
 						</div>
-						<div class="cat-card" role="button" tabindex="0" aria-pressed="false">
-							<div class="cat-card__media"><span class="cat-card__fill"></span></div>
+						<div class="cat-card reveal" role="button" tabindex="0" aria-pressed="false">
 							<span class="cat-card__index">02</span>
+							<div class="cat-card__media"><span class="cat-card__fill"></span></div>
 							<div class="cat-card__text">
 								<h3 class="cat-card__title">Data Center Energy &amp; Decarbonization</h3>
 								<p class="cat-card__desc">
@@ -473,9 +460,9 @@ import '../styles/global.css';
 								</p>
 							</div>
 						</div>
-						<div class="cat-card" role="button" tabindex="0" aria-pressed="false">
-							<div class="cat-card__media"><span class="cat-card__fill"></span></div>
+						<div class="cat-card reveal" role="button" tabindex="0" aria-pressed="false">
 							<span class="cat-card__index">03</span>
+							<div class="cat-card__media"><span class="cat-card__fill"></span></div>
 							<div class="cat-card__text">
 								<h3 class="cat-card__title">Resilient Energy Systems &amp; Grid Innovation</h3>
 								<p class="cat-card__desc">
@@ -484,9 +471,9 @@ import '../styles/global.css';
 								</p>
 							</div>
 						</div>
-						<div class="cat-card" role="button" tabindex="0" aria-pressed="false">
-							<div class="cat-card__media"><span class="cat-card__fill"></span></div>
+						<div class="cat-card reveal" role="button" tabindex="0" aria-pressed="false">
 							<span class="cat-card__index">04</span>
+							<div class="cat-card__media"><span class="cat-card__fill"></span></div>
 							<div class="cat-card__text">
 								<h3 class="cat-card__title">Building Performance &amp; Environmental Simulation</h3>
 								<p class="cat-card__desc">
@@ -495,9 +482,9 @@ import '../styles/global.css';
 								</p>
 							</div>
 						</div>
-						<div class="cat-card" role="button" tabindex="0" aria-pressed="false">
-							<div class="cat-card__media"><span class="cat-card__fill"></span></div>
+						<div class="cat-card reveal" role="button" tabindex="0" aria-pressed="false">
 							<span class="cat-card__index">05</span>
+							<div class="cat-card__media"><span class="cat-card__fill"></span></div>
 							<div class="cat-card__text">
 								<h3 class="cat-card__title">Computational &amp; Regenerative Design</h3>
 								<p class="cat-card__desc">
@@ -506,9 +493,9 @@ import '../styles/global.css';
 								</p>
 							</div>
 						</div>
-						<div class="cat-card" role="button" tabindex="0" aria-pressed="false">
-							<div class="cat-card__media"><span class="cat-card__fill"></span></div>
+						<div class="cat-card reveal" role="button" tabindex="0" aria-pressed="false">
 							<span class="cat-card__index">06</span>
+							<div class="cat-card__media"><span class="cat-card__fill"></span></div>
 							<div class="cat-card__text">
 								<h3 class="cat-card__title">Research &amp; Thought Leadership</h3>
 								<p class="cat-card__desc">
