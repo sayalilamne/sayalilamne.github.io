@@ -125,21 +125,27 @@ import '../styles/global.css';
 			}
 
 			/* ---- Projects showcase section ---- */
+			/* ---- Projects showcase section ---- */
 			.projects-section {
 				min-height: 100vh;
 				background-color: #ffffff;
 				width: 100%;
-				padding: 110px 5% 120px;
+				padding: 110px 4% 120px;
 			}
-			/* Weighted toward the right: extra left margin, trimmed right space */
+			/* Two-column layout: head on the left, grid on the right — centered */
 			.projects-inner {
-				max-width: 1180px;
+				display: grid;
+				grid-template-columns: 3fr 7fr;
+				gap: 0 48px;
+				align-items: start;
+				max-width: 100%;
 				margin-left: auto;
-				margin-right: 0;
-				padding-left: 6%;
+				margin-right: auto;
 			}
 			.projects-head {
-				max-width: 1180px;
+				position: sticky;
+				top: 80px;
+				padding-top: 8px;
 			}
 			.projects-title {
 				font-family: 'Raleway', sans-serif;
@@ -163,8 +169,8 @@ import '../styles/global.css';
 			.projects-grid {
 				display: grid;
 				grid-template-columns: repeat(3, 1fr);
-				gap: 64px 48px;
-				margin-top: 72px;
+				gap: 48px 28px;
+				margin-top: 0;
 			}
 			.cat-card {
 				display: flex;
@@ -174,15 +180,23 @@ import '../styles/global.css';
 				text-align: left;
 				cursor: pointer;
 			}
+			/* Wrapper: leaves 28px on the left for the absolutely-positioned number */
+			.cat-card__top {
+				position: relative;
+				padding-left: 28px;
+			}
+			/* Number: anchored to the bottom-left corner of the image, outside it */
 			.cat-card__index {
-				font-family: 'Raleway', sans-serif;
-				font-weight: 600;
-				font-size: 34px;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				font-family: system-ui, sans-serif;
+				font-weight: 500;
+				font-size: 13px;
 				line-height: 1;
 				color: #db634c;
-				margin-bottom: 16px;
 			}
-			/* Image area ≈ 75% of the card; light-gray placeholder, clips the zoom */
+			/* Image area fills the right portion of the wrapper */
 			.cat-card__media {
 				position: relative;
 				width: 100%;
@@ -201,10 +215,9 @@ import '../styles/global.css';
 				transform: scale(1);
 				transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 			}
-			/* Text area ≈ 25%; fixed height so every card matches regardless of copy */
+			/* Text area: full width, left edge aligns with the number */
 			.cat-card__text {
-				min-height: 104px;
-				padding-top: 18px;
+				padding-top: 14px;
 			}
 			.cat-card__title {
 				font-family: 'Raleway', sans-serif;
@@ -217,14 +230,33 @@ import '../styles/global.css';
 			.cat-card__desc {
 				font-family: 'Raleway', sans-serif;
 				font-weight: 300;
-				font-size: 14px;
+				font-size: 16px;
 				line-height: 1.6;
 				color: #808080;
 				margin: 8px 0 0;
 			}
-			/* Selected: zoom the image gently, clipped by the media's overflow */
+			/* Hover / active: zoom image, highlight text */
+			.cat-card {
+				text-decoration: none;
+				transition: none;
+			}
+			.cat-card__title,
+			.cat-card__desc {
+				transition: color 0.3s ease, font-size 0.3s ease;
+			}
+			.cat-card:hover .cat-card__fill,
 			.cat-card.is-active .cat-card__fill {
-				transform: scale(1.08);
+				transform: scale(1.1);
+			}
+			.cat-card:hover .cat-card__title,
+			.cat-card.is-active .cat-card__title {
+				color: #db634c;
+				font-size: 20px;
+			}
+			.cat-card:hover .cat-card__desc,
+			.cat-card.is-active .cat-card__desc {
+				color: #444444;
+				font-size: 17px;
 			}
 
 			/* Scroll-reveal: heading + cards rise together, Apple-style ease-out */
@@ -243,7 +275,17 @@ import '../styles/global.css';
 			/* 3-up → 2-up → 1-up as the viewport narrows */
 			@media (max-width: 1100px) {
 				.projects-inner {
-					padding-left: 0;
+					grid-template-columns: 220px 1fr;
+					gap: 0 40px;
+				}
+			}
+			@media (max-width: 860px) {
+				.projects-inner {
+					grid-template-columns: 1fr;
+				}
+				.projects-head {
+					position: static;
+					margin-bottom: 40px;
 				}
 			}
 			@media (max-width: 880px) {
@@ -256,15 +298,11 @@ import '../styles/global.css';
 				.projects-section {
 					padding: 80px 24px 80px;
 				}
-				.projects-inner {
-					margin-right: auto;
-					padding-left: 0;
-				}
 				.projects-title {
 					font-size: 42px;
 				}
 				.projects-grid {
-					margin-top: 48px;
+					margin-top: 0;
 				}
 			}
 			@media (max-width: 560px) {
@@ -438,9 +476,11 @@ import '../styles/global.css';
 					</div>
 
 					<div class="projects-grid">
-						<div class="cat-card reveal" role="button" tabindex="0" aria-pressed="false">
-							<span class="cat-card__index">01</span>
-							<div class="cat-card__media"><span class="cat-card__fill"></span></div>
+						<a class="cat-card reveal" href="/projects/energy-infrastructure">
+							<div class="cat-card__top">
+								<span class="cat-card__index">01</span>
+								<div class="cat-card__media"><span class="cat-card__fill"></span></div>
+							</div>
 							<div class="cat-card__text">
 								<h3 class="cat-card__title">Energy, Infrastructure &amp; Sustainable Systems</h3>
 								<p class="cat-card__desc">
@@ -448,10 +488,12 @@ import '../styles/global.css';
 									action planning, codes and policy, GHG inventories, and sustainability strategy.
 								</p>
 							</div>
-						</div>
-						<div class="cat-card reveal" role="button" tabindex="0" aria-pressed="false">
-							<span class="cat-card__index">02</span>
-							<div class="cat-card__media"><span class="cat-card__fill"></span></div>
+						</a>
+						<a class="cat-card reveal" href="/projects/data-center-energy">
+							<div class="cat-card__top">
+								<span class="cat-card__index">02</span>
+								<div class="cat-card__media"><span class="cat-card__fill"></span></div>
+							</div>
 							<div class="cat-card__text">
 								<h3 class="cat-card__title">Data Center Energy &amp; Decarbonization</h3>
 								<p class="cat-card__desc">
@@ -459,10 +501,12 @@ import '../styles/global.css';
 									PPA evaluation, and data center decarbonization.
 								</p>
 							</div>
-						</div>
-						<div class="cat-card reveal" role="button" tabindex="0" aria-pressed="false">
-							<span class="cat-card__index">03</span>
-							<div class="cat-card__media"><span class="cat-card__fill"></span></div>
+						</a>
+						<a class="cat-card reveal" href="/projects/resilient-energy-systems">
+							<div class="cat-card__top">
+								<span class="cat-card__index">03</span>
+								<div class="cat-card__media"><span class="cat-card__fill"></span></div>
+							</div>
 							<div class="cat-card__text">
 								<h3 class="cat-card__title">Resilient Energy Systems &amp; Grid Innovation</h3>
 								<p class="cat-card__desc">
@@ -470,10 +514,12 @@ import '../styles/global.css';
 									integration.
 								</p>
 							</div>
-						</div>
-						<div class="cat-card reveal" role="button" tabindex="0" aria-pressed="false">
-							<span class="cat-card__index">04</span>
-							<div class="cat-card__media"><span class="cat-card__fill"></span></div>
+						</a>
+						<a class="cat-card reveal" href="/projects/building-performance">
+							<div class="cat-card__top">
+								<span class="cat-card__index">04</span>
+								<div class="cat-card__media"><span class="cat-card__fill"></span></div>
+							</div>
 							<div class="cat-card__text">
 								<h3 class="cat-card__title">Building Performance &amp; Environmental Simulation</h3>
 								<p class="cat-card__desc">
@@ -481,10 +527,12 @@ import '../styles/global.css';
 									performance optimization.
 								</p>
 							</div>
-						</div>
-						<div class="cat-card reveal" role="button" tabindex="0" aria-pressed="false">
-							<span class="cat-card__index">05</span>
-							<div class="cat-card__media"><span class="cat-card__fill"></span></div>
+						</a>
+						<a class="cat-card reveal" href="/projects/computational-design">
+							<div class="cat-card__top">
+								<span class="cat-card__index">05</span>
+								<div class="cat-card__media"><span class="cat-card__fill"></span></div>
+							</div>
 							<div class="cat-card__text">
 								<h3 class="cat-card__title">Computational &amp; Regenerative Design</h3>
 								<p class="cat-card__desc">
@@ -492,10 +540,12 @@ import '../styles/global.css';
 									regenerative design, and sustainability-focused design innovation.
 								</p>
 							</div>
-						</div>
-						<div class="cat-card reveal" role="button" tabindex="0" aria-pressed="false">
-							<span class="cat-card__index">06</span>
-							<div class="cat-card__media"><span class="cat-card__fill"></span></div>
+						</a>
+						<a class="cat-card reveal" href="/projects/research-leadership">
+							<div class="cat-card__top">
+								<span class="cat-card__index">06</span>
+								<div class="cat-card__media"><span class="cat-card__fill"></span></div>
+							</div>
 							<div class="cat-card__text">
 								<h3 class="cat-card__title">Research &amp; Thought Leadership</h3>
 								<p class="cat-card__desc">
@@ -503,7 +553,7 @@ import '../styles/global.css';
 									conference presentations, policy research, and industry insights.
 								</p>
 							</div>
-						</div>
+						</a>
 					</div>
 				</div>
 			</section>
