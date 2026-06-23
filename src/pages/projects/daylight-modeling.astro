@@ -1,0 +1,567 @@
+---
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shaping Daylight Through Simulation and Virtual Reality — Sayali Lamne</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: #ffffff;
+      color: #111111;
+      line-height: 1.6;
+    }
+
+    /* ── Nav ── */
+    .nav { padding: 32px 6%; }
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #db634c;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .back:hover { text-decoration: underline; }
+
+    /* ── Hero image ── */
+    .hero-image {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      overflow: visible;
+    }
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .hero-image__num {
+      position: absolute;
+      bottom: -16px;
+      left: 5%;
+      font-size: clamp(80px, 14vw, 160px);
+      font-weight: 700;
+      color: rgba(0,0,0,0.07);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* ── Content ── */
+    .content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 1.7% 100px;
+    }
+
+    .project-title {
+      font-size: clamp(28px, 4.5vw, 48px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.3px;
+      margin-bottom: 14px;
+    }
+    .project-tag {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #db634c;
+      margin-bottom: 28px;
+      letter-spacing: 0.01em;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid #e8e8e8;
+      margin: 28px 0;
+    }
+    .meta {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.9;
+      color: #111;
+      margin-bottom: 36px;
+    }
+    .body-text p {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: #333;
+      text-align: justify;
+      margin-bottom: 24px;
+    }
+    .body-text p:last-child { margin-bottom: 0; }
+
+    /* ── Section heading ── */
+    .section-heading {
+      font-size: 20px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 8px;
+      margin-top: 64px;
+    }
+    .section-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #db634c;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    /* ── Full-width single image ── */
+    .full-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .img-caption {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 300;
+      color: #888;
+      line-height: 1.5;
+      margin-bottom: 32px;
+    }
+
+    /* ── Image grid 2-col ── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .grid-2 img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ── Image grid 3-col ── */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .grid-3 img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ── Image grid 4-col ── */
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .grid-4 img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ── Dashed figure box ── */
+    .figure-box {
+      border: 1.5px dashed #d0d0d0;
+      padding: 20px;
+      margin-bottom: 12px;
+    }
+    .figure-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .figure-box .grid-2,
+    .figure-box .grid-3,
+    .figure-box .grid-4 {
+      margin-bottom: 0;
+    }
+
+    .img-item { display: flex; flex-direction: column; gap: 8px; }
+    .img-item img { width: 100%; height: auto; display: block; }
+    .img-item-caption {
+      font-size: 12px;
+      font-weight: 300;
+      color: #555;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* ── Part 2 side-by-side simulation blocks ── */
+    .sim-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px 48px;
+    }
+    .sim-space-block { display: flex; flex-direction: column; }
+    @media (max-width: 860px) {
+      .sim-two-col { grid-template-columns: 1fr; }
+    }
+
+    /* ── Part 1 two-space layout ── */
+    .spaces-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px 48px;
+    }
+    .space-col { display: flex; flex-direction: column; }
+    .space-label {
+      font-size: 16px;
+      font-weight: 600;
+      color: #111;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .space-caption {
+      font-size: 13px;
+      font-weight: 300;
+      color: #555;
+      text-align: center;
+      line-height: 1.6;
+      margin-top: 16px;
+    }
+
+    /* ── Part 3 glare layout ── */
+    .glare-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px 48px;
+      margin-top: 8px;
+    }
+    .glare-space-col { display: flex; flex-direction: column; gap: 0; }
+
+    .glare-metric-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .glare-badge {
+      position: relative;
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+    }
+    .glare-ring { width: 52px; height: 52px; transform: rotate(-90deg); }
+    .glare-badge-pct {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      color: #111;
+    }
+    .glare-metric-labels {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .glare-metric-label {
+      font-size: 18px;
+      font-weight: 700;
+      color: #111;
+    }
+    .glare-metric-sep { color: #ccc; font-size: 18px; }
+
+    .glare-pair-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .glare-iso img, .glare-hdr img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .glare-optimized-img {
+      margin-bottom: 16px;
+    }
+    .glare-optimized-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .glare-result-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .glare-optimized-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #111;
+    }
+
+    @media (max-width: 860px) {
+      .glare-two-col { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 700px) {
+      .grid-2, .glare-row { grid-template-columns: 1fr; }
+      .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a class="back" href="/projects/building-performance">← Back to Building Performance</a>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero-image">
+    <img src="/2. Shaping Daylight through Simulation/Part-2 (Spatial Dayalight Analysis)/2.jpg"
+         alt="Spatial daylight analysis overview" />
+    <span class="hero-image__num">01</span>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <h1 class="project-title">Shaping Daylight Through Simulation and Virtual Reality</h1>
+    <span class="project-tag">Daylight Modeling</span>
+
+    <hr class="divider" />
+
+    <div class="meta">
+      <div>Instructor: Azadeh Sawyer</div>
+      <div>Master in Sustainable Design &nbsp;|&nbsp; Carnegie Mellon University, PA &nbsp;|&nbsp; 2023</div>
+      <div>Tools: Rhino, Grasshopper, Climate Studio, Enscape &amp; Virtual Reality (VR) technology</div>
+      <div>Type of Work: Individual</div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="body-text">
+      <p>
+        This course aims to delve into the quantities and qualities of light, and how they can be
+        effectively utilized in architectural design through the use of digital design and simulation tools,
+        augmented with virtual reality (VR) technology.
+      </p>
+      <p>
+        The control and exploitation of daylight is an effective way to reduce the need for electric
+        lighting and improve the overall energy efficiency of a building. The objective of bringing
+        natural light into spaces is not only to support tasks but also to enhance human comfort,
+        wellbeing and building performance.
+      </p>
+      <p>
+        The course covers design perception, color, vision, lighting techniques, and standards. It
+        provides an in-depth view of how simulation and VR technology can support the design of
+        comfortable and high-performance buildings, enabling students to set various design goals
+        and use simulation and VR to evaluate the impacts of design strategies on targeted performance.
+      </p>
+    </div>
+
+    <!-- ── Part 1: Designing Spaces ── -->
+    <p class="section-label" style="margin-top:64px;">Part 1 (Designing Spaces)</p>
+    <p class="body-text" style="margin-bottom:32px;">
+      The first part of this assignment is to design two spaces that convey the contrasting feelings/moods,
+      which would have similar light levels. Here I selected two adjectives 'quiet' &amp; 'dynamic'. A skillful
+      arrangement of natural light can create an ambiance of quiet contemplation, whereas its constantly evolving
+      or dynamic nature can bring the liveliness of the space. Formal spaces like libraries give the utmost
+      importance to daylight as it can calm you down, increase your productivity and help you to retrospect.
+      On the flip side, informal spaces like cafeterias continuously tend to change their spatial organization.
+    </p>
+
+    <div class="spaces-grid">
+      <!-- Quiet Library -->
+      <div class="space-col">
+        <p class="space-label">'Quiet' Library</p>
+        <div class="img-item">
+          <img src="/2. Shaping Daylight through Simulation/Part-1 (Desiging Spaces)/per.png"
+               alt="Quiet Library — exterior view" />
+        </div>
+        <div class="img-item" style="margin-top:24px;">
+          <img src="/2. Shaping Daylight through Simulation/Part-1 (Desiging Spaces)/iso-3.png"
+               alt="Quiet Library — interior cutaway" />
+        </div>
+        <p class="space-caption">The two barrel-vaulted roofs comprise the central skylight and a central reflector brings diffused light &amp; the glazing on the East &amp; West facades with operable windows helps natural light &amp; ventilation</p>
+      </div>
+
+      <!-- Dynamic Cafeteria -->
+      <div class="space-col">
+        <p class="space-label">'Dynamic' Cafeteria</p>
+        <div class="img-item">
+          <img src="/2. Shaping Daylight through Simulation/Part-1 (Desiging Spaces)/2_1.png"
+               alt="Dynamic Cafeteria — exterior view" />
+        </div>
+        <div class="img-item" style="margin-top:24px;">
+          <img src="/2. Shaping Daylight through Simulation/Part-1 (Desiging Spaces)/3_2.png"
+               alt="Dynamic Cafeteria — interior view" />
+        </div>
+        <p class="space-caption">The dynamic nature of the cafes is conceptually transformed into the facade of the building creating constantly evolving patterns with the cycle of day &amp; night.</p>
+      </div>
+    </div>
+
+    <!-- ── Part 2: Spatial Daylight Analysis ── -->
+    <p class="section-label" style="margin-top:64px;">Part 2 (Spatial Daylight Analysis)</p>
+    <p class="body-text" style="margin-bottom:32px;">
+      In the second part we attempted to reduce the ASE (Annual Sunlight Exposure) to 10% and bring
+      sDA (spatial Daylight Autonomy) between 55–74% or above than the baseline building by performing
+      annual daylight analysis in ClimateStudio and for various design iterations. Additionally keeping
+      the values similar for both the spaces — the 'Quiet' Library and the 'Dynamic' Cafeteria — while
+      optimizing their respective shading and facade strategies.
+    </p>
+
+    <!-- Infographic: full simulation results matrix for both spaces -->
+    <div class="figure-box" style="border:none; padding:0;">
+      <img src="/2. Shaping Daylight through Simulation/Part-2 (Spatial Dayalight Analysis)/Inforgraph.png"
+           alt="Simulation results for different design iterations — sDA and ASE comparison for Quiet Library and Dynamic Cafeteria" />
+    </div>
+    <p class="img-caption">Simulation Results for Different Design Iterations — sDA<sub>300/50%</sub> &amp; ASE<sub>1000,250</sub> comparison across Baseline, Light Shelf, Vertical Louvers, and Optimized Case for both spaces</p>
+
+
+    <!-- ── Part 3: Glare Analysis ── -->
+    <p class="section-label" style="margin-top:64px;">Part 3 (Glare Analysis)</p>
+    <p class="body-text" style="margin-bottom:40px;">
+      In this part we aiming to improve the glare performance of the building without disturbing optimum
+      sDA &amp; ASE though spatial &amp; HDR simulations using ClimateStudio. Glare is context-specific,
+      so, we have taken into account factors such as the space program, furniture layout, and views to
+      address glare in areas that may cause discomfort. In the areas where glare is inevitable we have
+      rearranged the furniture and seating arrangement to avoid visual discomfort.
+    </p>
+
+    <div class="glare-two-col">
+
+      <!-- ── Left: Quiet Library ── -->
+      <div class="glare-space-col">
+        <div class="glare-metric-row">
+          <div class="glare-badge glare-badge--red">
+            <svg viewBox="0 0 44 44" class="glare-ring"><circle cx="22" cy="22" r="18" fill="none" stroke="#e8e8e8" stroke-width="4"/><circle cx="22" cy="22" r="18" fill="none" stroke="#db634c" stroke-width="4" stroke-dasharray="28.3 84.8" stroke-dashoffset="0" stroke-linecap="round"/></svg>
+            <span class="glare-badge-pct">26.6%</span>
+          </div>
+          <div class="glare-metric-labels">
+            <span class="glare-metric-label">sDG</span>
+            <span class="glare-metric-sep">|</span>
+            <span class="glare-metric-label">HDR</span>
+          </div>
+        </div>
+
+        <!-- Row 1 -->
+        <div class="glare-pair-row">
+          <div class="glare-iso">
+            <img src="/2. Shaping Daylight through Simulation/Part-3 (Glare Analysis)/Baseline-iso.jpg"
+                 alt="Library baseline glare — isometric" />
+          </div>
+          <div class="glare-hdr">
+            <img src="/2. Shaping Daylight through Simulation/Part-3 (Glare Analysis)/Baseline Perez 6.27.08.30 Direct_488 Diffuse_218.png"
+                 alt="Library baseline — HDR fisheye" />
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="glare-pair-row">
+          <div class="glare-iso">
+            <img src="/2. Shaping Daylight through Simulation/Part-3 (Glare Analysis)/Iso.jpg"
+                 alt="Library iteration glare — isometric" />
+          </div>
+          <div class="glare-hdr">
+            <img src="/2. Shaping Daylight through Simulation/Part-3 (Glare Analysis)/Final Perez 7.19.11.30 Direct_329 Diffuse_412.png"
+                 alt="Library iteration — HDR fisheye" />
+          </div>
+        </div>
+
+        <!-- Row 3: optimized -->
+        <div class="glare-optimized-img">
+          <img src="/2. Shaping Daylight through Simulation/Part-3 (Glare Analysis)/Furniture.jpg"
+               alt="Library optimized — isometric" />
+        </div>
+
+        <div class="glare-result-row">
+          <div class="glare-badge glare-badge--green">
+            <svg viewBox="0 0 44 44" class="glare-ring"><circle cx="22" cy="22" r="18" fill="none" stroke="#e8e8e8" stroke-width="4"/><circle cx="22" cy="22" r="18" fill="none" stroke="#8cb84c" stroke-width="4" stroke-dasharray="84.8 0" stroke-dashoffset="0" stroke-linecap="round"/></svg>
+            <span class="glare-badge-pct">14.8%</span>
+          </div>
+          <span class="glare-optimized-label">Optimized Case</span>
+        </div>
+        <p class="space-caption" style="text-align:left; margin-top:12px;">
+          Horizontal louvers along with vertical supports are added on the north facade. The tilted
+          horizontal louvers are protecting from vertical sunlight during summer, while letting it
+          enter during winters. Further, changed proposed mat materials &amp; reconfigured the
+          furniture layout.
+        </p>
+      </div>
+
+      <!-- ── Right: Dynamic Cafeteria ── -->
+      <div class="glare-space-col">
+        <div class="glare-metric-row">
+          <div class="glare-badge glare-badge--red">
+            <svg viewBox="0 0 44 44" class="glare-ring"><circle cx="22" cy="22" r="18" fill="none" stroke="#e8e8e8" stroke-width="4"/><circle cx="22" cy="22" r="18" fill="none" stroke="#db634c" stroke-width="4" stroke-dasharray="20.8 84.8" stroke-dashoffset="0" stroke-linecap="round"/></svg>
+            <span class="glare-badge-pct">19.6%</span>
+          </div>
+          <div class="glare-metric-labels">
+            <span class="glare-metric-label">sDG</span>
+            <span class="glare-metric-sep">|</span>
+            <span class="glare-metric-label">HDR</span>
+          </div>
+        </div>
+
+        <!-- Row 1 -->
+        <div class="glare-pair-row">
+          <div class="glare-iso">
+            <img src="/2. Shaping Daylight through Simulation/Part-3 (Glare Analysis)/Iso_1.jpg"
+                 alt="Cafeteria baseline glare — isometric" />
+          </div>
+          <div class="glare-hdr">
+            <img src="/2. Shaping Daylight through Simulation/Part-3 (Glare Analysis)/3 Cafeteria Perez 6.27.08.30 Direct_488 Diffuse_218.png"
+                 alt="Cafeteria baseline — HDR fisheye" />
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="glare-pair-row">
+          <div class="glare-iso">
+            <img src="/2. Shaping Daylight through Simulation/Part-3 (Glare Analysis)/furniture_1.jpg"
+                 alt="Cafeteria iteration glare — isometric" />
+          </div>
+          <div class="glare-hdr">
+            <img src="/2. Shaping Daylight through Simulation/Part-3 (Glare Analysis)/4_2.png"
+                 alt="Cafeteria iteration — HDR fisheye" />
+          </div>
+        </div>
+
+        <!-- Row 3: optimized -->
+        <div class="glare-optimized-img">
+          <img src="/2. Shaping Daylight through Simulation/Part-3 (Glare Analysis)/Iso.jpg"
+               alt="Cafeteria optimized — isometric" />
+        </div>
+
+        <div class="glare-result-row">
+          <div class="glare-badge glare-badge--green">
+            <svg viewBox="0 0 44 44" class="glare-ring"><circle cx="22" cy="22" r="18" fill="none" stroke="#e8e8e8" stroke-width="4"/><circle cx="22" cy="22" r="18" fill="none" stroke="#8cb84c" stroke-width="4" stroke-dasharray="84.8 0" stroke-dashoffset="0" stroke-linecap="round"/></svg>
+            <span class="glare-badge-pct">11.5%</span>
+          </div>
+          <span class="glare-optimized-label">Optimized Case</span>
+        </div>
+        <p class="space-caption" style="text-align:left; margin-top:12px;">
+          The overhang on three sides is extended to reduce the vertical sunlight and further
+          changed the material.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
