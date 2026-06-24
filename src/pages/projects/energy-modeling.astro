@@ -1,31 +1,672 @@
 ---
-const title = "Environmental Performance Simulation";
 ---
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title} — Sayali Lamne</title>
+  <title>Environmental Performance Simulation — Sayali Lamne</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Raleway', sans-serif; background: #fff; color: #111; }
-    .back { display: inline-block; margin: 40px 5%; font-size: 14px; color: #db634c; text-decoration: none; letter-spacing: 0.05em; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: #ffffff;
+      color: #111111;
+      line-height: 1.6;
+    }
+
+    /* ── Nav ── */
+    .nav { padding: 16px 6%; }
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #db634c;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
     .back:hover { text-decoration: underline; }
-    .hero { padding: 80px 5% 120px; }
-    .subheading { font-size: 13px; font-weight: 500; color: #db634c; font-family: 'Raleway', sans-serif; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
-    h1 { font-size: clamp(32px, 5vw, 64px); font-weight: 600; line-height: 1.1; letter-spacing: -0.5px; max-width: 800px; }
-    .placeholder { margin-top: 80px; padding: 60px; background: #f5f5f5; text-align: center; color: #aaa; font-size: 16px; font-weight: 300; border-radius: 2px; min-height: 400px; display: flex; align-items: center; justify-content: center; }
+
+    /* ── Hero image ── */
+    .hero-image {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      overflow: visible;
+    }
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .hero-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .hero-clip {
+      width: 72%;
+      max-width: 720px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .hero-clip--top {
+      max-height: 480px;
+    }
+    .hero-clip--top img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-top: -90px;
+    }
+    .hero-clip--bottom {
+      max-height: 360px;
+      margin-top: -80px;
+    }
+    .hero-clip--bottom img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-top: -230px;
+    }
+    .hero-image__num {
+      position: absolute;
+      bottom: -16px;
+      left: 5%;
+      font-size: clamp(80px, 14vw, 160px);
+      font-weight: 700;
+      color: rgba(0,0,0,0.07);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* ── Content ── */
+    .content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 1.7% 100px;
+    }
+
+    .project-title {
+      font-size: clamp(28px, 4.5vw, 48px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.3px;
+      margin-bottom: 14px;
+    }
+    .project-tag {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #db634c;
+      margin-bottom: 28px;
+      letter-spacing: 0.01em;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid #e8e8e8;
+      margin: 28px 0;
+    }
+    .meta {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.9;
+      color: #111;
+      margin-bottom: 36px;
+    }
+    .body-text p {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: #333;
+      text-align: justify;
+      margin-bottom: 24px;
+    }
+    .body-text p:last-child { margin-bottom: 0; }
+
+    /* ── Section heading ── */
+    .section-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #db634c;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    /* ── Full-width single image ── */
+    .full-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .img-caption {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 300;
+      color: #888;
+      line-height: 1.5;
+      margin-bottom: 32px;
+    }
+
+    /* ── Image grid 2-col ── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .grid-2 img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ── Image grid 3-col ── */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .grid-3 img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ── Image grid 4-col ── */
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .grid-4 img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ── Solar Radiation section ── */
+    .solar-heading {
+      font-size: 20px;
+      font-weight: 700;
+      color: #db634c;
+      margin-top: 64px;
+      margin-bottom: 32px;
+    }
+    .solar-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 48px;
+    }
+    .solar-col-heading {
+      font-size: 14px;
+      font-weight: 600;
+      color: #db634c;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #e8e8e8;
+      padding-bottom: 8px;
+    }
+    .solar-sub-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 12px;
+      margin-top: 24px;
+    }
+    .sed-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .sed-row-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    .sed-row-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    .sed-item { display: flex; flex-direction: column; gap: 4px; }
+    .sed-item img { width: 100%; height: auto; display: block; }
+    .sed-caption {
+      font-size: 10px;
+      font-weight: 300;
+      color: #555;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .sed-summary {
+      font-size: 13px;
+      font-weight: 300;
+      color: #444;
+      line-height: 1.7;
+      text-align: justify;
+      margin-top: 16px;
+      font-style: italic;
+    }
+
+    .img-item { display: flex; flex-direction: column; gap: 8px; }
+    .img-item img { width: 100%; height: auto; display: block; }
+    .img-item-caption {
+      font-size: 12px;
+      font-weight: 300;
+      color: #555;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* ── Thermal radiation cards ── */
+    .thermal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px 32px;
+      margin-top: 8px;
+    }
+    .thermal-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .thermal-card-label {
+      font-size: 13px;
+      font-weight: 300;
+      color: #555;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* ── Thermal Radiation two-col ── */
+    .thermal-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 48px;
+      margin-top: 8px;
+    }
+    .thermal-col { display: flex; flex-direction: column; }
+    .thermal-sub-label {
+      font-size: 15px;
+      font-weight: 700;
+      color: #db634c;
+      margin-bottom: 10px;
+    }
+    .thermal-body {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: #333;
+      text-align: justify;
+      margin-bottom: 16px;
+    }
+    .pvmd-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 16px;
+    }
+    .pvmd-table th, .pvmd-table td {
+      border: 1px solid #d0d0d0;
+      padding: 6px 10px;
+      text-align: center;
+    }
+    .pvmd-table th {
+      font-weight: 600;
+      background: #f7f7f7;
+      color: #111;
+    }
+    .pvmd-table td { font-weight: 300; color: #333; }
+
+    @media (max-width: 860px) {
+      .thermal-two-col { grid-template-columns: 1fr; }
+      .study-two-col { grid-template-columns: 1fr; }
+      .thermal-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 700px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    }
   </style>
 </head>
 <body>
-  <a class="back" href="/projects/building-performance">← Back to Building Performance</a>
-  <div class="hero">
-    <p class="subheading">Energy Modeling</p>
-    <h1>{title}</h1>
-    <div class="placeholder">Image coming soon</div>
+
+  <nav class="nav">
+    <a class="back" href="/projects/building-performance">← Back to Building Performance</a>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero-image">
+    <div class="hero-stack">
+      <div class="hero-clip hero-clip--top">
+        <img src="/3. Environmnetal Performance Analysis/Furniture Model.png" alt="Furniture model — open office and conference room" />
+      </div>
+      <div class="hero-clip hero-clip--bottom">
+        <img src="/3. Environmnetal Performance Analysis/Glazing Location.png" alt="Glazing location — isometric view" />
+      </div>
+    </div>
+    <span class="hero-image__num">02</span>
   </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <h1 class="project-title">Environmental Performance Simulation</h1>
+    <span class="project-tag">Energy Modeling</span>
+
+    <hr class="divider" />
+
+    <div class="meta">
+      <div>Instructor: Omer T. Karaguzel</div>
+      <div>Master in Sustainable Design &nbsp;|&nbsp; Carnegie Mellon University, PA &nbsp;|&nbsp; 2023</div>
+      <div>Tools: Rhino, Grasshopper, Climate Studio &amp; Ladybug Plugin</div>
+      <div>Type of Work: Team Work</div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="body-text">
+      <p>
+        The Environmental Performance Simulation (EPS) course provides an in-depth exploration of building
+        energy modeling, thermal analysis, and environmental simulation methods used in sustainable design.
+        Using parametric tools within Rhino and Grasshopper, the course equips students with computational
+        methods to evaluate and optimize building performance across multiple environmental criteria.
+      </p>
+      <p>
+        The project investigates Solar Radiation, Thermal Radiation, and Visible Radiation simulations to
+        understand the effects of surface orientation, glazing location, and building massing on occupant
+        comfort and energy consumption. Parametric studies using Climate Studio and the Ladybug Plugin were
+        conducted across annual, summer, and winter conditions to identify optimal design strategies.
+      </p>
+    </div>
+
+    <!-- ── A. Solar Radiation Studies ── -->
+    <h2 class="solar-heading">A. Solar Radiation Studies</h2>
+
+    <!-- Bar charts side by side -->
+    <div style="margin-top:32px;">
+      <img class="full-img" src="/3. Environmnetal Performance Analysis/Two Charts.png"
+           alt="Comparison of Total SED on different surfaces and orientations" />
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 48px; margin-top:6px;">
+        <p class="img-caption" style="text-align:center; font-style:italic;">Comparison of Total SED on different surfaces</p>
+        <p class="img-caption" style="text-align:center; font-style:italic;">Comparison of Total SED with different building orientations</p>
+      </div>
+    </div>
+
+    <!-- Summary paragraphs -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 48px; margin-top:20px; margin-bottom:40px;">
+      <p class="sed-summary">
+        Above comparison suggests roof followed by South facade received the most solar radiation.
+        Based on SED analysis we can propose the passive design strategies to reduce, eliminate,
+        or utilize the solar gain.
+      </p>
+      <p class="sed-summary">
+        Above comparison suggests N-90 is giving lowest incident solar radiation. This study helps
+        understand the optimum orientation to reduce solar gain, thus heating &amp; cooling loads
+        for the building.
+      </p>
+    </div>
+
+    <!-- ── B. Thermal Radiation Studies ── -->
+    <h2 class="solar-heading" style="margin-top:64px;">B. Thermal Radiation Studies</h2>
+
+    <div class="thermal-two-col">
+
+      <!-- ══ LEFT COLUMN ══ -->
+      <div class="thermal-col">
+
+        <!-- Hourly temperature chart -->
+        <div class="img-item" style="margin-bottom:16px;">
+          <img src="/3. Environmnetal Performance Analysis/B. Thermal Radiation Studies/Graph.png" alt="Open Office Extreme Cold Week Hourly Temperature" />
+        </div>
+
+        <p class="thermal-sub-label">Hourly Temperature Analysis</p>
+        <p class="thermal-body">
+          The graph shows that indoor zone temp. is higher compared to site temp. due to internal
+          loads &amp; lag in heat transfer caused by building envelope in the absence of HVAC system.
+        </p>
+
+        <!-- Grasshopper spatial comfort setup -->
+        <div class="img-item" style="margin: 20px 0;">
+          <img src="/3. Environmnetal Performance Analysis/B. Thermal Radiation Studies/4b-Spatial Thermal Comfort ANalysis.png" alt="Run Spatial Comfort — Grasshopper setup" />
+        </div>
+
+        <!-- Coldest/Hottest day spatial comfort -->
+        <div class="grid-2" style="margin-bottom:8px;">
+          <div class="img-item">
+            <img src="/3. Environmnetal Performance Analysis/B. Thermal Radiation Studies/Spatial comfort-12.png" alt="Coldest day spatial comfort" />
+            <span class="img-item-caption" style="font-style:italic;">1. Coldest day (Jan 08)</span>
+          </div>
+          <div class="img-item">
+            <img src="/3. Environmnetal Performance Analysis/B. Thermal Radiation Studies/spatial comfort -21.png" alt="Hottest day spatial comfort" />
+            <span class="img-item-caption" style="font-style:italic;">2. Hottest day (April 29)</span>
+          </div>
+        </div>
+
+        <!-- PMV/PPD table -->
+        <table class="pvmd-table">
+          <thead>
+            <tr>
+              <th>HVAC Status</th>
+              <th>Date</th>
+              <th>Mean PMV</th>
+              <th>Mean PPD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>OFF</td><td>Jan 8th, 06H</td><td>1.53</td><td>52.4%</td></tr>
+            <tr><td>ON</td><td>Jan 8th, 06H</td><td>1.66</td><td>58.3%</td></tr>
+            <tr><td>OFF</td><td>Apr 29th, 12H</td><td>2.06</td><td>74.5%</td></tr>
+            <tr><td>ON</td><td>Apr 29th, 12H</td><td>2.21</td><td>85.1%</td></tr>
+          </tbody>
+        </table>
+        <p class="img-caption" style="font-style:italic; margin-top:6px;">Summary of PMV &amp; PPD for Open Office</p>
+
+        <p class="thermal-sub-label" style="margin-top:24px;">Spatial Thermal Comfort Analysis</p>
+        <p class="thermal-body">
+          The simulation output show distribution of Mean Radiant Temperature throughout the zone for open
+          office without HVAC. The results from MRT, PMV, &amp; PPD suggest that on the coldest day (refer 1)
+          employees working near the glazing may experience a cooler environment compared to the north side,
+          whereas on the hottest (refer 2) employees seating near windows felt warmer compared to rest of the room.
+        </p>
+      </div>
+
+      <!-- ══ RIGHT COLUMN ══ -->
+      <div class="thermal-col">
+
+        <!-- Heat Loss chart -->
+        <div class="img-item" style="margin-bottom:6px;">
+          <img src="/3. Environmnetal Performance Analysis/B. Thermal Radiation Studies/Hourly heat loss.png" alt="Open Office Heat Loss — January 21" />
+        </div>
+        <p class="img-caption" style="font-style:italic; margin-bottom:24px;">Heat Loss for the Open Office on January 21</p>
+
+        <!-- Heat Gain chart -->
+        <div class="img-item" style="margin-bottom:6px;">
+          <img src="/3. Environmnetal Performance Analysis/B. Thermal Radiation Studies/hourly heat gain.png" alt="Open Office Heat Gain — July 21" />
+        </div>
+        <p class="img-caption" style="font-style:italic; margin-bottom:24px;">Heat Gain for the Open Office on July 21</p>
+
+        <p class="thermal-sub-label">Hourly Temperature Analysis</p>
+        <p class="thermal-body">
+          The results of the heat loss &amp; heat gain simulation have a direct relationship with the
+          occupancy of the building. Zone infiltration total heat gain energy and zone windows total
+          transmitted solar radiation energy is due presence of glazing.
+        </p>
+
+        <!-- Picture1_1 overview -->
+        <div class="img-item" style="margin-top:24px;">
+          <img src="/3. Environmnetal Performance Analysis/B. Thermal Radiation Studies/Picture1_1.png" alt="Thermal radiation study overview" />
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Second thermal block ── -->
+    <div class="thermal-two-col" style="margin-top:56px;">
+
+      <!-- ══ LEFT ══ -->
+      <div class="thermal-col">
+
+        <!-- Monthly energy consumption charts -->
+        <div class="grid-2" style="margin-bottom:8px;">
+          <div class="img-item">
+            <img src="/3. Environmnetal Performance Analysis/B. Thermal Radiation Studies/Open office.png" alt="Open Office Heating & Cooling Energy Consumption" />
+            <span class="img-item-caption" style="font-style:italic;">Open Office</span>
+          </div>
+          <div class="img-item">
+            <img src="/3. Environmnetal Performance Analysis/B. Thermal Radiation Studies/conference room.png" alt="Conference Heating & Cooling Energy Consumption" />
+            <span class="img-item-caption" style="font-style:italic;">Closed Conference Room</span>
+          </div>
+        </div>
+
+        <p class="thermal-sub-label">Heating and Cooling Energy Consumption Analysis</p>
+        <p class="thermal-body">
+          The open office space uses more energy to cool the space than heat the space during all months
+          of the year. The conference room uses less energy to heat and cool the space due to lack of glazing.
+        </p>
+
+        <!-- Load CS Energy Results Grasshopper diagram -->
+        <div class="img-item" style="margin: 20px 0;">
+          <img src="/3. Environmnetal Performance Analysis/B. Thermal Radiation Studies/Picture1_1.png" alt="Load CS Energy Results — Grasshopper setup" />
+        </div>
+
+        <!-- Site EUI / Carbon / Cost table -->
+        <table class="pvmd-table" style="margin-bottom:6px;">
+          <thead>
+            <tr>
+              <th>Site EUI<br/>(kWh/m2/yr)</th>
+              <th>Carbon Emissions<br/>(kgCO2/m2/yr)</th>
+              <th>Energy Cost<br/>($/m2/yr)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>84.94</td><td>44.85</td><td>10.67</td></tr>
+          </tbody>
+        </table>
+
+        <p class="thermal-sub-label" style="margin-top:20px;">Whole-Building Environmental Performance Analysis</p>
+        <p class="thermal-body">
+          The "Load CS Energy Results" component is used to calculate the three metrics Whole Building
+          EUI, Carbon Emissions, and Operational Costs.
+        </p>
+      </div>
+
+      <!-- ══ RIGHT ══ -->
+      <div class="thermal-col">
+
+        <!-- Heat Pump systems comparison table -->
+        <table class="pvmd-table" style="margin-bottom:6px;">
+          <thead>
+            <tr>
+              <th>Properties</th>
+              <th>Base case</th>
+              <th style="color:#db634c;">HVAC -1</th>
+              <th style="color:#db634c;">HVAC -2</th>
+              <th style="color:#db634c;">HVAC -3</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>System</td>
+              <td>Heat Pump</td>
+              <td style="color:#db634c;">Air-Source Heat Pumps</td>
+              <td style="color:#db634c;">Water Source Heat Pump</td>
+              <td style="color:#db634c;">Ground Source Heat Pump</td>
+            </tr>
+            <tr>
+              <td>Heating System COP</td>
+              <td>3.419</td>
+              <td style="color:#db634c;">3.81</td>
+              <td style="color:#db634c;">4</td>
+              <td style="color:#db634c;">5</td>
+            </tr>
+            <tr>
+              <td>Cooling System COP</td>
+              <td>2.967</td>
+              <td style="color:#db634c;">3.22</td>
+              <td style="color:#db634c;">3.66</td>
+              <td style="color:#db634c;">4.21</td>
+            </tr>
+            <tr>
+              <td>Heat Recovery Ventilator (HRV)</td>
+              <td>OFF Type: Sensible</td>
+              <td>OFF Type: Sensible</td>
+              <td>OFF Type: Sensible</td>
+              <td>OFF Type: Sensible</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="img-caption" style="font-style:italic; margin-bottom:20px;">Variations of Heat Pump systems used compared to baseline system</p>
+
+        <!-- HVAC Performances bar chart -->
+        <div class="img-item" style="margin-bottom:6px;">
+          <img src="/3. Environmnetal Performance Analysis/B. Thermal Radiation Studies/Graph.png" alt="Performances of HVAC Systems" />
+        </div>
+        <p class="img-caption" style="font-style:italic; margin-bottom:20px;">Comparison of overall building performance for proposed iterations in HVAC systems with the baseline</p>
+
+        <!-- Performance metrics table -->
+        <table class="pvmd-table" style="margin-bottom:6px;">
+          <thead>
+            <tr>
+              <th>Performance</th>
+              <th>Base case</th>
+              <th>HVAC -1</th>
+              <th>HVAC -2</th>
+              <th style="color:#db634c;">HVAC -3</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Site EUI (kWh/m2/yr)</td>
+              <td>84.94</td><td>83.51</td><td>81.97</td>
+              <td style="color:#db634c;">79.9</td>
+            </tr>
+            <tr>
+              <td>CO2 Emission (kgCO2/m2/yr)</td>
+              <td>44.85</td><td>44.09</td><td>43.28</td>
+              <td style="color:#db634c;">42.19</td>
+            </tr>
+            <tr>
+              <td>Energy Cost ($/m2/yr)</td>
+              <td>10.67</td><td>10.48</td><td>10.29</td>
+              <td style="color:#db634c;">10.03</td>
+            </tr>
+            <tr>
+              <td>Comparison of Results</td>
+              <td>—</td><td>-1.60%</td><td>-3.50%</td>
+              <td style="color:#db634c;">-5.93%</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="img-caption" style="font-style:italic; margin-bottom:20px;">Results suggests GSHP is the most suitable system for the building</p>
+
+        <p class="thermal-body" style="font-weight:600; margin-bottom:4px;">Design Iterations:</p>
+        <p class="thermal-sub-label" style="margin-top:0;">Changes in Heating-Cooling Mechanical System Types</p>
+        <p class="thermal-body">
+          To increase the efficiency of the mechanical system &amp; reduce EUI without compromising with
+          occupant's thermal comfort we opted for three different 'Heat Pump Systems' options by increasing
+          their COPs &amp; analyzed the 'Overall Building Performance'.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
 </body>
 </html>
