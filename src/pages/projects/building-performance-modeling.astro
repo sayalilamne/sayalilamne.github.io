@@ -1,31 +1,452 @@
 ---
-const title = "Building Performance Modeling (BPM)";
 ---
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title} — Sayali Lamne</title>
+  <title>Building Performance Modeling (BPM) — Sayali Lamne</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Raleway', sans-serif; background: #fff; color: #111; }
-    .back { display: inline-block; margin: 40px 5%; font-size: 14px; color: #db634c; text-decoration: none; letter-spacing: 0.05em; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: #ffffff;
+      color: #111111;
+      line-height: 1.6;
+    }
+
+    /* ── Nav ── */
+    .nav { padding: 16px 6%; }
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #db634c;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
     .back:hover { text-decoration: underline; }
-    .hero { padding: 80px 5% 120px; }
-    .subheading { font-size: 13px; font-weight: 500; color: #db634c; font-family: 'Raleway', sans-serif; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
-    h1 { font-size: clamp(32px, 5vw, 64px); font-weight: 600; line-height: 1.1; letter-spacing: -0.5px; max-width: 800px; }
-    .placeholder { margin-top: 80px; padding: 60px; background: #f5f5f5; text-align: center; color: #aaa; font-size: 16px; font-weight: 300; border-radius: 2px; min-height: 400px; display: flex; align-items: center; justify-content: center; }
+
+    /* ── Hero image ── */
+    .hero-image {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      overflow: visible;
+    }
+    .hero-single {
+      width: 55%;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .hero-single img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .hero-image__num {
+      position: absolute;
+      bottom: -16px;
+      left: 5%;
+      font-size: clamp(80px, 14vw, 160px);
+      font-weight: 700;
+      color: rgba(0,0,0,0.07);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* ── Content ── */
+    .content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 1.7% 100px;
+    }
+
+    .project-title {
+      font-size: clamp(28px, 4.5vw, 48px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.3px;
+      margin-bottom: 14px;
+    }
+    .project-tag {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #db634c;
+      margin-bottom: 28px;
+      letter-spacing: 0.01em;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid #e8e8e8;
+      margin: 28px 0;
+    }
+    .meta {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.9;
+      color: #111;
+      margin-bottom: 36px;
+    }
+    .body-text p {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: #333;
+      text-align: justify;
+      margin-bottom: 24px;
+    }
+    .body-text p:last-child { margin-bottom: 0; }
+
+    /* ── Section headings ── */
+    .section-heading {
+      font-size: 20px;
+      font-weight: 700;
+      color: #db634c;
+      margin-top: 64px;
+      margin-bottom: 24px;
+    }
+
+    /* ── Images ── */
+    .full-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .img-caption {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 300;
+      font-style: italic;
+      color: #888;
+      line-height: 1.5;
+      margin-bottom: 32px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .grid-2 img { width: 100%; height: auto; display: block; }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .grid-3 img { width: 100%; height: auto; display: block; }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .grid-4 img { width: 100%; height: auto; display: block; }
+
+    /* ── Two-col content layout ── */
+    .bpm-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 48px;
+      margin-top: 48px;
+    }
+    .bpm-col { display: flex; flex-direction: column; }
+    .bpm-sub-label {
+      font-size: 15px;
+      font-weight: 700;
+      color: #db634c;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    .bpm-body {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: #333;
+      text-align: justify;
+      margin-bottom: 16px;
+    }
+    .bpm-img-caption {
+      font-size: 12px;
+      font-weight: 300;
+      font-style: italic;
+      color: #888;
+      text-align: center;
+      line-height: 1.5;
+      margin-top: 6px;
+      margin-bottom: 20px;
+    }
+    .bpm-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+      margin-top: 8px;
+    }
+    .bpm-table th {
+      background: #f7f7f7;
+      font-weight: 600;
+      color: #111;
+      border: 1px solid #d0d0d0;
+      padding: 6px 8px;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .bpm-table td {
+      border: 1px solid #d0d0d0;
+      padding: 5px 8px;
+      font-weight: 300;
+      color: #333;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .bpm-table td:nth-child(2) { text-align: left; }
+    .bpm-table th:nth-child(2) { text-align: left; }
+    .bpm-eui-table th { font-size: 11px; }
+    .eui-results td { color: #db634c; font-weight: 600; font-size: 13px; }
+    .bpm-occ-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .bpm-occ-grid img { width: 100%; height: auto; display: block; }
+    .bpm-model-header {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 8px;
+    }
+    .bpm-model-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: #db634c;
+    }
+
+    @media (max-width: 860px) {
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .bpm-two-col { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-  <a class="back" href="/projects/building-performance">← Back to Building Performance</a>
-  <div class="hero">
-    <p class="subheading">Application of Energy Modeling</p>
-    <h1>{title}</h1>
-    <div class="placeholder">Image coming soon</div>
+
+  <nav class="nav">
+    <a class="back" href="/projects/building-performance">← Back to Building Performance</a>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero-image">
+    <div class="hero-single">
+      <img src="/4. Building Performance/Carnegie-Mellon-University-Ansys-Hall-996x554-1 (1).jpg" alt="Ansys Hall, Carnegie Mellon University" />
+    </div>
+    <span class="hero-image__num">03</span>
   </div>
+
+  <div class="content">
+    <h1 class="project-title">Building Performance Modeling (BPM)</h1>
+    <span class="project-tag">Application of Energy Modeling</span>
+
+    <hr class="divider" />
+
+    <div class="meta">
+      Instructor: Wei Liang<br />
+      Master in Sustainable Design &nbsp;|&nbsp; Carnegie Mellon University, PA &nbsp;|&nbsp; 2023<br />
+      Tools: eQUEST, IESVE, Design Builder, &amp; EnergyPlus<br />
+      Type of Work: Team
+    </div>
+
+    <div class="body-text">
+      <p>The BPM course focuses on conceptual foundations and practical applications of advanced and integrated whole-building energy simulation programs with emphasis on architectural building envelope systems, mechanical electrical building systems and their controls (electric lighting and HVAC systems) and building-integrated solar photo voltaic power systems. Building Information Modeling (BIM) concept and its connectivity to Building Energy Modeling (BIM).</p>
+      <p>The assignment aimed to familiarize me with the IES-VE 2021 software and analyze the energy performance of a specific building design case. By considering factors like site data, building materials, systems, operations, and loads, I gained insights into the synergistic impacts on energy efficiency during the design development phase. For this team project I worked on creating baseline building model, thermal templates &amp; thermal zoning.</p>
+    </div>
+
+    <!-- Two-col: Baseline Model + Solar Shading -->
+    <div class="bpm-two-col">
+
+      <!-- LEFT column -->
+      <div class="bpm-col">
+        <img class="full-img" src="/4. Building Performance/Baseline Model/Slide1.PNG" alt="Baseline model outline" />
+        <p class="bpm-img-caption">The above image represents the outline used to create the baseline model</p>
+
+        <img class="full-img" src="/4. Building Performance/NW elevation-2.png" alt="NW elevation" />
+        <p class="bpm-img-caption">NW elevation<br />Several areas of the building are connected to adjacent buildings, making it a complex design to model.</p>
+
+        <p class="bpm-sub-label">Baseline Model</p>
+        <p class="bpm-body">Ansys Hall is a six story building located in Pittsburgh, PA. We used EnergyPlus (TMY3) weather data file for energy modeling using IES-VE. For construction of our baseline model we selected materials, which are compliant with requirements in the ASHRAE 90.1 2016 for climate zone 5A &amp; created a baseline modeling following the outlines for building envelope, internal gains, &amp; Operational schedules.</p>
+
+        <!-- Table a -->
+        <table class="bpm-table">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Thermal Template</th>
+              <th>Occupant Density (ft2 / person)</th>
+              <th>Max Lighting Power Consumption (W / ft2)</th>
+              <th>Max Computer Power Consumption (W / ft2)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Baseline: Classroom/ Lecture/ Training - All Other</td><td>15.38</td><td>1.4</td><td>1</td></tr>
+            <tr><td>2</td><td>Baseline: Office - Open plan</td><td>20</td><td>1.1</td><td>1.5</td></tr>
+            <tr><td>3</td><td>Baseline: Office - Enclosed</td><td>200</td><td>1.1</td><td>1</td></tr>
+            <tr><td>4</td><td>Baseline: Workshop</td><td>50</td><td>1.9</td><td>0.22</td></tr>
+            <tr><td>5</td><td>Baseline: Conference/ Meeting/ Multipurpose</td><td>20</td><td>1.3</td><td>1</td></tr>
+            <tr><td>6</td><td>Baseline: Computer Room</td><td>111.83</td><td>2.14</td><td>46.45</td></tr>
+            <tr><td>7</td><td>Baseline: Lounge/ Breakroom</td><td>40</td><td>1.2</td><td>1</td></tr>
+            <tr><td>8</td><td>Baseline: Storage - >=50ft2</td><td>—</td><td>0.8</td><td>0.2</td></tr>
+            <tr><td>9</td><td>Baseline: Storage - &lt;50ft2</td><td>—</td><td>0.8</td><td>—</td></tr>
+            <tr><td>10</td><td>Baseline: Stairwell</td><td>750</td><td>0.6</td><td>—</td></tr>
+            <tr><td>11</td><td>Baseline: Restrooms</td><td>750</td><td>0.9</td><td>—</td></tr>
+            <tr><td>12</td><td>Baseline: Corridor - All Other Corridors</td><td>750</td><td>0.45</td><td>—</td></tr>
+            <tr><td>13</td><td>Baseline: Elevators - Equipment</td><td>—</td><td>—</td><td>—</td></tr>
+          </tbody>
+        </table>
+        <p class="bpm-img-caption">a. Baseline internal load (People, Lighting, Computer (Equipment)) values for each thermal template.</p>
+
+        <!-- Table b -->
+        <table class="bpm-table" style="margin-top: 16px;">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Thermal Template</th>
+              <th>ASHRAE 62.1 Common Space Types</th>
+              <th>Rp (cfm/person)</th>
+              <th>Ra (cfm/ft2)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Baseline: Classroom/ Lecture/ Training - All Other</td><td>Lecture Classroom</td><td>7.5</td><td>0.06</td></tr>
+            <tr><td>2</td><td>Baseline: Office - Open plan</td><td>Office Spaces</td><td>5</td><td>0.06</td></tr>
+            <tr><td>3</td><td>Baseline: Office - Enclosed</td><td>Office Spaces</td><td>5</td><td>0.06</td></tr>
+            <tr><td>4</td><td>Baseline: Workshop</td><td>Lecture Hall (Fixed Seats)</td><td>7.5</td><td>0.06</td></tr>
+            <tr><td>5</td><td>Baseline: Conference/ Meeting/ Multipurpose</td><td>Conference/ Meeting</td><td>5</td><td>0.06</td></tr>
+            <tr><td>6</td><td>Baseline: Computer Room</td><td>Computer Lab</td><td>10</td><td>0.12</td></tr>
+            <tr><td>7</td><td>Baseline: Lounge/ Break room</td><td>Break room</td><td>5</td><td>0.12</td></tr>
+            <tr><td>8</td><td>Baseline: Storage - >=50ft2</td><td>Occupied storage rooms for dry materials</td><td>5</td><td>0.06</td></tr>
+            <tr><td>9</td><td>Baseline: Storage - &lt;50ft2</td><td>Corridors</td><td>—</td><td>0.06</td></tr>
+          </tbody>
+        </table>
+        <p class="bpm-img-caption">b. Baseline Auxiliary Ventilation Values for each thermal template</p>
+
+        <p class="bpm-sub-label">Thermal Profile</p>
+        <p class="bpm-body">Based on the types of usage and common thermal comfort requirements, we have created 14 thermal templates for Ansys Hall. Each template has a defined internal loads (refer a) and air exchanges (refer b) according to ASHRAE 62.1 - 2016 addendum for 'Ventilation for Acceptable Indoor Air Quality'.</p>
+      </div>
+
+      <!-- RIGHT column -->
+      <div class="bpm-col">
+        <img class="full-img" src="/4. Building Performance/SE.PNG" alt="Solar shading — SE elevation" />
+        <img class="full-img" src="/4. Building Performance/TOP.PNG" alt="Solar shading — top view" />
+        <p class="bpm-img-caption">Solar shading analysis suggests that the roof and southern facade of the building receive maximum solar energy compared rest of the building.</p>
+
+        <p class="bpm-sub-label">Solar Shading Analysis</p>
+        <p class="bpm-body">In case of installing PV panels it is important to analyze the shading casted on the building by surrounding objects/vegetation, and energy received on each surface to leverage the maximum energy. 'Solar shading calculations' suggests that the roof and southern facade of the building receive maximum solar energy up to 300 - 437.23 kBtu/ ft2. Whereas the western facade receives the least due to adjacent buildings casting shadows.</p>
+
+        <!-- HVAC Zones -->
+        <img class="full-img" src="/4. Building Performance/Baseline Model/Slide3.PNG" alt="HVAC zones tree" style="margin-top: 24px;" />
+        <p class="bpm-body" style="margin-top: 10px;">Each space is divided to create HVAC zones by 'space by space' zoning method &amp; the entire floor plate at each level is divided into 11 groups based on the geographic directions, interior area, and building cores.</p>
+
+        <!-- Occupancy schedules -->
+        <div class="bpm-occ-grid">
+          <img src="/4. Building Performance/Building Ocuupacy Schedules/Picture1.jpg" alt="Occupancy schedule 1" />
+          <img src="/4. Building Performance/Building Ocuupacy Schedules/Picture2.jpg" alt="Occupancy schedule 2" />
+          <img src="/4. Building Performance/Building Ocuupacy Schedules/Picture3.jpg" alt="Occupancy schedule 3" />
+        </div>
+        <p class="bpm-img-caption">The default building office occupancy schedule was used with slight modifications.</p>
+
+        <!-- EUI results table -->
+        <table class="bpm-table bpm-eui-table" style="margin-top: 16px;">
+          <thead>
+            <tr>
+              <th>EUI<br />(kBTU/sf/yr)</th>
+              <th>Electricity Usage<br />(MMBtu/yr)</th>
+              <th>Natural Gas Usage<br />(MMBtu/yr)</th>
+              <th>CO2 Emissions<br />(MT/yr)</th>
+              <th>Annual Energy Costs<br />($/yr)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="eui-results">
+              <td>236</td>
+              <td>839</td>
+              <td>3,221</td>
+              <td>204</td>
+              <td>$74,728</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="bpm-sub-label">Baseline Whole-Building Performance</p>
+        <p class="bpm-body">Compared to median EUI per building type in the U.S., our baseline model for Ansys Hall have a relatively high EUI of 236 kBTU/sf.</p>
+      </div>
+
+    </div>
+
+    <!-- Second two-col: Parametric Analysis + Final Model Comparison -->
+    <div class="bpm-two-col">
+
+      <!-- LEFT: parametric analysis -->
+      <div class="bpm-col">
+        <img class="full-img" src="/4. Building Performance/Baseline Model/Slide4.PNG" alt="Parametric analysis diagram" />
+
+        <p class="bpm-sub-label">Parametric Analysis</p>
+        <p class="bpm-body">Parametric analysis helped to reduce EUI of the building with emphasis on building envelope thermal properties, solar shading, occupancy features, and building geometric properties.</p>
+
+        <img class="full-img" src="/4. Building Performance/Picture16.png" alt="Key variables decreasing across iterations" style="margin-top: 8px;" />
+        <p class="bpm-img-caption">All the key variables decreased during the iterations</p>
+
+        <p class="bpm-sub-label">Conclusion &amp; Recommendations</p>
+        <p class="bpm-body">To prioritize retrofits and renovations in Ansys Hall, we recommend focusing on increasing insulation for the slab and improving the thermal properties of glazing, if feasible. Following a targeted approach to thermal zoning is recommended. Prioritizing HVAC and lighting upgrades in high-traffic areas such as classrooms and lounges, while implementing energy-saving measures like smart sensors in less frequently used spaces like corridors, can yield additional energy efficiency benefits.</p>
+      </div>
+
+      <!-- RIGHT: Baseline vs Final Model comparison -->
+      <div class="bpm-col">
+        <div class="bpm-model-header">
+          <span class="bpm-model-label">Baseline Model</span>
+          <span class="bpm-model-label">Final Model</span>
+        </div>
+        <img class="full-img" src="/4. Building Performance/Final Model/Graphs & pie charts.png" alt="Comparison of energy consumption — baseline vs final model" />
+        <p class="bpm-img-caption">Comparison of Energy Consumption by End Use, Fuel Type, and Peak Usage</p>
+      </div>
+
+    </div>
+
+    <!-- Final Model -->
+    <h2 class="section-heading">Final Model &amp; Results</h2>
+    <div class="grid-4">
+      <img src="/4. Building Performance/Final Model/Slide5.PNG" alt="Final model — optimized geometry" />
+      <img src="/4. Building Performance/Final Model/Slide6.PNG" alt="Final model — modified zones" />
+      <img src="/4. Building Performance/Final Model/Slide7.PNG" alt="Final model — updated envelope" />
+      <img src="/4. Building Performance/Final Model/Slide9.PNG" alt="Final model — system changes" />
+    </div>
+    <p class="img-caption">Final Optimized Model — Modified Geometry and System Parameters</p>
+
+    <img class="full-img" src="/4. Building Performance/Final Model/Graphs & pie charts.png" alt="Energy performance graphs and pie charts" />
+    <p class="img-caption">Energy Performance Summary — Graphs &amp; Pie Charts</p>
+
+    <div class="grid-2">
+      <img src="/4. Building Performance/Picture16.png" alt="Performance result comparison" />
+      <img src="/4. Building Performance/Picture17.jpg" alt="Performance result detail" />
+    </div>
+    <p class="img-caption">Comparative Building Performance Results</p>
+
+  </div>
+
 </body>
 </html>
