@@ -1,0 +1,765 @@
+---
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Passive Strategies for a Sustainable House — Sayali Lamne</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: #ffffff;
+      color: #111111;
+      line-height: 1.6;
+    }
+
+    .nav { padding: 32px 6%; }
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #db634c;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .back:hover { text-decoration: underline; }
+
+    .hero-image {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      overflow: visible;
+    }
+    .hero-single {
+      width: 55%;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .hero-single img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .hero-image__num {
+      position: absolute;
+      bottom: -16px;
+      left: 5%;
+      font-size: clamp(80px, 14vw, 160px);
+      font-weight: 700;
+      color: rgba(0,0,0,0.07);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 1.7% 100px;
+    }
+
+    .project-title {
+      font-size: clamp(28px, 4.5vw, 48px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.3px;
+      margin-bottom: 14px;
+    }
+    .project-tag {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #db634c;
+      margin-bottom: 28px;
+      letter-spacing: 0.01em;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid #e8e8e8;
+      margin: 28px 0;
+    }
+    .meta {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.9;
+      color: #111;
+      margin-bottom: 36px;
+    }
+    .body-text p {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: #333;
+      text-align: justify;
+      margin-bottom: 24px;
+    }
+    .body-text p:last-child { margin-bottom: 0; }
+    .body-text ul {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: #333;
+      margin-left: 24px;
+      margin-bottom: 24px;
+    }
+    .body-text ul li { margin-bottom: 6px; }
+
+    .full-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .img-caption {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 300;
+      font-style: italic;
+      color: #888;
+      line-height: 1.5;
+      margin-bottom: 32px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .grid-2 img { width: 100%; height: auto; display: block; }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .grid-3 img { width: 100%; height: auto; display: block; }
+
+    .section-heading {
+      font-size: 20px;
+      font-weight: 600;
+      color: #111;
+      margin-top: 64px;
+      margin-bottom: 8px;
+    }
+    .section-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #db634c;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    /* ── Plan & Sections grid ── */
+    .ps-plan-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 32px;
+      align-items: start;
+    }
+    .ps-plan-left img, .ps-plan-right img { width: 100%; height: auto; display: block; }
+    .ps-sub-caption {
+      font-size: 13px;
+      font-weight: 400;
+      color: #555;
+      text-align: center;
+      margin-top: 4px;
+      margin-bottom: 8px;
+    }
+
+    /* ── Detail rows (drawing + table) ── */
+    .ps-detail-row {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 0 40px;
+      align-items: start;
+    }
+    .ps-detail-left img { width: 100%; height: auto; display: block; }
+
+    /* ── R-value tables ── */
+    .ps-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+      margin-top: 8px;
+    }
+    .ps-table th {
+      background: #f7f7f7;
+      font-weight: 600;
+      color: #111;
+      border: 1px solid #d0d0d0;
+      padding: 6px 8px;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .ps-table th:nth-child(2) { text-align: left; }
+    .ps-table td {
+      border: 1px solid #d0d0d0;
+      padding: 5px 8px;
+      font-weight: 300;
+      color: #333;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .ps-table td:nth-child(2) { text-align: left; }
+    .ps-total-row td {
+      background: #f7f7f7;
+      font-weight: 600;
+      font-size: 11px;
+      color: #111;
+    }
+
+    /* ── R-value summary box ── */
+    .ps-rv-box {
+      display: flex;
+      gap: 16px;
+      margin-top: 10px;
+      border: 1.5px dashed #d0d0d0;
+      padding: 10px 16px;
+      width: fit-content;
+    }
+    .ps-rv-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+    .ps-rv-label { font-size: 10px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.04em; }
+    .ps-rv-val { font-size: 15px; font-weight: 700; color: #111; }
+    .ps-rv-val.accent { color: #db634c; }
+
+    .ps-sub-label-inline { font-size: 16px; font-weight: 600; color: #db634c; margin-bottom: 10px; }
+    .ps-retro-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+    .ps-retro-table th { background: #f7f7f7; font-weight: 600; color: #111; border: 1px solid #d0d0d0; padding: 7px 10px; text-align: left; line-height: 1.4; vertical-align: middle; }
+    .ps-retro-table td { border: 1px solid #d0d0d0; padding: 6px 10px; font-weight: 300; color: #333; line-height: 1.6; vertical-align: top; }
+    .ps-retro-num { text-align: center; font-weight: 600; color: #111; vertical-align: middle !important; width: 28px; }
+    .ps-retro-table th:nth-child(4) { width: 120px; }
+    .ps-retro-table th:nth-child(5) { width: 140px; }
+    .ps-retro-img { width: 140px; padding: 6px !important; vertical-align: middle !important; }
+    .ps-retro-img img { width: 128px; height: 128px; object-fit: contain; display: block; }
+    /* ── HERS Index ── */
+    .ps-hers-section { display: flex; flex-direction: column; align-items: center; gap: 40px; margin-top: 56px; }
+    .ps-hers-item { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 640px; }
+    .ps-hers-scale-wrap { width: 100%; }
+    .ps-hers-labels-top { display: flex; justify-content: space-between; font-size: 10px; font-weight: 600; color: #333; text-align: center; margin-bottom: 4px; }
+    .ps-hers-bar-row { display: flex; align-items: center; gap: 4px; }
+    .ps-hers-arrow-left { color: #4caf50; font-size: 16px; }
+    .ps-hers-arrow-right { color: #e53935; font-size: 16px; }
+    .ps-hers-bar {
+      flex: 1; height: 18px;
+      background: linear-gradient(to right, #1a9e3f, #4caf50, #8bc34a, #cddc39, #ffeb3b, #ffc107, #ff9800, #f44336, #c62828);
+      border-radius: 2px;
+    }
+    .ps-hers-ticks { display: flex; justify-content: space-between; font-size: 9px; color: #555; margin-top: 3px; padding: 0 20px; }
+    .ps-hers-100 { font-weight: 700; color: #111; }
+    .ps-hers-marker-row { position: relative; height: 56px; padding: 0 20px; }
+    .ps-hers-marker-pin { position: absolute; left: var(--hers-pct); transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; }
+    .ps-hers-house-icon { font-size: 18px; line-height: 1; }
+    .ps-hers-num { font-size: 13px; font-weight: 700; color: #1565c0; line-height: 1.2; }
+    .ps-hers-label-small { font-size: 9px; color: #555; white-space: nowrap; }
+    .ps-hers-axis-labels { display: flex; justify-content: space-between; font-size: 10px; color: #555; margin-top: 4px; }
+    .ps-hers-caption { font-size: 14px; font-weight: 600; color: #db634c; text-align: center; margin-top: 12px; line-height: 1.5; }
+
+    .ps-hl-table td { text-align: center; }
+    .ps-hl-table td:nth-child(2) { text-align: center; }
+    .ps-total-ua-row td { background: #fff8f7; border: 1px solid #d0d0d0; padding: 8px 12px; font-size: 12px; }
+    .ps-peak-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; }
+    .ps-peak-table td { border: 1px solid #d0d0d0; padding: 6px 12px; font-weight: 300; color: #333; vertical-align: middle; }
+    .ps-peak-label { font-weight: 700; color: #db634c; font-size: 12px; text-align: center; width: 140px; background: #fff8f7; }
+    .ps-pie-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
+    .ps-pie-item img { width: 100%; height: auto; display: block; }
+
+    @media (max-width: 860px) {
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .ps-plan-grid, .ps-detail-row, .ps-pie-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .hero-single { width: 90%; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a class="back" href="/projects/building-performance">← Back to Building Performance</a>
+  </nav>
+
+  <div class="hero-image">
+    <div class="hero-single">
+      <img src="/5. Passive Strategies (Arun & Maryam's House)/1.png" alt="Passive Strategies — Arun & Maryam's House" />
+    </div>
+    <span class="hero-image__num">04</span>
+  </div>
+
+  <div class="content">
+
+    <h1 class="project-title">Passive Strategies for a Sustainable House</h1>
+    <span class="project-tag">Application of Passive Design Strategies &amp; Energy Modeling</span>
+
+    <hr class="divider" />
+
+    <div class="meta">
+      <div>Instructor: Vivian Loftness</div>
+      <div>Environmental Systems: Climates &amp; Energy in Buildings &nbsp;|&nbsp; (MSSD) Carnegie Mellon University, PA &nbsp;|&nbsp; 2021</div>
+      <div>Tools: REM/Rate</div>
+      <div>Type of Work: Individual</div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="body-text">
+      <p>The course explored architectural design strategies to enhance energy conservation and natural conditioning for improved human comfort across diverse climates by integrating comfort principles, heat flow, and local climate variables.</p>
+      <p>The course focused on the latest advancements in building energy conservation, passive heating and cooling technologies, and their integration into comprehensive design specifications. The objective of this project was to create a professional energy consultant's report outlining specific retrofit measures, including siting, massing, organization, enclosure detailing, opening control, and passive system integration.</p>
+      <p>For one assignment, I selected a 3-Bed &amp; 2-Bath residence located in Torrance, California, housing a family of four. The detailed steps can be listed as follows:</p>
+      <ul>
+        <li>Performed site analysis including climate analysis through ClimateConsultant</li>
+        <li>Analyzed existing building forms &amp; organizations</li>
+        <li>Studied building details &amp; Peak+ Annual Heat Loss Calculations for heat loss</li>
+        <li>Evaluated energy bills &amp; systems for energy consumption study</li>
+        <li>Conducted energy consumption analysis using REM/Rate for energy modeling</li>
+        <li>Suggested strategies for passive heating &amp; cooling along with improved outdoor living</li>
+      </ul>
+    </div>
+
+    <!-- Plan & Sections -->
+    <div class="ps-plan-grid" style="margin-top: 56px;">
+      <div class="ps-plan-left">
+        <img class="full-img" src="/5. Passive Strategies (Arun & Maryam's House)/Plan_3.png" alt="Floor plan — mechanically heated zones" />
+      </div>
+      <div class="ps-plan-right">
+        <img class="full-img" src="/5. Passive Strategies (Arun & Maryam's House)/sec-1.png" alt="Section AA'" />
+        <p class="ps-sub-caption">Section AA'</p>
+        <img class="full-img" src="/5. Passive Strategies (Arun & Maryam's House)/sec-2.png" alt="Section BB'" style="margin-top: 16px;" />
+        <p class="ps-sub-caption">Section BB'</p>
+      </div>
+    </div>
+    <p class="img-caption">Plan (Left) &amp; Sections (Right) representing Mechanically Heated Zones in the Home</p>
+
+    <!-- Detail R-1: Roof -->
+    <div class="ps-detail-row" style="margin-top: 48px;">
+      <div class="ps-detail-left">
+        <img class="full-img" src="/5. Passive Strategies (Arun & Maryam's House)/roof-1.png" alt="Detail R-1 — Roof to wall junction" />
+        <p class="ps-sub-caption">Detail R-1 (Roof to wall Junction)</p>
+      </div>
+      <div class="ps-detail-right">
+        <table class="ps-table">
+          <thead>
+            <tr><th>No.</th><th>Roof Layer</th><th>R-value (Cavity)</th><th>R-value (Rafter)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Air film, outside</td><td>0.17</td><td>0.17</td></tr>
+            <tr><td>2</td><td>Asphalt Shingles</td><td>0.44</td><td>0.44</td></tr>
+            <tr><td>3</td><td>Roofing paper</td><td>0.06</td><td>0.06</td></tr>
+            <tr><td>4</td><td>Plywood sheathing, 3/4" thick</td><td>0.94</td><td>0.94</td></tr>
+            <tr><td>5</td><td>Polyisocyanurate, unfaced, Rigid Insulation, 2" thick (7/inch)</td><td>14.00</td><td>14.00</td></tr>
+            <tr><td>6</td><td>Plywood sheathing, 3/4" thick</td><td>0.94</td><td>0.94</td></tr>
+            <tr><td>7</td><td>Wooden rafters, 2x4" studs</td><td>n/a</td><td>4.38</td></tr>
+            <tr><td>8</td><td>Unfaced Fiberglass insulation, 8" thick (2.5/inch)</td><td>20</td><td>n/a</td></tr>
+            <tr><td>9</td><td>Gypsum board ceiling, 1/2" thick</td><td>0.45</td><td>0.45</td></tr>
+            <tr><td>10</td><td>Air film, inside, horizontal surface</td><td>0.62</td><td>0.62</td></tr>
+            <tr class="ps-total-row"><td colspan="2">Total R-value</td><td>37.62</td><td>22</td></tr>
+            <tr class="ps-total-row"><td colspan="3">Total area weighted R-value</td><td>35.27</td></tr>
+            <tr class="ps-total-row"><td colspan="3">U-value</td><td>0.028</td></tr>
+          </tbody>
+        </table>
+        <div class="ps-rv-box">
+          <div class="ps-rv-item"><span class="ps-rv-label">Total R-Value</span><span class="ps-rv-val">35.27</span></div>
+          <div class="ps-rv-item"><span class="ps-rv-label">U-Value</span><span class="ps-rv-val accent">0.028</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detail W-1: Wall -->
+    <div class="ps-detail-row" style="margin-top: 40px;">
+      <div class="ps-detail-left">
+        <img class="full-img" src="/5. Passive Strategies (Arun & Maryam's House)/Picture7_2.png" alt="Detail W-1 — External wall assembly" />
+        <p class="ps-sub-caption">Detail W-1 (External wall assembly)</p>
+      </div>
+      <div class="ps-detail-right">
+        <table class="ps-table">
+          <thead>
+            <tr><th>No.</th><th>Wall Layer (W1)</th><th>R-value (Cavity)</th><th>R-value (Stud)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Air film, outside</td><td>0.17</td><td>0.17</td></tr>
+            <tr><td>2</td><td>Traditional cement stucco, 5/8" thick (0.20/inch)</td><td>0.125</td><td>0.125</td></tr>
+            <tr><td>3</td><td>Lath</td><td>n/a</td><td>n/a</td></tr>
+            <tr><td>4</td><td>Waterproof building paper</td><td>0.06</td><td>0.06</td></tr>
+            <tr><td>5</td><td>Rigid Insulation, 5/8" thick (5.6/inch)</td><td>3.5</td><td>3.5</td></tr>
+            <tr><td>6</td><td>Plywood Sheathing panels, 3/8" thick</td><td>0.77</td><td>0.77</td></tr>
+            <tr><td>7</td><td>Wooden stud, 2x6"</td><td>n/a</td><td>6.88</td></tr>
+            <tr><td>8</td><td>Fibreglass batt insulation, 6" thick (3.2/inch)</td><td>19.20</td><td>n/a</td></tr>
+            <tr><td>9</td><td>Gypsum Board, 5/8" thick</td><td>0.56</td><td>0.56</td></tr>
+            <tr><td>10</td><td>Air film, inside, vertical surface</td><td>0.68</td><td>0.68</td></tr>
+            <tr class="ps-total-row"><td colspan="2">Total R-value</td><td>25.065</td><td>12.745</td></tr>
+            <tr class="ps-total-row"><td colspan="3">Total area weighted R-value</td><td>23.20</td></tr>
+            <tr class="ps-total-row"><td colspan="3">U-value</td><td>0.043</td></tr>
+          </tbody>
+        </table>
+        <div class="ps-rv-box">
+          <div class="ps-rv-item"><span class="ps-rv-label">Total R-Value</span><span class="ps-rv-val">23.20</span></div>
+          <div class="ps-rv-item"><span class="ps-rv-label">U-Value</span><span class="ps-rv-val accent">0.043</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detail G-1: Window -->
+    <div class="ps-detail-row" style="margin-top: 40px;">
+      <div class="ps-detail-left">
+        <img class="full-img" src="/5. Passive Strategies (Arun & Maryam's House)/Picture9.png" alt="Detail G-1 — Window assembly" />
+        <p class="ps-sub-caption">Detail G-1 (Window assembly)</p>
+      </div>
+      <div class="ps-detail-right">
+        <table class="ps-table">
+          <thead>
+            <tr><th>No.</th><th>Window Layer (G1)</th><th>R-value (Glass)</th><th>R-value (Mullion)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Air film, outside</td><td>0.17</td><td>0.17</td></tr>
+            <tr><td></td><td>Central Mullion, 1.5" thick (@R-value 2.64/inch)</td><td>n/a</td><td>3.96</td></tr>
+            <tr><td>2</td><td>Soft coated Low-e glass, 1/8" thick</td><td>3.5</td><td>n/a</td></tr>
+            <tr><td>3</td><td>Argon Layer, 3/4" thick (@R-Value = 5.2/inch)</td><td>3.9</td><td>n/a</td></tr>
+            <tr><td>4</td><td>Soft coated Low-e glass, 1/8" thick</td><td>3.5</td><td>n/a</td></tr>
+            <tr><td>5</td><td>Air film, inside, vertical surface</td><td>0.68</td><td>0.68</td></tr>
+            <tr class="ps-total-row"><td colspan="2">Total R-value</td><td>11.75</td><td>4.81</td></tr>
+            <tr class="ps-total-row"><td colspan="3">Total area weighted R-value</td><td>10.70</td></tr>
+            <tr class="ps-total-row"><td colspan="3">U-value</td><td>0.093</td></tr>
+          </tbody>
+        </table>
+        <div class="ps-rv-box">
+          <div class="ps-rv-item"><span class="ps-rv-label">Total R-Value</span><span class="ps-rv-val">10.70</span></div>
+          <div class="ps-rv-item"><span class="ps-rv-label">U-Value</span><span class="ps-rv-val accent">0.093</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="img-caption" style="margin-top: 24px;">Estimated Envelope Assembly Details for the Existing Home</p>
+
+    <!-- Heat Loss Coefficient Table -->
+    <div style="margin-top: 56px;">
+      <table class="ps-table ps-hl-table">
+        <thead>
+          <tr>
+            <th rowspan="2">Members</th>
+            <th rowspan="2">Detail</th>
+            <th rowspan="2">U-value<br />(Btu/hrft2°F)</th>
+            <th rowspan="2">Total Area<br />(ft2)</th>
+            <th rowspan="2">Heat loss Coefficient<br />UA (Btu/hr°F)</th>
+          </tr>
+          <tr></tr>
+        </thead>
+        <tbody>
+          <tr><td>Walls</td><td>W1</td><td>0.043</td><td>3767</td><td>161.98</td></tr>
+          <tr><td>Windows</td><td>G1</td><td>0.093</td><td>242.19</td><td>22.52</td></tr>
+          <tr><td rowspan="3">Doors</td><td>D1</td><td>0.07</td><td>166.625</td><td>11.66</td></tr>
+          <tr><td>D2</td><td>0.2</td><td>46.29</td><td>9.26</td></tr>
+          <tr><td>D3</td><td>0.2</td><td>23.142</td><td>4.628</td></tr>
+          <tr><td>Roofs</td><td>R1</td><td>0.028</td><td>1485.41</td><td>41.59</td></tr>
+          <tr>
+            <td rowspan="2">Floor<br />(Slab on Grade)</td>
+            <td colspan="1" style="font-size:10px; color:#888;">F-value</td>
+            <td colspan="1" style="font-size:10px; color:#888;">Perimeter (ft.)</td>
+            <td></td>
+          </tr>
+          <tr><td>F1</td><td>0.81</td><td>154.54</td><td>125.18</td></tr>
+        </tbody>
+      </table>
+
+      <!-- Infiltration sub-table -->
+      <table class="ps-table ps-hl-table" style="margin-top: 12px;">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Air Changes/hr</th>
+            <th>Heated Volume</th>
+            <th>Heat Capacity</th>
+            <th>Heat Loss Coefficient</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Infiltration</td>
+            <td colspan="3" style="font-size:10px; color:#555; text-align:left;">( Number of Air Changes ) x ( Heated Volume of the Building ) x (The Heat Capacity of Air )</td>
+            <td></td>
+          </tr>
+          <tr><td></td><td>0.5</td><td>15,226</td><td>0.18</td><td>1,370.34</td></tr>
+        </tbody>
+      </table>
+
+      <!-- Total UA -->
+      <table class="ps-table" style="margin-top: 12px;">
+        <tbody>
+          <tr class="ps-total-ua-row">
+            <td colspan="4" style="color:#db634c; font-weight:700;">Total Heat Loss Coefficient (Total UA) Btu/hr°F</td>
+            <td style="font-weight:700;">1,747.137</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Peak + Annual Heat Loss Calculation -->
+    <div style="margin-top: 32px;">
+      <table class="ps-table ps-peak-table">
+        <tbody>
+          <tr>
+            <td rowspan="2" class="ps-peak-label">Peak Heat Loss</td>
+            <td style="font-size:11px; color:#555;">Total UA  x  T (Design Indoor °F - Design Outdoor °F)</td>
+            <td style="font-size:11px; color:#888; text-align:right;">BTU/hr</td>
+          </tr>
+          <tr>
+            <td style="font-size:11px; color:#555;">( 1,747.13) x [68 - 35]</td>
+            <td style="font-weight:700; color:#db634c; text-align:right;">57,655.52</td>
+          </tr>
+          <tr>
+            <td rowspan="2" class="ps-peak-label">Annual Heat Loss</td>
+            <td style="font-size:11px; color:#555;">( Total UA ) x (24hrs)  x  (Annual Degree Days- HDD)</td>
+            <td style="font-size:11px; color:#888; text-align:right;">BTU</td>
+          </tr>
+          <tr>
+            <td style="font-size:11px; color:#555;">(1,747.14 ) x (24) x (1,274)</td>
+            <td style="font-weight:700; text-align:right;">53,420,552.64</td>
+          </tr>
+          <tr>
+            <td rowspan="4" class="ps-peak-label">Heating Energy Index</td>
+            <td style="font-size:11px; color:#555;">( Annual Heat Loss )/ Area in sq.ft.</td>
+            <td style="font-size:11px; color:#888; text-align:right;">BTU/ sq.ft/yr</td>
+          </tr>
+          <tr>
+            <td style="font-size:11px; color:#555;">(53,420,552.64)/1324</td>
+            <td style="font-weight:700; color:#db634c; text-align:right;">40,347.84</td>
+          </tr>
+          <tr>
+            <td style="font-size:11px; color:#555;">(BTU/ sq.ft/yr) x (0.00315 US Metric)</td>
+            <td style="font-size:11px; color:#888; text-align:right;">kWh/m2/yr</td>
+          </tr>
+          <tr>
+            <td style="font-size:11px; color:#555;">(40,347.84 ) x (0.00315)</td>
+            <td style="font-weight:700; text-align:right;">127.095</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="img-caption" style="margin-top: 16px;">Peak + Annual Heat Loss Calculation</p>
+    </div>
+
+    <!-- Two pie charts side by side -->
+    <div class="ps-pie-grid" style="margin-top: 40px;">
+      <div class="ps-pie-item">
+        <img class="full-img" src="/5. Passive Strategies (Arun & Maryam's House)/Screenshot 2026-05-30 123758.png" alt="Breakdown of Heat Loss Sources" />
+        <p class="img-caption">Breakdown of Heat Loss Sources</p>
+      </div>
+      <div class="ps-pie-item">
+        <img class="full-img" src="/5. Passive Strategies (Arun & Maryam's House)/Screenshot 2026-05-30 123806.png" alt="Breakdown of Energy Consumption Sources" />
+        <p class="img-caption">Breakdown of Energy Consumption Sources</p>
+      </div>
+    </div>
+
+    <!-- Conclusion -->
+    <div class="body-text" style="margin-top: 48px;">
+      <p class="ps-sub-label-inline">Conclusion:</p>
+      <p>The provided pie chart (see reference a) illustrates that a significant proportion of heat loss occurs through infiltration, followed by flooring. Additionally, heating constitutes the main contributor to energy consumption (refer to b). Therefore, it is crucial <span style="color:#db634c;">to enhance the building's insulation, improve energy efficiency, and minimize energy usage.</span></p>
+    </div>
+
+    <!-- Retrofits & Recommendations Table -->
+    <div style="margin-top: 56px; overflow-x: auto;">
+      <table class="ps-retro-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Recommendations</th>
+            <th>Purpose</th>
+            <th>Product</th>
+            <th>Reference Image</th>
+            <th>Cost Analysis</th>
+            <th>Payback Analysis</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Row 1a: Caulking -->
+          <tr>
+            <td rowspan="2" class="ps-retro-num">1.</td>
+            <td>Caulking</td>
+            <td>Infiltration Reduction</td>
+            <td>Dynaflex Ultra 10.1 Oz Clear Advanced Exterior Sealant (DAP)</td>
+            <td class="ps-retro-img"><img src="/5. Passive Strategies (Arun & Maryam's House)/dynaflexultra_app2_18211_6x6.jpg" alt="Dynaflex Ultra" /></td>
+            <td>Cost/Unit: $6.98,<br />No. of Units: 6,10<br />Total Cost: 111.58/-</td>
+            <td rowspan="2">Previous Infiltration UA: 1,370.34 Btu/hr°F<br />New Infiltration UA: 1,096.28 Btu/hr°F<br />Previous Annual Energy Cost: $3,024/-<br />New Annual Energy Cost: $2,420/-<br />Annual Money Saved: $604.80/-<br />Payback: 2 months</td>
+          </tr>
+          <!-- Row 1b: Weatherstripping -->
+          <tr>
+            <td>Weatherstripping</td>
+            <td>Infiltration Reduction</td>
+            <td>MOPMS Draft Stopper Sweep, Door Weatherproofing Stripping</td>
+            <td class="ps-retro-img"><img src="/5. Passive Strategies (Arun & Maryam's House)/416zBdMtk1L.jpg" alt="Weatherstripping" /></td>
+            <td></td>
+          </tr>
+          <!-- Row 2: Light Bulbs -->
+          <tr>
+            <td class="ps-retro-num">2.</td>
+            <td>Light Bulbs</td>
+            <td>Energy Efficiency</td>
+            <td>LED Bulbs</td>
+            <td class="ps-retro-img"><img src="/5. Passive Strategies (Arun & Maryam's House)/Bulbs.jpg" alt="LED Bulbs" /></td>
+            <td>Cost/Unit: $5.23/-<br />No. of Units: 2<br />Total Cost: $10.46/-</td>
+            <td>Previous Annual Energy: 1024 kWh (Lighting)<br />New Annual Energy: 1,008.4 kWh<br />Previous Annual Energy Cost: $3,024/-<br />New Annual Energy Cost: $2,978/-<br />Annual Money Saved: $46.00/-<br />Payback: 2 months</td>
+          </tr>
+          <!-- Row 3: Power Strip -->
+          <tr>
+            <td class="ps-retro-num">3.</td>
+            <td>Power Strip</td>
+            <td>Energy Efficiency</td>
+            <td>Trickle Star 7 Outlet Advanced Power Strip</td>
+            <td class="ps-retro-img"><img src="/5. Passive Strategies (Arun & Maryam's House)/180ss_us_8xx_thumb_1__62147.1460402117.jpg" alt="Power Strip" /></td>
+            <td>Cost/Unit: $25.99/-<br />No. of Units: 2<br />Total Cost: $52.00/-</td>
+            <td>Previous Annual Energy: 4600 kWh (Appliance)<br />New Annual Energy: 2,392 kWh<br />Annual Energy Saved: 2,208 kWh<br />Previous Annual Energy Cost: $3,024/-<br />New Annual Energy Cost: $2,472/-<br />Annual Money Saved: (2,208) x (0.25)= $552/-<br />Payback: 9 months</td>
+          </tr>
+          <!-- Row 4: Thermostat -->
+          <tr>
+            <td class="ps-retro-num">4</td>
+            <td>Thermostat</td>
+            <td>Energy Efficiency</td>
+            <td>Honeywell Home RTH8560D Touchscreen Thermostat</td>
+            <td class="ps-retro-img"><img src="/5. Passive Strategies (Arun & Maryam's House)/513R9IkiPHS._AC_SL1500_.jpg" alt="Thermostat" /></td>
+            <td>Cost/Unit: $84.71<br />No. of Units: 1<br />Total Cost: $184.71</td>
+            <td>Previous Annual Energy Cost: $3,024/-<br />New Annual Energy Cost: $2,897/-<br />Annual Money Saved: $127.00/-<br />Payback: 1.5 year</td>
+          </tr>
+          <!-- Row 5: Refrigerator -->
+          <tr>
+            <td class="ps-retro-num">5.</td>
+            <td>Refrigerator</td>
+            <td>Energy Efficiency</td>
+            <td>Smart wi-fi Enabled French Door Counter-Depth Refrigerator</td>
+            <td class="ps-retro-img"><img src="/5. Passive Strategies (Arun & Maryam's House)/Picture16.png" alt="Refrigerator" /></td>
+            <td>Cost/Unit: $2,699.00/-<br />No. of Units: 1<br />Total Cost: $2,699.00/-</td>
+            <td>Previous Annual Energy: 4600 kWh (Appliance)<br />New Annual Energy: 3,935 kWh<br />Previous Annual Energy Cost: $3,024/-<br />New Annual Energy Cost: $2,828/-<br />Annual Money Saved: $196.00/-<br />Payback: 1.4 years</td>
+          </tr>
+          <!-- Row 6: Washer -->
+          <tr>
+            <td class="ps-retro-num">6.</td>
+            <td>Washer</td>
+            <td>Energy + Water Reduction</td>
+            <td>5.2 cu. ft. Smart Capable White Top Load Washing Machine with Extra Power Button</td>
+            <td class="ps-retro-img"><img src="/5. Passive Strategies (Arun & Maryam's House)/white-maytag-top-load-washers-mvw7230hw-e1_600.webp" alt="Washer" /></td>
+            <td>Cost/Unit: $1,049.00/-<br />No. of Units: 1<br />Total Cost: $1,049.00/-</td>
+            <td>Previous Monthly Use: 160 Gallons (Appliance)<br />New Monthly Use: 95 Gallons<br />Previous Annual Energy Cost: $3,024/-<br />New Annual Energy Cost: $2,800/-<br />Annual Money Saved: $7.00/-<br />Payback: 1.5 years</td>
+          </tr>
+          <!-- Row 7: Dryer -->
+          <tr>
+            <td class="ps-retro-num">7.</td>
+            <td>Dryer</td>
+            <td>Energy + Water Reduction</td>
+            <td>Samsung Top Load Electric Dryer with Sensor Dry DVE50R5200W</td>
+            <td class="ps-retro-img"><img src="/5. Passive Strategies (Arun & Maryam's House)/Picture8.png" alt="Dryer" /></td>
+            <td>Cost/Unit: $777.00/-<br />No. of Units: 1<br />Total Cost: $777.00/-</td>
+            <td>Previous Annual Energy: 4600 kWh (Appliance)<br />New Annual Energy: 3,956 kWh<br />Previous Annual Energy Cost: $3,024/-<br />New Annual Energy Cost: $3,000/-<br />Annual Money Saved: $14.00/-<br />Payback: 5 years</td>
+          </tr>
+          <!-- Row 8: Shower head -->
+          <tr>
+            <td class="ps-retro-num">8.</td>
+            <td>Shower head</td>
+            <td>Water Reduction</td>
+            <td>High Sierra's All Metal 1.5 GPM High Efficiency Low Flow Shower head</td>
+            <td class="ps-retro-img"><img src="/5. Passive Strategies (Arun & Maryam's House)/81Umm1w+VAS._AC_SL1500_.jpg" alt="Shower head" /></td>
+            <td>Cost/Unit: $49.95/-<br />No. of Units: 2<br />Total Cost: $99.99/-</td>
+            <td>Previous Monthly Use: 2400 Gallons<br />New Monthly Use: 1440 Gallons<br />Previous Annual Energy Cost: $3,024/-<br />New Annual Energy Cost: $2,896/-<br />Annual Money Saved: $128.00/-<br />Payback: 1.1 years</td>
+          </tr>
+          <!-- Row 9: Solar PV -->
+          <tr>
+            <td class="ps-retro-num">9.</td>
+            <td>Solar PV</td>
+            <td>On-site Energy Generation</td>
+            <td>SunPower 390-420W Residential A-Series Panels</td>
+            <td class="ps-retro-img"><img src="/5. Passive Strategies (Arun & Maryam's House)/germany-solar.jpg" alt="Solar PV" /></td>
+            <td>Cost/Unit: $384.70/-<br />Area covered: 120 sq. ft.<br />No. of Panels: 12<br />Total Cost: $3,847/-</td>
+            <td>Previous Annual Energy: 5,624 kWh (Total)<br />New Annual Energy: 2,067 kWh<br />Annual Energy Produced: 3,557 kWh<br />Previous Annual Energy Cost: $3,024/-<br />New Annual Energy Cost: $2,161/-<br />Annual Money Saved: $863.00/-<br />Payback: 4 years</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="img-caption" style="margin-top: 16px;">Summary of Retrofits + Recommendations</p>
+    </div>
+
+    <!-- HERS Index Section -->
+    <div class="ps-hers-section">
+      <!-- Before -->
+      <div class="ps-hers-item">
+        <div class="ps-hers-scale-wrap">
+          <div class="ps-hers-labels-top">
+            <span>Zero Energy<br />Home</span>
+            <span>Reference<br />Home</span>
+            <span>Existing<br />Homes</span>
+          </div>
+          <div class="ps-hers-bar-row">
+            <span class="ps-hers-arrow-left">◄</span>
+            <div class="ps-hers-bar"></div>
+            <span class="ps-hers-arrow-right">►</span>
+          </div>
+          <div class="ps-hers-ticks">
+            <span>0</span><span>10</span><span>20</span><span>30</span><span>40</span>
+            <span>50</span><span>60</span><span>70</span><span>80</span><span>90</span>
+            <span class="ps-hers-100">100</span><span>110</span><span>120</span>
+            <span>130</span><span>140</span><span>150</span>
+          </div>
+          <div class="ps-hers-marker-row" style="--hers-pct: 60%;">
+            <div class="ps-hers-marker-pin">
+              <div class="ps-hers-house-icon">🏠</div>
+              <div class="ps-hers-num">96</div>
+              <div class="ps-hers-label-small">This Home</div>
+            </div>
+          </div>
+          <div class="ps-hers-axis-labels">
+            <span>Less<br />Energy</span>
+            <span>More<br />Energy</span>
+          </div>
+        </div>
+        <p class="ps-hers-caption">Before adoption of<br />Retrofits &amp; Recommendations</p>
+      </div>
+
+      <!-- After -->
+      <div class="ps-hers-item">
+        <div class="ps-hers-scale-wrap">
+          <div class="ps-hers-labels-top">
+            <span>Zero Energy<br />Home</span>
+            <span>Reference<br />Home</span>
+            <span>Existing<br />Homes</span>
+          </div>
+          <div class="ps-hers-bar-row">
+            <span class="ps-hers-arrow-left">◄</span>
+            <div class="ps-hers-bar"></div>
+            <span class="ps-hers-arrow-right">►</span>
+          </div>
+          <div class="ps-hers-ticks">
+            <span>0</span><span>10</span><span>20</span><span>30</span><span>40</span>
+            <span>50</span><span>60</span><span>70</span><span>80</span><span>90</span>
+            <span class="ps-hers-100">100</span><span>110</span><span>120</span>
+            <span>130</span><span>140</span><span>150</span>
+          </div>
+          <div class="ps-hers-marker-row" style="--hers-pct: 40%;">
+            <div class="ps-hers-marker-pin">
+              <div class="ps-hers-house-icon">🏠</div>
+              <div class="ps-hers-num">65</div>
+              <div class="ps-hers-label-small">This Home</div>
+            </div>
+          </div>
+          <div class="ps-hers-axis-labels">
+            <span>Less<br />Energy</span>
+            <span>More<br />Energy</span>
+          </div>
+        </div>
+        <p class="ps-hers-caption">After adoption of<br />Retrofits &amp; Recommendations</p>
+      </div>
+    </div>
+
+    <!-- HERS conclusion text -->
+    <div class="body-text" style="margin-top: 32px; text-align: center;">
+      <p style="text-align: center;">The above illustration suggests that this home stands on 65th level on the HERS© Performance Index, thus making it 35% more efficient than the standard house on the scale after adoption of retrofits &amp; recommendations</p>
+    </div>
+
+  </div>
+
+</body>
+</html>

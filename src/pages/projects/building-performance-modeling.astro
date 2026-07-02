@@ -19,7 +19,7 @@
     }
 
     /* ── Nav ── */
-    .nav { padding: 16px 6%; }
+    .nav { padding: 32px 6%; }
     .back {
       display: inline-flex;
       align-items: center;
@@ -42,8 +42,8 @@
       overflow: visible;
     }
     .hero-single {
-      width: 55%;
-      max-width: 560px;
+      width: 50%;
+      max-width: 504px;
       margin: 0 auto;
     }
     .hero-single img {
@@ -110,10 +110,10 @@
     /* ── Section headings ── */
     .section-heading {
       font-size: 20px;
-      font-weight: 700;
-      color: #db634c;
+      font-weight: 600;
+      color: #111;
       margin-top: 64px;
-      margin-bottom: 24px;
+      margin-bottom: 8px;
     }
 
     /* ── Images ── */
@@ -157,6 +157,8 @@
     }
     .grid-4 img { width: 100%; height: auto; display: block; }
 
+    .bpm-two-col--tables { grid-template-columns: 1.35fr 1fr; }
+
     /* ── Two-col content layout ── */
     .bpm-two-col {
       display: grid;
@@ -166,11 +168,13 @@
     }
     .bpm-col { display: flex; flex-direction: column; }
     .bpm-sub-label {
-      font-size: 15px;
-      font-weight: 700;
+      font-size: 13px;
+      font-weight: 600;
       color: #db634c;
-      margin-top: 20px;
-      margin-bottom: 10px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-top: 24px;
+      margin-bottom: 12px;
     }
     .bpm-body {
       font-size: 14px;
@@ -181,14 +185,14 @@
       margin-bottom: 16px;
     }
     .bpm-img-caption {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 300;
       font-style: italic;
       color: #888;
       text-align: center;
       line-height: 1.5;
       margin-top: 6px;
-      margin-bottom: 20px;
+      margin-bottom: 28px;
     }
     .bpm-table {
       width: 100%;
@@ -201,13 +205,13 @@
       font-weight: 600;
       color: #111;
       border: 1px solid #d0d0d0;
-      padding: 6px 8px;
+      padding: 6px 12px;
       text-align: center;
       line-height: 1.4;
     }
     .bpm-table td {
       border: 1px solid #d0d0d0;
-      padding: 5px 8px;
+      padding: 5px 12px;
       font-weight: 300;
       color: #333;
       text-align: center;
@@ -266,11 +270,13 @@
     <hr class="divider" />
 
     <div class="meta">
-      Instructor: Wei Liang<br />
-      Master in Sustainable Design &nbsp;|&nbsp; Carnegie Mellon University, PA &nbsp;|&nbsp; 2023<br />
-      Tools: eQUEST, IESVE, Design Builder, &amp; EnergyPlus<br />
-      Type of Work: Team
+      <div>Instructor: Wei Liang</div>
+      <div>Master in Sustainable Design &nbsp;|&nbsp; Carnegie Mellon University, PA &nbsp;|&nbsp; 2023</div>
+      <div>Tools: eQUEST, IESVE, Design Builder, &amp; EnergyPlus</div>
+      <div>Type of Work: Team</div>
     </div>
+
+    <hr class="divider" />
 
     <div class="body-text">
       <p>The BPM course focuses on conceptual foundations and practical applications of advanced and integrated whole-building energy simulation programs with emphasis on architectural building envelope systems, mechanical electrical building systems and their controls (electric lighting and HVAC systems) and building-integrated solar photo voltaic power systems. Building Information Modeling (BIM) concept and its connectivity to Building Energy Modeling (BIM).</p>
@@ -278,11 +284,11 @@
     </div>
 
     <!-- Two-col: Baseline Model + Solar Shading -->
-    <div class="bpm-two-col">
+    <div class="bpm-two-col bpm-two-col--tables">
 
       <!-- LEFT column -->
       <div class="bpm-col">
-        <img class="full-img" src="/4. Building Performance/Baseline Model/Slide1.PNG" alt="Baseline model outline" />
+        <img class="full-img" src="/4. Building Performance/Chart.png" alt="Baseline model outline" />
         <p class="bpm-img-caption">The above image represents the outline used to create the baseline model</p>
 
         <img class="full-img" src="/4. Building Performance/NW elevation-2.png" alt="NW elevation" />
@@ -358,9 +364,8 @@
         <p class="bpm-sub-label">Solar Shading Analysis</p>
         <p class="bpm-body">In case of installing PV panels it is important to analyze the shading casted on the building by surrounding objects/vegetation, and energy received on each surface to leverage the maximum energy. 'Solar shading calculations' suggests that the roof and southern facade of the building receive maximum solar energy up to 300 - 437.23 kBtu/ ft2. Whereas the western facade receives the least due to adjacent buildings casting shadows.</p>
 
-        <!-- HVAC Zones -->
-        <img class="full-img" src="/4. Building Performance/Baseline Model/Slide3.PNG" alt="HVAC zones tree" style="margin-top: 24px;" />
-        <p class="bpm-body" style="margin-top: 10px;">Each space is divided to create HVAC zones by 'space by space' zoning method &amp; the entire floor plate at each level is divided into 11 groups based on the geographic directions, interior area, and building cores.</p>
+        <!-- IESVE occupancy chart -->
+        <img class="full-img" src="/4. Building Performance/Building Ocuupacy Schedules/IESVE chart.png" alt="IESVE occupancy chart" style="margin-top: 16px;" />
 
         <!-- Occupancy schedules -->
         <div class="bpm-occ-grid">
@@ -403,7 +408,7 @@
 
       <!-- LEFT: parametric analysis -->
       <div class="bpm-col">
-        <img class="full-img" src="/4. Building Performance/Baseline Model/Slide4.PNG" alt="Parametric analysis diagram" />
+        <img class="full-img" src="/4. Building Performance/Picture17.jpg" alt="Parametric analysis diagram" />
 
         <p class="bpm-sub-label">Parametric Analysis</p>
         <p class="bpm-body">Parametric analysis helped to reduce EUI of the building with emphasis on building envelope thermal properties, solar shading, occupancy features, and building geometric properties.</p>
@@ -417,34 +422,12 @@
 
       <!-- RIGHT: Baseline vs Final Model comparison -->
       <div class="bpm-col">
-        <div class="bpm-model-header">
-          <span class="bpm-model-label">Baseline Model</span>
-          <span class="bpm-model-label">Final Model</span>
-        </div>
         <img class="full-img" src="/4. Building Performance/Final Model/Graphs & pie charts.png" alt="Comparison of energy consumption — baseline vs final model" />
         <p class="bpm-img-caption">Comparison of Energy Consumption by End Use, Fuel Type, and Peak Usage</p>
       </div>
 
     </div>
 
-    <!-- Final Model -->
-    <h2 class="section-heading">Final Model &amp; Results</h2>
-    <div class="grid-4">
-      <img src="/4. Building Performance/Final Model/Slide5.PNG" alt="Final model — optimized geometry" />
-      <img src="/4. Building Performance/Final Model/Slide6.PNG" alt="Final model — modified zones" />
-      <img src="/4. Building Performance/Final Model/Slide7.PNG" alt="Final model — updated envelope" />
-      <img src="/4. Building Performance/Final Model/Slide9.PNG" alt="Final model — system changes" />
-    </div>
-    <p class="img-caption">Final Optimized Model — Modified Geometry and System Parameters</p>
-
-    <img class="full-img" src="/4. Building Performance/Final Model/Graphs & pie charts.png" alt="Energy performance graphs and pie charts" />
-    <p class="img-caption">Energy Performance Summary — Graphs &amp; Pie Charts</p>
-
-    <div class="grid-2">
-      <img src="/4. Building Performance/Picture16.png" alt="Performance result comparison" />
-      <img src="/4. Building Performance/Picture17.jpg" alt="Performance result detail" />
-    </div>
-    <p class="img-caption">Comparative Building Performance Results</p>
 
   </div>
 
