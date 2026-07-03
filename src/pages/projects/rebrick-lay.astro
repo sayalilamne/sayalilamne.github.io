@@ -1,0 +1,237 @@
+---
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rebrick Lay — Sayali Lamne</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: #ffffff;
+      color: #111111;
+      line-height: 1.6;
+    }
+
+    .nav { padding: 32px 6%; }
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #db634c;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .back:hover { text-decoration: underline; }
+
+    .hero-image {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      overflow: visible;
+    }
+    .hero-single {
+      width: 70%;
+      max-width: 760px;
+      margin: 0 auto 0 18%;
+      clip-path: inset(0 8% 0 8%);
+    }
+    .hero-single img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .hero-image__num {
+      position: absolute;
+      bottom: -16px;
+      left: 5%;
+      font-size: clamp(80px, 14vw, 160px);
+      font-weight: 700;
+      color: rgba(0,0,0,0.07);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 1.7% 100px;
+    }
+
+    .project-title {
+      font-size: clamp(28px, 4.5vw, 48px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.3px;
+      margin-bottom: 6px;
+    }
+    .project-subtitle {
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 600;
+      line-height: 1.2;
+      color: #111;
+      margin-bottom: 14px;
+    }
+    .project-tag {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #db634c;
+      margin-bottom: 28px;
+      letter-spacing: 0.01em;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid #e8e8e8;
+      margin: 28px 0;
+    }
+    .meta {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.9;
+      color: #111;
+      margin-bottom: 36px;
+    }
+    .body-text p {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: #111;
+      text-align: justify;
+      margin-bottom: 24px;
+    }
+    .body-text p:last-child { margin-bottom: 0; }
+
+    .full-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .img-caption {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 300;
+      font-style: italic;
+      color: #888;
+      line-height: 1.5;
+      margin-bottom: 32px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .grid-2 img { width: 100%; height: auto; display: block; }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .grid-3 img { width: 100%; height: auto; display: block; }
+
+    .section-heading {
+      font-size: 20px;
+      font-weight: 600;
+      color: #111;
+      margin-top: 64px;
+      margin-bottom: 8px;
+    }
+    .section-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #db634c;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+    .logo-row img {
+      width: 140px;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a class="back" href="/projects/computational-design">← Back to Computational &amp; Regenerative Design</a>
+  </nav>
+
+  <div class="hero-image">
+    <div class="hero-single">
+      <img src="/8.%20Rebrick%20Lay/Not%20needed/3_1.png" alt="Rebrick Lay — Brick Wall Visualization" />
+    </div>
+    <span class="hero-image__num">02</span>
+  </div>
+
+  <div class="content">
+    <h1 class="project-title">Rebrick Lay</h1>
+    <h2 class="project-subtitle">A Custom Plug-in for Circular Economy</h2>
+    <span class="project-tag">Application of Computational Design for Sustainability</span>
+
+    <hr class="divider" />
+
+    <div class="meta">
+      <div>Instructor: Jinmo Rhee</div>
+      <div>Scripting &amp; Parametric Design &nbsp;|&nbsp; (MSSD) Carnegie Mellon University &nbsp;|&nbsp; 2022</div>
+      <div>Tools: Rhino, Grasshopper, &amp; Gh Python</div>
+      <div>Type of Work: Teamwork with Sanjana Nagaraj</div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="body-text">
+      <p>The project goal was to design and develop a custom Grasshopper Plugin, a toolkit that can support complex, repeated, or laborious design processes and helps designers explore diverse design solutions.</p>
+      <p>For this assignment, we focused on the circular economy. Almost 20% of C &amp; D waste comprises bricks and more than 75% goes to landfills. There are many limitations in reusing these reclaimed bricks, which makes it difficult to use them. Thus, we created a customized plugin using ghPython, which can take the data of these reclaimed bricks and help designers, architects, and engineers to visualize n number of patterns and return an exact number of bricks used from each batch of bricks for it. This can reduce construction waste &amp; encourage a circular economy in the building industry.</p>
+    </div>
+
+    <img class="full-img" src="/8. Rebrick Lay/Brick-wall.gif" alt="Various brick patterns created from reclaimed bricks" style="margin-top: 32px; margin-bottom: 0;" />
+    <p class="img-caption" style="margin-top: 0; margin-bottom: 4px;">Various brick patterns created from reclaimed bricks by using custom Grasshopper Plugin tool</p>
+
+    <!-- Methodology -->
+    <div class="body-text" style="margin-bottom: 16px;">
+      <p>The algorithm for the plugin is divided into 6 parts from input to output. For input a brick batch parameter will take these parameters to create a 1-D list. Combine data will combine data from these lists to give a 2-D list. Apart from these users must select a wall geometry and an attractor point. These batches will get sorted based on their compressive strengths. Next it will access starting points of each panel, which will get divided in primary and secondary distribution to add bricks based on the given dimensions. At the end it will provide number of remaining bricks from each batch after their use for constructing the wall &amp; create patterns. Users can select their preference through attractor point system.</p>
+    </div>
+
+    <div style="display: flex; justify-content: center; margin: 24px 0 4px;">
+      <img style="width: 200px; height: auto;" src="/8. Rebrick Lay/Logo-2.png" alt="Rebrick Lay Plugin Logo" />
+    </div>
+
+    <p class="img-caption" style="margin-bottom: 16px;">The algorithm for the plugin is divided into 6 parts from input to output.</p>
+
+    <img class="full-img" src="/8. Rebrick Lay/Methodology Diagram.png" alt="Methodology Diagram" />
+    <p class="img-caption">Plugin workflow — from brick batch input to pattern output</p>
+
+    <div class="body-text" style="margin-top: 48px; margin-bottom: 20px;">
+      <p>The following video will demonstrate the geometric logic and the custom plugin components in detail.</p>
+    </div>
+
+    <a href="https://youtu.be/-qUj-xfQrp8" target="_blank" rel="noopener noreferrer" style="display: block; position: relative; margin-bottom: 6px;">
+      <img class="full-img" src="/8.%20Rebrick%20Lay/Results/Youtube%20video.PNG" alt="Demonstration of the Grasshopper Plugin" style="margin-bottom: 0; display: block;" />
+    </a>
+    <p class="img-caption" style="text-align: left; margin-bottom: 4px;">Demonstration of the Grasshopper Plugin</p>
+    <p class="img-caption" style="text-align: left; margin-bottom: 0;">YouTube link to the video: <a href="https://youtu.be/-qUj-xfQrp8" style="color: #db634c;">https://youtu.be/-qUj-xfQrp8</a></p>
+
+  </div>
+</body>
+</html>
