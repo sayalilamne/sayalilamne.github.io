@@ -18,7 +18,39 @@
       line-height: 1.6;
     }
 
-    .nav { padding: 32px 6%; }
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+      padding: 24px 130px 24px 60px;
+      box-sizing: border-box;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: #111;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      margin-left: auto;
+    }
+    .nav a {
+      font-size: 15px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: #444;
+      text-decoration: none;
+    }
+    .nav a:hover { color: #db634c; }
     .back {
       display: inline-flex;
       align-items: center;
@@ -32,35 +64,60 @@
     }
     .back:hover { text-decoration: underline; }
 
-    .hero-image {
+    .hero-split {
       position: relative;
       width: 100%;
-      max-width: 1100px;
+      max-width: 1440px;
       margin: 0 auto;
-      overflow: visible;
+      height: calc(100vh - 80px - 180px);
+      overflow: hidden;
     }
-    .hero-single {
-      width: 70%;
-      max-width: 760px;
-      margin: 0 auto 0 18%;
-      clip-path: inset(0 8% 0 8%);
+    .overview-bar {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      border-top: 1px solid #e8e8e8;
+      border-bottom: 1px solid #e8e8e8;
     }
-    .hero-single img {
+    .overview-bar .meta {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 2;
+      color: #111;
+      margin: 0;
+    }
+    .hero-right {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-right img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
       display: block;
     }
-    .hero-image__num {
-      position: absolute;
-      bottom: -16px;
-      left: 5%;
-      font-size: clamp(80px, 14vw, 160px);
+    .hero-left {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 5% 56px 60px;
+      height: 100%;
+      width: 45%;
+    }
+    .hero-num {
+      font-size: clamp(80px, 12vw, 160px);
       font-weight: 700;
-      color: rgba(0,0,0,0.07);
-      line-height: 1;
+      color: rgba(0,0,0,0.08);
+      line-height: 0.9;
       user-select: none;
       pointer-events: none;
+      margin-bottom: 8px;
     }
+    .hero-left-content {}
 
     .content {
       max-width: 1100px;
@@ -174,42 +231,53 @@
 </head>
 <body>
   <nav class="nav">
-    <a class="back" href="/projects/computational-design">← Back to Computational &amp; Regenerative Design</a>
+    <a class="nav-logo" href="/">SL</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/#projects">Projects</a>
+      <a href="#">Research</a>
+      <a href="#">About me</a>
+      <a href="mailto:sayali03lamne@gmail.com">Contacts</a>
+    </div>
   </nav>
 
-  <div class="hero-image">
-    <div class="hero-single">
-      <img src="/8.%20Rebrick%20Lay/Not%20needed/3_1.png" alt="Rebrick Lay — Brick Wall Visualization" />
+  <div class="hero-split">
+    <div class="hero-left">
+      <span class="hero-num">02</span>
+      <div class="hero-left-content">
+        <h1 class="project-title">Rebrick Lay</h1>
+        <h2 class="project-subtitle">A Custom Plug-in for Circular Economy</h2>
+        <span class="project-tag">Application of Computational Design for Sustainability</span>
+      </div>
     </div>
-    <span class="hero-image__num">02</span>
+    <div class="hero-right">
+      <img src="/8.%20Rebrick%20Lay/hero-new.png" alt="Rebrick Lay — Brick Wall Visualization" />
+    </div>
   </div>
 
-  <div class="content">
-    <h1 class="project-title">Rebrick Lay</h1>
-    <h2 class="project-subtitle">A Custom Plug-in for Circular Economy</h2>
-    <span class="project-tag">Application of Computational Design for Sustainability</span>
-
-    <hr class="divider" />
-
+  <div class="overview-bar">
+    <div style="max-width: 1100px; margin: 0 auto; padding: 0 1.7%; width: 100%;">
     <div class="meta">
       <div>Instructor: Jinmo Rhee</div>
       <div>Scripting &amp; Parametric Design &nbsp;|&nbsp; (MSSD) Carnegie Mellon University &nbsp;|&nbsp; 2022</div>
       <div>Tools: Rhino, Grasshopper, &amp; Gh Python</div>
       <div>Type of Work: Teamwork with Sanjana Nagaraj</div>
     </div>
+    </div>
+  </div>
 
-    <hr class="divider" />
+  <div class="content">
 
     <div class="body-text">
       <p>The project goal was to design and develop a custom Grasshopper Plugin, a toolkit that can support complex, repeated, or laborious design processes and helps designers explore diverse design solutions.</p>
       <p>For this assignment, we focused on the circular economy. Almost 20% of C &amp; D waste comprises bricks and more than 75% goes to landfills. There are many limitations in reusing these reclaimed bricks, which makes it difficult to use them. Thus, we created a customized plugin using ghPython, which can take the data of these reclaimed bricks and help designers, architects, and engineers to visualize n number of patterns and return an exact number of bricks used from each batch of bricks for it. This can reduce construction waste &amp; encourage a circular economy in the building industry.</p>
     </div>
 
-    <img class="full-img" src="/8. Rebrick Lay/Brick-wall.gif" alt="Various brick patterns created from reclaimed bricks" style="margin-top: 32px; margin-bottom: 0;" />
-    <p class="img-caption" style="margin-top: 0; margin-bottom: 4px;">Various brick patterns created from reclaimed bricks by using custom Grasshopper Plugin tool</p>
+    <img class="full-img" src="/8. Rebrick Lay/Brick-wall.gif" alt="Various brick patterns created from reclaimed bricks" style="margin-top: 32px; margin-bottom: -40px;" />
+    <p class="img-caption" style="margin-top: 2px; margin-bottom: 4px;">Various brick patterns created from reclaimed bricks by using custom Grasshopper Plugin tool</p>
 
     <!-- Methodology -->
-    <div class="body-text" style="margin-bottom: 16px;">
+    <div class="body-text" style="margin-top: 32px; margin-bottom: 16px;">
       <p>The algorithm for the plugin is divided into 6 parts from input to output. For input a brick batch parameter will take these parameters to create a 1-D list. Combine data will combine data from these lists to give a 2-D list. Apart from these users must select a wall geometry and an attractor point. These batches will get sorted based on their compressive strengths. Next it will access starting points of each panel, which will get divided in primary and secondary distribution to add bricks based on the given dimensions. At the end it will provide number of remaining bricks from each batch after their use for constructing the wall &amp; create patterns. Users can select their preference through attractor point system.</p>
     </div>
 
@@ -231,6 +299,10 @@
     </a>
     <p class="img-caption" style="text-align: left; margin-bottom: 4px;">Demonstration of the Grasshopper Plugin</p>
     <p class="img-caption" style="text-align: left; margin-bottom: 0;">YouTube link to the video: <a href="https://youtu.be/-qUj-xfQrp8" style="color: #db634c;">https://youtu.be/-qUj-xfQrp8</a></p>
+
+    <div style="margin-top: 64px;">
+      <a class="back" href="/projects/computational-design">← Back to Computational &amp; Regenerative Design</a>
+    </div>
 
   </div>
 </body>
