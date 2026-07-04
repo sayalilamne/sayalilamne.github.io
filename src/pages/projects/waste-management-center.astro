@@ -18,53 +18,170 @@
       line-height: 1.6;
     }
 
-    .nav { padding: 32px 6%; }
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+      padding: 24px 130px 24px 70px;
+      box-sizing: border-box;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: #111;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      margin-left: auto;
+    }
+    .nav a {
+      font-size: 18px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: #111;
+      text-decoration: none;
+    }
+    .nav a:hover { color: #db634c; }
     .back {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 500;
-      color: #db634c;
+      gap: 10px;
+      font-size: 15px;
+      font-weight: 400;
+      color: #333;
       text-decoration: none;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      border: 1.5px solid #333;
+      padding: 12px 28px;
     }
-    .back:hover { text-decoration: underline; }
+    .back {
+      transition: transform 0.2s ease;
+    }
+    .back:hover { text-decoration: none; transform: scale(1.05); }
+    .back .back-arrow {
+      color: #bbb;
+      font-size: 16px;
+      transition: color 0.2s ease;
+    }
+    .back:hover .back-arrow { color: #db634c; }
 
-    .hero-image {
+    .hero-split {
       position: relative;
       width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      overflow: visible;
+      height: calc(100vh - 80px - 180px);
+      max-height: 750px;
+      overflow: hidden;
+      margin-top: 80px;
     }
-    .hero-single {
-      width: 75%;
-      max-width: 760px;
-      margin: 0 auto;
+    .overview-bar {
+      display: flex;
+      align-items: center;
+      padding: 20px 0 0;
     }
-    .hero-single img {
-      width: 100%;
+    .overview-bar .meta {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 28px;
+      color: #111;
+      margin: 0;
+    }
+    .hero-right {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      background: #ffffff;
+    }
+    .hero-right img {
+      position: absolute;
+      width: 103.5%;
       height: auto;
+      left: -1.75%;
+      top: calc(-5% - 335px);
       display: block;
     }
-    .hero-image__num {
+
+    @media (min-width: 1600px) {
+      .hero-split {
+        max-height: 900px;
+      }
+    }
+    .scroll-cue {
       position: absolute;
-      bottom: -16px;
-      left: 5%;
-      font-size: clamp(80px, 14vw, 160px);
+      bottom: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      background: #fff;
+      padding: 0 20px;
+      color: #b3b3b3;
+      text-decoration: none;
+      transition: color 0.3s ease, opacity 0.4s ease;
+      z-index: 2;
+      white-space: nowrap;
+    }
+    .scroll-cue:hover { color: #8a8a8a; }
+    .scroll-cue__label {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .scroll-cue__arrows {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 0.55;
+      animation: scrollFloat 1.9s ease-in-out infinite;
+    }
+    .scroll-cue__arrows svg { width: 14px; height: 14px; }
+    @keyframes scrollFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(5px); }
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 5% 56px 70px;
+      height: 100%;
+      width: 45%;
+    }
+    .hero-num {
+      font-size: clamp(80px, 12vw, 160px);
       font-weight: 700;
-      color: rgba(0,0,0,0.07);
-      line-height: 1;
+      color: rgba(0,0,0,0.15);
+      line-height: 0.9;
       user-select: none;
       pointer-events: none;
+      margin-bottom: 8px;
     }
+    .hero-left-content {}
 
     .content {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 48px 1.7% 100px;
+      padding: 20px 1.7% 100px;
     }
 
     .project-title {
@@ -72,11 +189,18 @@
       font-weight: 700;
       line-height: 1.15;
       letter-spacing: -0.3px;
+      margin-bottom: 6px;
+    }
+    .project-subtitle {
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 600;
+      line-height: 1.2;
+      color: #111;
       margin-bottom: 14px;
     }
     .project-tag {
       display: inline-block;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 600;
       color: #db634c;
       margin-bottom: 28px;
@@ -96,9 +220,9 @@
     }
     .body-text p {
       font-size: 16px;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.85;
-      color: #333;
+      color: #111;
       text-align: justify;
       margin-bottom: 24px;
     }
@@ -108,15 +232,16 @@
       width: 100%;
       height: auto;
       display: block;
-      margin-bottom: 12px;
+      margin-bottom: 0;
     }
     .img-caption {
-      text-align: center;
-      font-size: 13px;
+      text-align: left;
+      font-size: 14px;
       font-weight: 300;
       font-style: italic;
       color: #888;
       line-height: 1.5;
+      margin-top: 5px;
       margin-bottom: 32px;
     }
 
@@ -144,7 +269,7 @@
       margin-bottom: 8px;
     }
     .section-label {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
       color: #db634c;
       letter-spacing: 0.05em;
@@ -155,30 +280,48 @@
 </head>
 <body>
   <nav class="nav">
-    <a class="back" href="/projects/computational-design">← Back to Computational &amp; Regenerative Design</a>
+    <a class="nav-logo" href="/">SL</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/#projects">Projects</a>
+      <a href="#">Research</a>
+      <a href="#">About me</a>
+      <a href="mailto:sayali03lamne@gmail.com">Contacts</a>
+    </div>
   </nav>
 
-  <div class="hero-image">
-    <div class="hero-single">
+  <div class="hero-split">
+    <div class="hero-left">
+      <span class="hero-num">01</span>
+      <div class="hero-left-content">
+        <h1 class="project-title">Waste Management Center, Mumbai</h1>
+        <span class="project-tag">Application of Sustainable Design Strategies</span>
+      </div>
+    </div>
+    <div class="hero-right">
       <img src="/7. Waste Management Center/aerial view-1-PS-website.jpg" alt="Waste Management Center, Mumbai — Aerial View" />
     </div>
-    <span class="hero-image__num">01</span>
   </div>
 
-  <div class="content">
-    <h1 class="project-title">Waste Management Center, Mumbai</h1>
-    <span class="project-tag">Application of Sustainable Design Strategies</span>
-
-    <hr class="divider" />
-
-    <div class="meta">
-      <div>Competition Entry - Asia's Young Designer Award &nbsp;|&nbsp; 2019</div>
-      <div>Location: Mulund, Mumbai &nbsp;|&nbsp; Project Type: Industrial &amp; Public</div>
-      <div>Tools: Revit, Rhino, Grasshopper, Ladybug</div>
-      <div>Type of Work: Individual</div>
+  <div class="overview-bar">
+    <div style="position: relative; max-width: 1100px; margin: 0 auto; padding: 0 1.7%; width: 100%; border-bottom: 1px solid #e8e8e8; padding-bottom: 20px;">
+      <div class="meta">
+        <div>Competition Entry — Asia's Young Designer Award &nbsp;|&nbsp; 2019</div>
+        <div>Location: Mulund, Mumbai &nbsp;|&nbsp; Project Type: Industrial &amp; Public</div>
+        <div>Tools: Revit, Rhino, Grasshopper, Ladybug</div>
+        <div>Type of Work: Individual</div>
+      </div>
+      <a href="#content" class="scroll-cue" aria-label="Scroll down">
+        <span class="scroll-cue__label">Scroll Down</span>
+        <span class="scroll-cue__arrows" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
     </div>
+  </div>
 
-    <hr class="divider" />
+  <div id="content" class="content">
 
     <div class="body-text">
       <p>The theme of this competition was to provide a design solution for the 'Sustainable future' of our built environment. Considering the exceeding amount of waste and shortage of landfill spaces in Mumbai a waste management center was proposed to replace an existing landfill site.</p>
@@ -191,11 +334,11 @@
 
     <div style="display: grid; grid-template-columns: 1fr 1.6fr; gap: 0 32px; align-items: start; margin-bottom: 8px;">
       <div>
-        <img class="full-img" src="/7. Waste Management Center/Site location.jpg" alt="Site Location — Mulund, Mumbai" style="margin-bottom: 4px;" />
+        <img class="full-img" src="/7. Waste Management Center/Site location.jpg" alt="Site Location — Mulund, Mumbai" />
         <p class="img-caption">Site Location</p>
       </div>
       <div>
-        <img class="full-img" src="/7. Waste Management Center/flow diagram-latest-2.png" alt="Flow of the Waste Management" style="margin-bottom: 4px;" />
+        <img class="full-img" src="/7. Waste Management Center/flow diagram-latest-2.png" alt="Flow of the Waste Management" />
         <p class="img-caption">Flow of the Waste Management</p>
       </div>
     </div>
@@ -242,6 +385,23 @@
 
     <img class="full-img" src="/7. Waste Management Center/waste management centre - sectinal perspective-1.jpg" alt="Sectional Perspective" />
     <p class="img-caption">Sectional Perspective Showing Sustainable Strategies Used</p>
+
+    <div style="margin-top: 64px;">
+      <a class="back" href="/projects/computational-design">Back <span class="back-arrow">›</span></a>
+    </div>
+
   </div>
+  <script is:inline>
+    (function() {
+      const el = document.querySelector('.scroll-cue');
+      function update() {
+        const hidden = window.scrollY > 60;
+        el.style.opacity = hidden ? '0' : '1';
+        el.style.pointerEvents = hidden ? 'none' : 'auto';
+      }
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+    })();
+  </script>
 </body>
 </html>
