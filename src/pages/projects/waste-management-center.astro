@@ -81,7 +81,7 @@
       position: relative;
       width: 100%;
       height: calc(100vh - 80px - 80px);
-      max-height: 750px;
+      max-height: 900px;
       overflow: hidden;
       margin-top: 80px;
     }
@@ -171,7 +171,7 @@
     .hero-num {
       font-size: clamp(80px, 12vw, 160px);
       font-weight: 700;
-      color: rgba(0,0,0,0.15);
+      color: rgba(0,0,0,0.25);
       line-height: 0.9;
       user-select: none;
       pointer-events: none;
@@ -333,15 +333,16 @@
     <h2 class="section-heading">Site &amp; Concept</h2>
     <p class="section-label">Location &amp; Design Strategy</p>
 
-    <div style="display: grid; grid-template-columns: 1fr 1.6fr; gap: 0 32px; align-items: start; margin-bottom: 8px;">
-      <div>
+    <div style="display: flex; justify-content: center; margin-bottom: 8px;">
+      <div style="max-width: 70%;">
         <img class="full-img" src="/7. Waste Management Center/Site location.jpg" alt="Site Location — Mulund, Mumbai" />
-        <p class="img-caption">Site Location</p>
+        <p class="img-caption" style="text-align: center;">Site Location</p>
       </div>
-      <div>
-        <img class="full-img" src="/7. Waste Management Center/flow diagram-latest-2.png" alt="Flow of the Waste Management" />
-        <p class="img-caption">Flow of the Waste Management</p>
-      </div>
+    </div>
+
+    <div style="margin-bottom: 8px;">
+      <img class="full-img" src="/7. Waste Management Center/flow diagram-latest-2.png" alt="Flow of the Waste Management" />
+      <p class="img-caption" style="text-align: center;">Flow of the Waste Management</p>
     </div>
 
     <img class="full-img" src="/7. Waste Management Center/Concept-2.png" alt="Design Process Diagram" style="margin-top: 16px;" />
