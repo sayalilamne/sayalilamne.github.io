@@ -18,61 +18,172 @@
       line-height: 1.6;
     }
 
-    /* ── Nav ── */
-    .nav { padding: 32px 6%; }
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 1px 12px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+      padding: 24px 130px 24px 70px;
+      box-sizing: border-box;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: #111;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      margin-left: auto;
+    }
+    .nav a {
+      font-size: 18px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: #111;
+      text-decoration: none;
+    }
+    .nav a:hover { color: #db634c; }
     .back {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 500;
-      color: #db634c;
+      gap: 10px;
+      font-size: 15px;
+      font-weight: 400;
+      color: #333;
       text-decoration: none;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      border: 1.5px solid #333;
+      padding: 12px 28px;
     }
-    .back:hover { text-decoration: underline; }
+    .back {
+      transition: transform 0.2s ease;
+    }
+    .back:hover { text-decoration: none; transform: scale(1.05); }
+    .back .back-arrow {
+      color: #bbb;
+      font-size: 16px;
+      transition: color 0.2s ease;
+    }
+    .back:hover .back-arrow { color: #db634c; }
 
-    /* ── Hero image ── */
-    .hero-image {
+    .hero-split {
       position: relative;
       width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      overflow: visible;
+      height: calc(100vh - 80px - 80px);
+      max-height: 900px;
+      overflow: hidden;
+      margin-top: 80px;
     }
-    .hero-image img {
-      width: 100%;
-      height: auto;
-      display: block;
+    .overview-bar {
+      display: flex;
+      align-items: center;
+      padding: 20px 0 0;
     }
-    .hero-single {
-      width: 72%;
-      max-width: 720px;
-      margin: 0 auto;
+    .overview-bar .meta {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 28px;
+      color: #111;
+      margin: 0;
     }
-    .hero-single img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .hero-image__num {
+    .hero-right {
       position: absolute;
-      bottom: -16px;
-      left: 5%;
-      font-size: clamp(80px, 14vw, 160px);
-      font-weight: 700;
-      color: rgba(0,0,0,0.07);
-      line-height: 1;
-      user-select: none;
-      pointer-events: none;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      background: #ffffff;
+    }
+    .hero-right img {
+      position: absolute;
+      width: 60%;
+      height: auto;
+      top: 50%;
+      left: calc(50% + 200px);
+      transform: translate(-50%, -50%);
+      display: block;
     }
 
-    /* ── Content ── */
+    @media (min-width: 1600px) {
+      .hero-split {
+        max-height: 900px;
+      }
+    }
+    .scroll-cue {
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      background: #fff;
+      padding: 0 20px;
+      color: #b3b3b3;
+      text-decoration: none;
+      transition: color 0.3s ease, opacity 0.4s ease;
+      z-index: 2;
+      white-space: nowrap;
+    }
+    .scroll-cue:hover { color: #8a8a8a; }
+    .scroll-cue__label {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .scroll-cue__arrows {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 0.55;
+      animation: scrollFloat 1.9s ease-in-out infinite;
+    }
+    .scroll-cue__arrows svg { width: 14px; height: 14px; }
+    @keyframes scrollFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(5px); }
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 5% 56px 70px;
+      height: 100%;
+      width: 45%;
+    }
+    .hero-num {
+      font-size: clamp(80px, 12vw, 160px);
+      font-weight: 700;
+      color: rgba(0,0,0,0.25);
+      line-height: 0.9;
+      user-select: none;
+      pointer-events: none;
+      margin-bottom: 8px;
+    }
+    .hero-left-content {}
+
     .content {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 48px 1.7% 100px;
+      padding: 20px 1.7% 100px;
     }
 
     .project-title {
@@ -80,11 +191,18 @@
       font-weight: 700;
       line-height: 1.15;
       letter-spacing: -0.3px;
+      margin-bottom: 6px;
+    }
+    .project-subtitle {
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 600;
+      line-height: 1.2;
+      color: #111;
       margin-bottom: 14px;
     }
     .project-tag {
       display: inline-block;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 600;
       color: #db634c;
       margin-bottom: 28px;
@@ -104,77 +222,69 @@
     }
     .body-text p {
       font-size: 16px;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.85;
-      color: #333;
+      color: #111;
       text-align: justify;
       margin-bottom: 24px;
     }
     .body-text p:last-child { margin-bottom: 0; }
 
-    /* ── Section heading ── */
-    .section-label {
-      font-size: 13px;
-      font-weight: 600;
-      color: #db634c;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-    }
-
-    /* ── Full-width single image ── */
     .full-img {
       width: 100%;
       height: auto;
       display: block;
-      margin-bottom: 12px;
+      margin-bottom: 0;
     }
     .img-caption {
-      text-align: center;
-      font-size: 13px;
+      text-align: left;
+      font-size: 14px;
       font-weight: 300;
+      font-style: italic;
       color: #888;
       line-height: 1.5;
+      margin-top: 5px;
       margin-bottom: 32px;
     }
 
-    /* ── Image grid 2-col ── */
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
       margin-bottom: 16px;
     }
-    .grid-2 img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+    .grid-2 img { width: 100%; height: auto; display: block; }
 
-    /* ── Image grid 3-col ── */
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
       margin-bottom: 16px;
     }
-    .grid-3 img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+    .grid-3 img { width: 100%; height: auto; display: block; }
 
-    /* ── Image grid 4-col ── */
     .grid-4 {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 12px;
       margin-bottom: 16px;
     }
-    .grid-4 img {
-      width: 100%;
-      height: auto;
-      display: block;
+    .grid-4 img { width: 100%; height: auto; display: block; }
+
+    .section-heading {
+      font-size: 20px;
+      font-weight: 600;
+      color: #111;
+      margin-top: 64px;
+      margin-bottom: 8px;
+    }
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #db634c;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
     }
 
     /* ── Solar Radiation section ── */
@@ -318,7 +428,6 @@
 
     @media (max-width: 860px) {
       .thermal-two-col { grid-template-columns: 1fr; }
-      .study-two-col { grid-template-columns: 1fr; }
       .thermal-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 700px) {
@@ -328,35 +437,51 @@
   </style>
 </head>
 <body>
-
   <nav class="nav">
-    <a class="back" href="/projects/building-performance">← Back to Building Performance</a>
+    <a class="nav-logo" href="/">SL</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/#projects">Projects</a>
+      <a href="#">Research</a>
+      <a href="#">About me</a>
+      <a href="mailto:sayali03lamne@gmail.com">Contacts</a>
+    </div>
   </nav>
 
-  <!-- Hero -->
-  <div class="hero-image">
-    <div class="hero-single">
-      <img src="/3. Environmnetal Performance Analysis/Hero image.png" alt="Environmental Performance Simulation — hero" />
+  <div class="hero-split">
+    <div class="hero-left">
+      <span class="hero-num">02</span>
+      <div class="hero-left-content">
+        <h1 class="project-title">Environmental Performance Simulation</h1>
+        <span class="project-tag">Energy Modeling</span>
+      </div>
     </div>
-    <span class="hero-image__num">02</span>
+    <div class="hero-right">
+      <img src="/3. Environmnetal Performance Analysis/Hero image.png"
+           alt="Environmental Performance Simulation — hero"
+           style="object-fit: cover; object-position: center;" />
+    </div>
   </div>
 
-  <!-- Content -->
-  <div class="content">
-
-    <h1 class="project-title">Environmental Performance Simulation</h1>
-    <span class="project-tag">Energy Modeling</span>
-
-    <hr class="divider" />
-
-    <div class="meta">
-      <div>Instructor: Omer T. Karaguzel</div>
-      <div>Master in Sustainable Design &nbsp;|&nbsp; Carnegie Mellon University, PA &nbsp;|&nbsp; 2023</div>
-      <div>Tools: Rhino, Grasshopper, Climate Studio &amp; Ladybug Plugin</div>
-      <div>Type of Work: Team Work</div>
+  <div class="overview-bar">
+    <div style="position: relative; max-width: 1100px; margin: 0 auto; padding: 0 1.7%; width: 100%; border-bottom: 1px solid #e8e8e8; padding-bottom: 20px;">
+      <div class="meta">
+        <div>Instructor: Omer T. Karaguzel</div>
+        <div>Master in Sustainable Design &nbsp;|&nbsp; Carnegie Mellon University, PA &nbsp;|&nbsp; 2023</div>
+        <div>Tools: Rhino, Grasshopper, Climate Studio &amp; Ladybug Plugin</div>
+        <div>Type of Work: Team Work</div>
+      </div>
+      <a href="#content" class="scroll-cue" aria-label="Scroll down">
+        <span class="scroll-cue__label">Scroll Down</span>
+        <span class="scroll-cue__arrows" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
     </div>
+  </div>
 
-    <hr class="divider" />
+  <div id="content" class="content">
 
     <div class="body-text">
       <p>
@@ -644,7 +769,22 @@
 
     </div>
 
-  </div>
+    <div style="margin-top: 64px;">
+      <a class="back" href="/projects/building-performance">Back <span class="back-arrow">›</span></a>
+    </div>
 
+  </div>
+  <script is:inline>
+    (function() {
+      const el = document.querySelector('.scroll-cue');
+      function update() {
+        const hidden = window.scrollY > 60;
+        el.style.opacity = hidden ? '0' : '1';
+        el.style.pointerEvents = hidden ? 'none' : 'auto';
+      }
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+    })();
+  </script>
 </body>
 </html>
