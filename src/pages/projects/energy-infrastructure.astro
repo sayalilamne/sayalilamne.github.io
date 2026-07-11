@@ -18,91 +18,201 @@
       line-height: 1.6;
     }
 
-    /* ── Nav ── */
     .nav {
-      padding: 32px 6%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 1px 12px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+      padding: 24px 130px 24px 70px;
+      box-sizing: border-box;
     }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: #111;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      margin-left: auto;
+    }
+    .nav a {
+      font-size: 18px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: #111;
+      text-decoration: none;
+    }
+    .nav a:hover { color: #db634c; }
     .back {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 500;
-      color: #db634c;
+      gap: 10px;
+      font-size: 15px;
+      font-weight: 400;
+      color: #333;
       text-decoration: none;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      border: 1.5px solid #333;
+      padding: 12px 28px;
     }
-    .back:hover { text-decoration: underline; }
+    .back {
+      transition: transform 0.2s ease;
+    }
+    .back:hover { text-decoration: none; transform: scale(1.05); }
+    .back .back-arrow {
+      color: #bbb;
+      font-size: 16px;
+      transition: color 0.2s ease;
+    }
+    .back:hover .back-arrow { color: #db634c; }
 
-    /* ── Hero image area ── */
-    .hero-image {
+    .hero-split {
       position: relative;
       width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      overflow: visible;
+      height: calc(100vh - 80px - 80px);
+      max-height: 900px;
+      overflow: hidden;
+      margin-top: 80px;
     }
-    .hero-image img {
-      width: 100%;
+    .overview-bar {
+      display: flex;
+      align-items: center;
+      padding: 20px 0 0;
+    }
+    .overview-bar .meta {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 32px;
+      color: #111;
+      margin: 0;
+    }
+    .hero-right {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      background: #ffffff;
+    }
+    .hero-right img {
+      position: absolute;
+      width: 62.1%;
       height: auto;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
       display: block;
     }
-    /* Large watermark number overlapping the image bottom-left */
-    .hero-image__num {
+
+    @media (min-width: 1600px) {
+      .hero-split {
+        max-height: 900px;
+      }
+    }
+    .scroll-cue {
       position: absolute;
-      bottom: -16px;
-      left: 5%;
-      font-size: clamp(80px, 14vw, 160px);
-      font-weight: 700;
-      color: rgba(0,0,0,0.07);
-      line-height: 1;
-      user-select: none;
-      pointer-events: none;
+      bottom: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      background: #fff;
+      padding: 0 20px;
+      color: #b3b3b3;
+      text-decoration: none;
+      transition: color 0.3s ease, opacity 0.4s ease;
+      z-index: 2;
+      white-space: nowrap;
+    }
+    .scroll-cue:hover { color: #8a8a8a; }
+    .scroll-cue__label {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .scroll-cue__arrows {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 0.55;
+      animation: scrollFloat 1.9s ease-in-out infinite;
+    }
+    .scroll-cue__arrows svg { width: 14px; height: 14px; }
+    @keyframes scrollFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(5px); }
     }
 
-    /* ── Content body ── */
+    .hero-left {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 5% 56px 70px;
+      height: 100%;
+      width: 45%;
+    }
+    .hero-num {
+      font-size: clamp(80px, 12vw, 160px);
+      font-weight: 700;
+      color: rgba(0,0,0,0.25);
+      line-height: 0.9;
+      user-select: none;
+      pointer-events: none;
+      margin-bottom: 8px;
+    }
+    .hero-left-content {}
+
     .content {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 48px 1.7% 100px;
+      padding: 20px 1.7% 100px;
     }
 
-    /* Title block */
     .project-title {
       font-size: clamp(28px, 4.5vw, 48px);
       font-weight: 700;
       line-height: 1.15;
       letter-spacing: -0.3px;
-      margin-bottom: 14px;
+      margin-bottom: 6px;
     }
     .project-subtitle {
-      font-size: clamp(15px, 2vw, 18px);
+      font-size: clamp(18px, 2.5vw, 26px);
       font-weight: 600;
-      line-height: 1.4;
-      color: #222;
-      max-width: 680px;
-      margin-bottom: 28px;
+      line-height: 1.2;
+      color: #111;
+      margin-bottom: 14px;
     }
-
-    /* Category tag */
     .project-tag {
       display: inline-block;
-      font-size: 14px;
+      font-size: 18px;
       font-weight: 600;
       color: #db634c;
       margin-bottom: 28px;
       letter-spacing: 0.01em;
     }
-
-    /* Divider */
     .divider {
       border: none;
       border-top: 1px solid #e8e8e8;
       margin: 28px 0;
     }
-
-    /* Metadata */
     .meta {
       font-size: 14px;
       font-weight: 600;
@@ -110,13 +220,11 @@
       color: #111;
       margin-bottom: 36px;
     }
-
-    /* Body paragraphs */
     .body-text p {
       font-size: 16px;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.85;
-      color: #333;
+      color: #111;
       text-align: justify;
       margin-bottom: 24px;
     }
@@ -129,9 +237,9 @@
     .research-item {
       margin-bottom: 28px;
       font-size: 16px;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.85;
-      color: #333;
+      color: #111;
       text-align: justify;
     }
     .research-item:last-of-type { margin-bottom: 0; }
@@ -146,8 +254,10 @@
     }
     .methodology-figure {
       border: 1.5px dashed #d0d0d0;
-      padding: 24px;
+      padding: 12px;
       background: #fff;
+      width: 120%;
+      margin-left: -10%;
     }
     .methodology-figure img {
       width: 100%;
@@ -161,6 +271,7 @@
       text-align: center;
       font-size: 14px;
       font-weight: 300;
+      font-style: italic;
       color: #888;
       line-height: 1.5;
     }
@@ -170,14 +281,14 @@
       margin-top: 64px;
     }
     .graphs-section-title {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 600;
       color: #111;
-      margin-bottom: 32px;
+      margin-bottom: 8px;
     }
-    /* Outer container with dashed border all around */
     .graphs-grid-wrapper {
-      border: 1.5px dashed #d0d0d0;
+      width: 120%;
+      margin-left: -10%;
     }
     /* 2×2 grid */
     .graphs-grid {
@@ -186,7 +297,7 @@
       grid-template-rows: auto auto;
     }
     .graph-cell {
-      padding: 28px 24px 20px;
+      padding: 16px 12px 12px;
     }
     /* Dashed right border on left column cells */
     .graph-cell:nth-child(odd) {
@@ -206,7 +317,8 @@
       margin-top: 12px;
       font-size: 13px;
       font-weight: 300;
-      color: #555;
+      font-style: italic;
+      color: #888;
       line-height: 1.5;
       text-align: center;
     }
@@ -241,6 +353,7 @@
       text-align: center;
       font-size: 14px;
       font-weight: 300;
+      font-style: italic;
       color: #888;
       line-height: 1.5;
     }
@@ -271,7 +384,8 @@
       text-align: center;
       font-size: 14px;
       font-weight: 300;
-      color: #555;
+      font-style: italic;
+      color: #888;
       line-height: 1.5;
     }
 
@@ -324,7 +438,8 @@
       text-align: center;
       font-size: 14px;
       font-weight: 300;
-      color: #555;
+      font-style: italic;
+      color: #888;
       line-height: 1.6;
     }
     @media (max-width: 700px) {
@@ -334,12 +449,14 @@
     /* ── Scenario Analysis section ── */
     .scenario-section {
       margin-top: 72px;
+      width: 120%;
+      margin-left: -10%;
     }
     .scenario-block-label {
-      font-size: 15px;
-      font-weight: 700;
+      font-size: 18px;
+      font-weight: 600;
       color: #111;
-      margin-bottom: 14px;
+      margin-bottom: 8px;
     }
     /* Scenario-I: left 2 images + right info block */
     .scenario-i-row {
@@ -363,7 +480,8 @@
       margin-top: 8px;
       font-size: 12px;
       font-weight: 300;
-      color: #555;
+      font-style: italic;
+      color: #888;
       text-align: center;
       line-height: 1.4;
     }
@@ -373,10 +491,15 @@
       flex-direction: column;
       gap: 20px;
     }
+    .sim-study-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
     .scenario-icons {
       display: flex;
       gap: 24px;
-      justify-content: center;
     }
     .scenario-icon-item {
       display: flex;
@@ -385,9 +508,11 @@
       gap: 8px;
     }
     .scenario-icon-item img {
-      width: 100px;
+      width: 180px;
       height: auto;
       display: block;
+      transform: scale(1.2);
+      transform-origin: left center;
     }
     .scenario-icon-label {
       font-size: 13px;
@@ -396,29 +521,35 @@
       text-align: center;
     }
     .sim-study-label {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
       color: #db634c;
-      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-top: 50px;
     }
     .sim-study-body {
       font-size: 14px;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.75;
-      color: #333;
+      color: #111;
       text-align: justify;
     }
     /* Scenario-II: 4-image row */
     .scenario-ii-label {
-      font-size: 15px;
-      font-weight: 700;
+      font-size: 18px;
+      font-weight: 600;
       color: #111;
-      margin: 32px 0 14px;
+      margin: 32px 0 8px;
     }
     .scenario-ii-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
+    }
+    .scenario-ii-grid .scenario-img-wrap:nth-child(4) img {
+      aspect-ratio: 4127 / 2588;
+      object-fit: cover;
     }
     /* Framework diagrams: 2 side by side */
     .scenario-frameworks {
@@ -453,64 +584,87 @@
     .sim-cap-text {
       font-size: 13px;
       font-weight: 300;
-      color: #555;
+      font-style: italic;
+      color: #888;
       text-align: center;
       line-height: 1.5;
     }
 
     /* ── Final Results section ── */
     .final-results-section {
-      margin-top: 80px;
+      margin-top: 32px;
+      width: 138.48%;
+      margin-left: -19.24%;
     }
     .final-results-grid {
       display: grid;
-      grid-template-columns: 1.1fr 2.3fr 2.3fr 1fr;
-      gap: 16px;
+      grid-template-columns: 1.85fr 2.3fr 2.3fr 1.75fr;
+      grid-template-rows: 74.49px auto auto auto;
+      gap: 12px 16px;
       align-items: start;
+      position: relative;
+      margin-top: -16px;
     }
-    /* Left column */
+    /* Left column — display:contents so children become direct grid items,
+       letting the header/image/caption rows align across all 4 columns */
     .fr-left {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+      display: contents;
     }
     .fr-stats {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       gap: 10px;
+      justify-content: space-between;
+      grid-column: 1;
+      grid-row: 1;
+      align-self: start;
+      transform: translateY(46px);
     }
     .fr-stat-item {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 12px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 10px;
+      text-align: center;
+      gap: 3px;
+      flex: 1;
     }
-    .fr-stat-item:last-child { border-bottom: none; }
     .fr-stat-icon {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       flex-shrink: 0;
+      border-radius: 50%;
+      border: 1px solid #ddd;
+      background: #fafafa;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .fr-stat-icon img {
-      width: 100%;
-      height: 100%;
+      width: 16px;
+      height: 16px;
       object-fit: contain;
     }
     .fr-stat-text { flex: 1; }
+    .fr-stat-arrow {
+      color: #999;
+      line-height: 1;
+    }
+    .fr-stat-arrow svg {
+      width: 9px;
+      height: 9px;
+      display: block;
+      margin: 0 auto;
+    }
     .fr-stat-label {
       font-size: 10px;
       font-weight: 600;
-      color: #888;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      line-height: 1.3;
+      color: #111;
+      text-transform: none;
+      letter-spacing: normal;
+      line-height: 1.2;
     }
     .fr-stat-value {
-      font-size: 18px;
+      font-size: 14px;
       font-weight: 700;
       color: #111;
       line-height: 1.1;
@@ -520,55 +674,88 @@
       font-weight: 400;
       color: #555;
     }
+    .fr-building-img {
+      grid-column: 1;
+      grid-row: 2;
+      align-self: end;
+    }
     .fr-building-img img {
       width: 100%;
       height: auto;
       display: block;
     }
-    .fr-text-block { }
+    .fr-top-text {
+      margin-bottom: 12px;
+    }
+    .fr-top-text .fr-body-text {
+      font-size: 15px;
+    }
     .fr-section-label {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
       color: #db634c;
-      margin-bottom: 6px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
     }
     .fr-body-text {
       font-size: 12px;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.75;
-      color: #333;
+      color: #111;
       text-align: justify;
       margin-bottom: 16px;
     }
-    /* Middle columns */
+    /* Middle columns — display:contents so children align into shared grid rows */
     .fr-mid {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
+      display: contents;
     }
+    .fr-icon-labels {
+      display: grid;
+      gap: 4px;
+      align-self: end;
+    }
+    .fr-icon-labels span {
+      font-size: 11px;
+      font-weight: 500;
+      color: #111;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .fr-icon-labels--4 { grid-template-columns: repeat(4, 1fr); }
+    .fr-icon-labels--5 { grid-template-columns: repeat(5, 1fr); }
+    .fr-mid:nth-of-type(2) .fr-icon-labels { grid-column: 2; grid-row: 1; }
+    .fr-mid:nth-of-type(2) .fr-mid-img { grid-column: 2; grid-row: 2; }
+    .fr-mid:nth-of-type(2) .fr-mid-caption { grid-column: 2; grid-row: 3; }
+    .fr-mid:nth-of-type(3) .fr-icon-labels { grid-column: 3; grid-row: 1; }
+    .fr-mid:nth-of-type(3) .fr-mid-img { grid-column: 3; grid-row: 2; }
+    .fr-mid:nth-of-type(3) .fr-mid-caption { grid-column: 3; grid-row: 3; }
     .fr-mid-img img {
       width: 100%;
       height: auto;
       display: block;
     }
     .fr-mid-caption {
-      margin-top: 10px;
       font-size: 12px;
       font-weight: 300;
-      color: #555;
+      font-style: italic;
+      color: #888;
       text-align: center;
       line-height: 1.5;
     }
-    /* Right column */
+    /* Right column — display:contents so children align into shared grid rows */
     .fr-right {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+      display: contents;
     }
     .fr-benefits {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       gap: 10px;
+      justify-content: space-between;
+      grid-column: 4;
+      grid-row: 1;
+      align-self: start;
+      transform: translateY(46px);
     }
     .fr-benefit-item {
       display: flex;
@@ -598,16 +785,23 @@
       color: #333;
       line-height: 1.3;
     }
+    .fr-result-img {
+      grid-column: 4;
+      grid-row: 2;
+      align-self: end;
+    }
     .fr-result-img img {
       width: 100%;
       height: auto;
       display: block;
     }
     .fr-result-caption {
-      margin-top: 8px;
+      grid-column: 4;
+      grid-row: 3;
       font-size: 11px;
       font-weight: 300;
-      color: #555;
+      font-style: italic;
+      color: #888;
       text-align: center;
       line-height: 1.4;
     }
@@ -617,9 +811,10 @@
       margin-top: 72px;
     }
     .site-figure img {
-      width: 100%;
+      width: 75%;
       height: auto;
       display: block;
+      margin: 0 auto;
     }
     .site-legend {
       display: flex;
@@ -633,55 +828,74 @@
       text-align: center;
       font-size: 14px;
       font-weight: 300;
-      color: #555;
+      font-style: italic;
+      color: #888;
       line-height: 1.5;
-      margin-bottom: 40px;
     }
     .site-analysis-label {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 600;
       color: #db634c;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
       margin-bottom: 12px;
     }
     .site-analysis-body {
       font-size: 16px;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.85;
-      color: #333;
+      color: #111;
       text-align: justify;
+      margin-bottom: 32px;
     }
   </style>
 </head>
 <body>
 
   <nav class="nav">
-    <a class="back" href="/#projects">← Back to Projects</a>
+    <a class="nav-logo" href="/">SL</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/#projects">Projects</a>
+      <a href="#">Research</a>
+      <a href="#">About me</a>
+      <a href="mailto:sayali03lamne@gmail.com">Contacts</a>
+    </div>
   </nav>
 
-  <!-- Hero image -->
-  <div class="hero-image">
-    <img src="/1. House as a Battey/House as a bettry-Hero.png" alt="Building as a Battery — isometric illustration" />
-    <span class="hero-image__num">01</span>
+  <div class="hero-split">
+    <div class="hero-left">
+      <span class="hero-num">01</span>
+      <div class="hero-left-content">
+        <h1 class="project-title">Building as a Battery</h1>
+        <h2 class="project-subtitle">Converting buildings into an efficient energy storage system to improve energy resilience</h2>
+        <span class="project-tag">Graduate Thesis — Application of Energy Analysis</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="/1. House as a Battey/House as a bettry-Hero.png" alt="Building as a Battery — isometric illustration" />
+    </div>
   </div>
 
-  <!-- Content -->
-  <div class="content">
-
-    <h1 class="project-title">Building as a Battery</h1>
-    <p class="project-subtitle">Converting buildings into an efficient energy storage system to improve energy resilience</p>
-
-    <span class="project-tag">Graduate Thesis — Application of Energy Analysis</span>
-
-    <hr class="divider" />
-
-    <div class="meta">
-      <div>Advisors: Dana Cupkova (Track-Chair), Vivian Loftness (Co-Advisor), Azadeh Sawyer</div>
-      <div>Kushagra Varma, Sinan Goral</div>
-      <div>Master in Sustainable Design&nbsp; |&nbsp; Carnegie Mellon University, PA&nbsp; |&nbsp; 2023</div>
-      <div>Tools: EnergyPlus, IDF editor, HOMER Grid</div>
+  <div class="overview-bar">
+    <div style="position: relative; max-width: 1100px; margin: 0 auto; padding: 0 1.7%; width: 100%; border-bottom: 1px solid #e8e8e8; padding-bottom: 20px;">
+      <div class="meta">
+        <div>Advisors: Dana Cupkova (Track-Chair), Vivian Loftness (Co-Advisor), Azadeh Sawyer</div>
+        <div>Kushagra Varma, Sinan Goral</div>
+        <div>Master in Sustainable Design&nbsp; |&nbsp; Carnegie Mellon University, PA&nbsp; |&nbsp; 2023</div>
+        <div>Tools: EnergyPlus, IDF editor, HOMER Grid</div>
+      </div>
+      <a href="#content" class="scroll-cue" aria-label="Scroll down">
+        <span class="scroll-cue__label">Scroll Down</span>
+        <span class="scroll-cue__arrows" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
     </div>
+  </div>
 
-    <hr class="divider" />
+  <div id="content" class="content">
 
     <div class="body-text">
       <p>
@@ -852,6 +1066,15 @@
 
     <!-- ── Site Analysis ── -->
     <div class="site-section">
+      <p class="site-analysis-label">Site Analysis</p>
+      <p class="site-analysis-body">
+        For the application of the solution set, we have selected a site, which can represent different demographic &amp;
+        socio-economic conditions to minimize the equity &amp; environmental issues with energy resilience. Based on the
+        filters like the number of people under the LMI, category, measures taken for sustainability &amp; energy resilience,
+        access to renewable energy sources, demographic data &amp; cultural data we have selected 'Hazelwood'. Next,
+        we conducted a simulation study comparing two scenarios for a single building, the 'Community Kitchen.'
+      </p>
+
       <div class="site-figure">
         <img src="/1. House as a Battey/Site analysis with circles.png" alt="Site analysis map — building typologies in Hazelwood, Pittsburgh, PA" />
       </div>
@@ -870,15 +1093,6 @@
       </div>
 
       <p class="site-caption">Site analysis based on building typologies in the selected community area of Hazelwood, Pittsburgh, PA</p>
-
-      <p class="site-analysis-label">Site Analysis</p>
-      <p class="site-analysis-body">
-        For the application of the solution set, we have selected a site, which can represent different demographic &amp;
-        socio-economic conditions to minimize the equity &amp; environmental issues with energy resilience. Based on the
-        filters like the number of people under the LMI, category, measures taken for sustainability &amp; energy resilience,
-        access to renewable energy sources, demographic data &amp; cultural data we have selected 'Hazelwood'. Next,
-        we conducted a simulation study comparing two scenarios for a single building, the 'Community Kitchen.'
-      </p>
     </div>
 
     <!-- ── Scenario Analysis ── -->
@@ -893,24 +1107,26 @@
         <!-- Left: 2 aerial images -->
         <div class="scenario-i-images">
           <div class="scenario-img-wrap">
-            <img src="/1. House as a Battey/Scenario Analysis/1. community kitchen with solar-2.png" alt="Scenario-I — Annual electricity consumption" />
+            <img src="/1. House as a Battey/Scenario Analysis/Scenario-2_AEDG.png" alt="Scenario-I — Annual electricity consumption" />
             <p class="scenario-img-caption">Annual electricity consumption</p>
           </div>
           <div class="scenario-img-wrap">
-            <img src="/1. House as a Battey/Scenario Analysis/2. Community kitchen with battery.png" alt="Scenario-I — No energy resilience during power outage" />
+            <img src="/1. House as a Battey/Scenario Analysis/Scenario-2 result .png" alt="Scenario-I — No energy resilience during power outage" />
             <p class="scenario-img-caption">No energy resilience during power outage</p>
           </div>
         </div>
 
-        <!-- Right: scenario icons + simulation study -->
+        <!-- Right: simulation study -->
         <div class="scenario-i-info">
-          <div class="scenario-icons">
-            <div class="scenario-icon-item">
-              <img src="/1. House as a Battey/Scenario Analysis/Scenario.png" alt="Scenario I and II icons" />
-            </div>
-          </div>
           <div>
-            <p class="sim-study-label">Simulation Study :</p>
+            <div class="sim-study-header">
+              <p class="sim-study-label">Simulation Study :</p>
+              <div class="scenario-icons">
+                <div class="scenario-icon-item">
+                  <img src="/1. House as a Battey/Scenario Analysis/Simulation logos.png" alt="Scenario-I and Scenario-II icons" />
+                </div>
+              </div>
+            </div>
             <p class="sim-study-body">
               Scenario-I assumes the building meets min. standards (IECC 2018) and relies
               solely on the utility grid. Scenario-II optimizes the building's efficiency using
@@ -928,15 +1144,15 @@
       <!-- 4-image row -->
       <div class="scenario-ii-grid">
         <div class="scenario-img-wrap">
-          <img src="/1. House as a Battey/Scenario Analysis/scenario-2  AEDG. Energy efficicencypng-2.png" alt="Annual electricity consumption after energy efficiency measures" />
+          <img src="/1. House as a Battey/Scenario Analysis/Scenario-2_AEDG.png" alt="Annual electricity consumption after energy efficiency measures" />
           <p class="scenario-img-caption">Annual electricity consumption after energy efficiency measures</p>
         </div>
         <div class="scenario-img-wrap">
-          <img src="/1. House as a Battey/Scenario Analysis/Scenario-2_AEDG.png" alt="Rooftop + Carport PV System" />
+          <img src="/1. House as a Battey/Scenario Analysis/1. community kitchen with solar-2.png" alt="Rooftop + Carport PV System" />
           <p class="scenario-img-caption">Rooftop + Carport PV System</p>
         </div>
         <div class="scenario-img-wrap">
-          <img src="/1. House as a Battey/Scenario Analysis/scenario-2  for Storage frameworkn.png" alt="VRF-B battery bank can be placed in the basement/ mechanical room" />
+          <img src="/1. House as a Battey/Scenario Analysis/2. Community kitchen with battery.png" alt="VRF-B battery bank can be placed in the basement/ mechanical room" />
           <p class="scenario-img-caption">VRF-B battery bank can be placed in the basement/ mechanical room</p>
         </div>
         <div class="scenario-img-wrap">
@@ -948,10 +1164,10 @@
       <!-- Framework diagrams (2 side by side) -->
       <div class="scenario-frameworks">
         <div class="framework-wrap">
-          <img src="/1. House as a Battey/Scenario Analysis/Scenario-2 result .png" alt="Scenario-I simulation framework diagram" />
+          <img src="/1. House as a Battey/Scenario Analysis/scenario-2  AEDG. Energy efficicencypng-2.png" alt="Scenario-I simulation framework diagram" />
         </div>
         <div class="framework-wrap">
-          <img src="/1. House as a Battey/Scenario Analysis/Simulation logos.png" alt="Scenario-II simulation framework with HOMER Grid" />
+          <img src="/1. House as a Battey/Scenario Analysis/scenario-2  for Storage frameworkn.png" alt="Scenario-II simulation framework with HOMER Grid" />
         </div>
       </div>
 
@@ -969,6 +1185,29 @@
 
     <!-- ── Final Results ── -->
     <div class="final-results-section">
+
+      <!-- Combined results text — single full-width column, sits above the stats/image row -->
+      <div class="fr-top-text">
+        <p class="fr-section-label">Results from Simulation Study</p>
+        <p class="fr-body-text">
+          Comparative analysis of results from simulation study showed $0 savings, no energy resilience, &amp; carbon emission of up to 89,647 kg/yr in Scenario-I.
+        </p>
+        <p class="fr-body-text">
+          Where as Scenario-II demonstrated savings in utility bill of $10,425/yr, energy resilience for 3 days, &amp; reduction carbon emission to 78,790 kg/yr.
+        </p>
+        <p class="fr-section-label">Assessing Policy Support</p>
+        <p class="fr-body-text">
+          Lastly the study conducted an extensive review of various policies, grants, tax-credits, and incentives available at the federal, state, and local levels to facilitate the adoption of our proposed design for integrating DER and ESS at the building and community level in our site location. We found that there are currently no policies in the state of Pennsylvania for battery storage.
+        </p>
+        <p class="fr-body-text">
+          Pennsylvania can learn from Massachusetts's SMART Energy Program and improve funding to better enable the community better solutions for energy resilience.
+        </p>
+        <p class="fr-section-label">Conclusion</p>
+        <p class="fr-body-text">
+          Converting a building into a battery can efficiently manage on-site energy, be energy resilient, and serve as an energy hub at a community level during a grid outage. Additionally, it can improve the property value &amp; job opportunities. The research suggests that developing a scalable and adaptable module of energy storage systems can promote renewable energy adoption for community-based solutions with a focus on equitable social sustainability.
+        </p>
+      </div>
+
       <div class="final-results-grid">
 
         <!-- Column 1: Stats + Building + Text -->
@@ -977,25 +1216,22 @@
           <!-- 3 stat infographics -->
           <div class="fr-stats">
             <div class="fr-stat-item">
+              <div class="fr-stat-label">Utility Bill Savings</div>
               <div class="fr-stat-icon"><img src="/1. House as a Battey/Final Results/Logos for Final Scenario/pngwing.com (51).png" alt="Utility Bill Savings" /></div>
-              <div class="fr-stat-text">
-                <div class="fr-stat-label">Utility Bill Savings</div>
-                <div class="fr-stat-value">$10,425<span class="fr-stat-unit">/yr</span></div>
-              </div>
+              <span class="fr-stat-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <div class="fr-stat-value">$10,425<span class="fr-stat-unit">/yr</span></div>
             </div>
             <div class="fr-stat-item">
+              <div class="fr-stat-label">Increase in Energy Resilience</div>
               <div class="fr-stat-icon"><img src="/1. House as a Battey/Final Results/Logos for Final Scenario/growth-graph.png" alt="Energy Resilience" /></div>
-              <div class="fr-stat-text">
-                <div class="fr-stat-label">Increase in Energy Resilience</div>
-                <div class="fr-stat-value">3 <span class="fr-stat-unit">Days</span></div>
-              </div>
+              <span class="fr-stat-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <div class="fr-stat-value">3 <span class="fr-stat-unit">Days</span></div>
             </div>
             <div class="fr-stat-item">
+              <div class="fr-stat-label">Reduction in Carbon Emissions</div>
               <div class="fr-stat-icon"><img src="/1. House as a Battey/Final Results/Logos for Final Scenario/co2-cloud.png" alt="Carbon Emissions" /></div>
-              <div class="fr-stat-text">
-                <div class="fr-stat-label">Reduction in Carbon Emissions</div>
-                <div class="fr-stat-value">78,790<span class="fr-stat-unit"> kg/yr</span></div>
-              </div>
+              <span class="fr-stat-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <div class="fr-stat-value">78,790<span class="fr-stat-unit"> kg/yr</span></div>
             </div>
           </div>
 
@@ -1003,28 +1239,16 @@
           <div class="fr-building-img">
             <img src="/1. House as a Battey/Final Results/3_3.png" alt="Building as a Battery isometric" />
           </div>
-
-          <!-- Results text -->
-          <div class="fr-text-block">
-            <p class="fr-section-label">Results from Simulation Study</p>
-            <p class="fr-body-text">
-              Comparative analysis of results from simulation study showed $0 savings, no energy resilience, &amp; carbon emission of up to 89,647 kg/yr in Scenario-I.
-            </p>
-            <p class="fr-body-text">
-              Where as Scenario-II demonstrated savings in utility bill of $10,425/yr, energy resilience for 3 days, &amp; reduction carbon emission to 78,790 kg/yr.
-            </p>
-            <p class="fr-section-label">Assessing Policy Support</p>
-            <p class="fr-body-text">
-              Lastly the study conducted an extensive review of various policies, grants, tax-credits, and incentives available at the federal, state, and local levels to facilitate the adoption of our proposed design for integrating DER and ESS at the building and community level in our site location. We found that there are currently no policies in the state of Pennsylvania for battery storage.
-            </p>
-            <p class="fr-body-text">
-              Pennsylvania can learn from Massachusetts's SMART Energy Program and improve funding to better enable the community better solutions for energy resilience.
-            </p>
-          </div>
         </div>
 
         <!-- Column 2: DER systems -->
         <div class="fr-mid">
+          <div class="fr-icon-labels fr-icon-labels--4">
+            <span>Rooftop Canopy</span>
+            <span>Solar Carport</span>
+            <span>Solar Garden</span>
+            <span>Combined Garage Rooftop</span>
+          </div>
           <div class="fr-mid-img">
             <img src="/1. House as a Battey/Final Results/4. All solar systems.png" alt="Integration of DER strategies — Rooftop Canopy, Solar Carport, Solar Garden, Combined Garage Rooftop" />
           </div>
@@ -1033,32 +1257,33 @@
 
         <!-- Column 3: Storage systems + Conclusion -->
         <div class="fr-mid">
+          <div class="fr-icon-labels fr-icon-labels--5">
+            <span>Kinetic Flywheel</span>
+            <span>VRF Battery</span>
+            <span>Ice Storage</span>
+            <span>Water Accumulator</span>
+            <span>EV Battery</span>
+          </div>
           <div class="fr-mid-img">
             <img src="/1. House as a Battey/Final Results/5. All storage systems.png" alt="Integration of energy storage systems — Kinetic Flywheel, VRF Battery, Ice Storage, Water Accumulator, EV Battery" />
           </div>
           <p class="fr-mid-caption">The integration of various energy storages system from our toolkit</p>
-          <div class="fr-text-block" style="margin-top:20px;">
-            <p class="fr-section-label">Conclusion</p>
-            <p class="fr-body-text">
-              Converting a building into a battery can efficiently manage on-site energy, be energy resilient, and serve as an energy hub at a community level during a grid outage. Additionally, it can improve the property value &amp; job opportunities. The research suggests that developing a scalable and adaptable module of energy storage systems can promote renewable energy adoption for community-based solutions with a focus on equitable social sustainability.
-            </p>
-          </div>
         </div>
 
         <!-- Column 4: Benefit icons + night result image -->
         <div class="fr-right">
           <div class="fr-benefits">
             <div class="fr-benefit-item">
-              <div class="fr-benefit-circle"><img src="/1. House as a Battey/Final Results/Logos for Final Scenario/growth-graph.png" alt="Energy Resilience" /></div>
               <span class="fr-benefit-label">Improvement in Energy Resilience</span>
+              <div class="fr-benefit-circle"><img src="/1. House as a Battey/Final Results/Logos for Final Scenario/growth-graph.png" alt="Energy Resilience" /></div>
             </div>
             <div class="fr-benefit-item">
-              <div class="fr-benefit-circle"><img src="/1. House as a Battey/Final Results/Logos for Final Scenario/pngwing.com (51).png" alt="Economic Growth" /></div>
               <span class="fr-benefit-label">Economic Growth</span>
+              <div class="fr-benefit-circle"><img src="/1. House as a Battey/Final Results/Logos for Final Scenario/pngwing.com (51).png" alt="Economic Growth" /></div>
             </div>
             <div class="fr-benefit-item">
-              <div class="fr-benefit-circle"><img src="/1. House as a Battey/Final Results/Logos for Final Scenario/co2-cloud.png" alt="Equitable Social Sustainability" /></div>
               <span class="fr-benefit-label">Equitable Social Sustainability</span>
+              <div class="fr-benefit-circle"><img src="/1. House as a Battey/Final Results/Logos for Final Scenario/co2-cloud.png" alt="Equitable Social Sustainability" /></div>
             </div>
           </div>
           <div class="fr-result-img">
@@ -1070,7 +1295,22 @@
       </div>
     </div>
 
-  </div>
+    <div style="margin-top: 64px;">
+      <a class="back" href="/#projects">Back <span class="back-arrow">›</span></a>
+    </div>
 
+  </div>
+  <script is:inline>
+    (function() {
+      const el = document.querySelector('.scroll-cue');
+      function update() {
+        const hidden = window.scrollY > 60;
+        el.style.opacity = hidden ? '0' : '1';
+        el.style.pointerEvents = hidden ? 'none' : 'auto';
+      }
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+    })();
+  </script>
 </body>
 </html>
